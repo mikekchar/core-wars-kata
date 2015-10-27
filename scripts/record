@@ -1,0 +1,6 @@
+#!/bin/bash
+
+curr_dir=`dirname $0`
+
+bundle exec thyme -d
+asciinema rec -c "$curr_dir/start-tmux" -y -w 2 -t "Core Wars Kata" $1

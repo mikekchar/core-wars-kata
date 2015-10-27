@@ -1,0 +1,11 @@
+#!/bin/bash
+
+session="cw-kata"
+socket="$session-socket"
+
+tmux -L "$socket" new-session -s "$session" -d vim
+tmux -L "$socket" new-window -n "guard" -d "bundle exec guard"
+tmux -L "$socket" bind-key -n M-Y run "tmux -L $socket show-buffer | xsel -ib"
+tmux -L "$socket" bind-key -n M-P run "xsel -o | tmux -L $socket load-buffer -b xbuffer - \; paste-buffer -b xbuffer"
+tmux -L "$socket" bind-key -n M-Q kill-session -t "$session"
+TERM=screen-256color tmux -2 -L "$socket" attach-session -t "$session"
