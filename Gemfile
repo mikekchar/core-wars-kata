@@ -6,4 +6,4 @@ gem 'guard-ctags-bundler'
 gem 'rb-inotify', :require => false
 gem 'rb-fsevent', :require => false
 gem 'rb-fchange', :require => false
-
+gem 'thyme'
