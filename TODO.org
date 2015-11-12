@@ -1,0 +1,31 @@
+* Core Wars Kata
+
+** DONE Initial failing test
+   CLOSED: [2015-11-12 Thu 13:38]
+   I think I already did this.
+** DONE Look at the documentation for Core Wars.
+   CLOSED: [2015-11-12 Thu 13:43]
+   I added the spec to the doc directory.
+   Aaarghh... it's HTML.  Let's open another window.
+   Not sure if the documentation explains the virtual machine...
+   It must somewhere.  Will need to look more closely.
+   But I've seen enough to make a rough plan.
+** Burndown (sigh... English is hard)
+**** TODO Build the memory core
+    I'm running out of time for this pomodoro, so this seems the
+    simplest
+***** DONE Make a stupid class
+      CLOSED: [2015-11-12 Thu 13:53]
+***** TODO It needs a size
+      Totally forgot Ruby syntax.  Leaving a broken test is not
+      a bad thing.  Until tomorrow!
+***** TODO Allocate memory
+***** TODO Store things in the memory
+      I'm not terribly worried about the data size.  We will fix it
+      later.
+** Backlist
+*** TODO Create Core Wars virtual machine
+    In this section I will write stories for making the virtual
+    machine
+*** TODO Load a File into the virtual machine
+    Thinking about it, I may need to interleave these stories.
