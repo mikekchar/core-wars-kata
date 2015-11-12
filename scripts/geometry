@@ -1,0 +1,6 @@
+#/bin/sh
+
+cols=$(tput cols)
+rows=$(tput lines)
+
+echo "$cols"x"$rows"
