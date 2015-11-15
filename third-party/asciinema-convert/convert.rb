@@ -1,5 +1,6 @@
 require 'json'
 require 'open3'
+require 'stringio'
 
 class Hash
   def slice *keys
@@ -55,7 +56,8 @@ end
 
 class Terminal
 
-  BINARY_PATH = "./terminal"
+  CURRENT_PATH = File.dirname(__FILE__)
+  BINARY_PATH = CURRENT_PATH + "/terminal"
 
   def initialize(width, height)
     @process = Process.new("#{BINARY_PATH} #{width} #{height}")
@@ -477,7 +479,22 @@ output_file = ARGV[1]
 asciicast = JSON.load(File.read(input_file))
 terminal = Terminal.new(asciicast['width'], asciicast['height'])
 stdout = Stdout::Buffered.new(Stdout::SingleFile.new(input_file))
-file = File.open(output_file, 'w')
 film = Film.new(stdout, terminal)
-JsonFileWriter.new.write_enumerable(file, film.frames)
-terminal.release
+if true
+  # Original code
+  file = File.open(output_file, 'w')
+  JsonFileWriter.new.write_enumerable(file, film.frames)
+  terminal.release
+else
+  # Pretty printed JSON
+  # This is nice, but it doubles the file size since there
+  # are a *lot* of carriage returns
+  file = StringIO.new()
+  JsonFileWriter.new.write_enumerable(file, film.frames)
+  terminal.release
+  out = File.open(output_file, 'w')
+  json = JSON.parse(file.string)
+  pretty_json = JSON.pretty_generate(json)
+  out.write(pretty_json)
+  out.close()
+end

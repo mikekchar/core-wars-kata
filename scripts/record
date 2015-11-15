@@ -4,4 +4,4 @@ curr_dir=`dirname $0`
 
 bundle exec thyme -d
 asciinema rec -c "$curr_dir/start-tmux" -y -w 2 -t "Core Wars Kata" "$1"
-ruby "$curr_dir/../third-party/asciinema-convert/convert.rb" "$1.json"
+ruby "$curr_dir/../third-party/asciinema-convert/convert.rb" "$1" "$1.json"
