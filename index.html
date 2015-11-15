@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="third-party/asciinema-player/css/main.css" rel="stylesheet" type="text/css">
+    <style>
+      body { background-color: #666; }
+    </style>
+  </head>
+  <body>
+    <div id="player"></div>
+    <script src="./third-party/asciinema-player/js/release.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      asciinema_player.core.CreatePlayer(
+          'player',
+          80,
+          24,
+          './sessions/converted/1.json',
+          148.297910690308,
+          {}
+      );
+    </script>
+  </body>
+</html>
