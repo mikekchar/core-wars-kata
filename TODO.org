@@ -1,8 +1,6 @@
 * Core Wars Kata
-  All done for today.  I was very sleepy this moring, so slow as
-  usual.  Because I was busy setting up asciinema on the weekend,
-  I couldn't do any kata.  So today I am going to try to get 2
-  or three in.  See you in a bit!
+  Ran out of time.  Need to write test for our command line
+  parser.  Next time...
 ** Burndown
 *** Interactive mode
     I'm going to add an interactive mode.  This will
@@ -10,8 +8,10 @@
     There may be some argument that this should have been
     done first.
 **** TODO Add command switch to enter interactive mode
-     Implement with Readline library (is that built into Ruby?)
+     No idea how to test drive this.  Let's not.
+     WRITE TESTS!!!
 **** TODO Add interactive exit command
+     Implement input with Readline library
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
@@ -36,18 +36,20 @@
     Thinking about it, I may need to interleave these stories.
 
 ** Done
-   I get tired of seeing crap in my TODO list
-*** DONE Initial failing test
-    CLOSED: [2015-11-12 Thu 13:38]
-    I think I already did this.
-*** DONE Look at the documentation for Core Wars.
-    CLOSED: [2015-11-12 Thu 13:43]
-    I added the spec to the doc directory.
-    Aaarghh... it's HTML.  Let's open another window.
-    Not sure if the documentation explains the virtual machine...
-    It must somewhere.  Will need to look more closely.
-    But I've seen enough to make a rough plan.
-*** General
+*** Setup
+**** DONE Initial failing test
+     CLOSED: [2015-11-12 Thu 13:38]
+     I think I already did this.
+**** DONE Look at the documentation for Core Wars.
+     CLOSED: [2015-11-12 Thu 13:43]
+     I added the spec to the doc directory.
+     Aaarghh... it's HTML.  Let's open another window.
+     Not sure if the documentation explains the virtual machine...
+     It must somewhere.  Will need to look more closely.
+     But I've seen enough to make a rough plan.
+*** Interactive mode
+**** DONE Add an executable
+     CLOSED: [2015-11-16 Mon 12:58]
 *** Build the memory core
 **** DONE Make a stupid class
      CLOSED: [2015-11-12 Thu 13:53]
