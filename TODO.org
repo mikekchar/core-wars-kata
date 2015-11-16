@@ -1,17 +1,27 @@
 * Core Wars Kata
-  Finishing on a broken test.  Too bad I didn't write more, but
-  we are slowly gathering requirements, so I'm not too sad.
+  All done for today.  I was very sleepy this moring, so slow as
+  usual.  Because I was busy setting up asciinema on the weekend,
+  I couldn't do any kata.  So today I am going to try to get 2
+  or three in.  See you in a bit!
 ** Burndown
-*** Build the memory core
-**** TODO Store things in the memory
-     I'm not terribly worried about the data size.  We will fix it
-     later.
-***** TODO Allocate memory
-**** TODO Inspect running state of the memory
-     I'm going to add an interactive mode.  This will
-     allow us to run the program and see that it works.
-     There may be some argument that this should have been
-     done first.
+*** Interactive mode
+    I'm going to add an interactive mode.  This will
+    allow us to run the program and see that it works.
+    There may be some argument that this should have been
+    done first.
+**** TODO Add command switch to enter interactive mode
+     Implement with Readline library (is that built into Ruby?)
+**** TODO Add interactive exit command
+*** Inspect running state of the memory
+    Since this is a "retro" project, I thought it would be fun
+    to implement the command set from the old Apple II
+    machine language monitor
+**** TODO {addr}
+     Inspect one memory location
+**** TODO {addr1}.{addr2}
+      Inspect memory from addr1 to addr2
+**** TODO [RETURN]
+      Display up to 8 locations following the last opened location.
 ** Backlog
 *** Core options
 **** TODO Specify Initial core size
@@ -43,3 +53,15 @@
      CLOSED: [2015-11-12 Thu 13:53]
 **** DONE It needs a size
      CLOSED: [2015-11-13 Fri 10:16]
+**** DONE Store things in the memory
+     CLOSED: [2015-11-16 Mon 09:42]
+     I'm not terribly worried about the data size.  We will fix it
+     later.
+***** DONE Allocate memory
+      CLOSED: [2015-11-16 Mon 09:31]
+***** DONE Determine if we should wrap on setting addresses
+      CLOSED: [2015-11-16 Mon 09:42]
+      i.e. should store(size+1) set the zeroth value?
+      There appears to be a concept of "folding" that does this.
+      I don't quite understand, but I will defer this until
+      we implement addressing modes.
