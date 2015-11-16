@@ -7,6 +7,7 @@ tmux -L "$socket" new-session -s "$session" -d vim
 tmux -L "$socket" new-window -n "guard" -d "bundle exec guard"
 tmux -L "$socket" new-window -n "TODO" -d "emacs -nw TODO.org"
 tmux -L "$socket" new-window -n "Docs" -d "lynx doc/ICWS\ 94.html"
+tmux -L "$socket" new-window -n "bash"
 tmux -L "$socket" bind-key -n M-Y run "tmux -L $socket show-buffer | xsel -ib"
 tmux -L "$socket" bind-key -n M-P run "xsel -o | tmux -L $socket load-buffer -b xbuffer - \; paste-buffer -b xbuffer"
 tmux -L "$socket" bind-key -n M-Q kill-session -t "$session"
