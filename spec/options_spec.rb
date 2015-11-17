@@ -1,7 +1,7 @@
 require_relative '../lib/options.rb'
 
 RSpec.describe Options do
-  let(:args) { "" }
+  let(:args) { [""] }
   subject { Options.new() }
 
   describe "no arguments" do
@@ -11,9 +11,17 @@ RSpec.describe Options do
   end
 
   describe "interactive mode" do
-    let(:args) { "-i" }
-    it "sets interactive mode" do
-      expect(subject.parse(args)).to be_interactive
+    describe "-i" do
+      let(:args) { ["-i"] }
+      it "sets interactive mode" do
+        expect(subject.parse(args)).to be_interactive
+      end
+    end
+    describe "--interactive" do
+      let(:args) { ["--interactive"] }
+      it "sets interactive mode" do
+        expect(subject.parse(args)).to be_interactive
+      end
     end
   end
 end

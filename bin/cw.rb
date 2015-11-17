@@ -1,10 +1,14 @@
 require_relative "../lib/options"
+require_relative "../lib/command_line"
 
 options = Options.new()
 options.parse(ARGV)
 if options.interactive? then
-  puts("Interactive")
+  cl = CommandLine.new("> ")
+  while buf = cl.read
+    p buf
+  end
 else
-  puts("Not Interactive")
+  puts("Nothing to do")
 end
 
