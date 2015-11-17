@@ -1,18 +1,15 @@
 * Core Wars Kata
-  What a horrible session.  Shows you what happens when
-  you only get 4 hours of sleep :-(  I will have a nap
-  and do another session later.  Until then!
+  End on a failing test again.  Very slow again.  The nap would
+  have been a good idea.
 ** Burndown
 *** Interactive mode
     I'm going to add an interactive mode.  This will
     allow us to run the program and see that it works.
     There may be some argument that this should have been
     done first.
-**** TODO Add command switch to enter interactive mode
-     No idea how to test drive this.  Let's not.
-     WRITE TESTS!!!
 **** TODO Add interactive exit command
-     Implement input with Readline library
+    Testing this is a bit tricky.  We need to wrap the Readline
+    so that we can mock/stub/fake it.
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
@@ -68,3 +65,9 @@
       There appears to be a concept of "folding" that does this.
       I don't quite understand, but I will defer this until
       we implement addressing modes.
+*** Interactive mode
+**** DONE Add command switch to enter interactive mode
+     CLOSED: [2015-11-17 Tue 14:49]
+     No idea how to test drive this.  Let's not.
+     WRITE TESTS!!!
+     Good enough for now.
