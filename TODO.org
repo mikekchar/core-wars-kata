@@ -1,6 +1,7 @@
 * Core Wars Kata
-  Ran out of time.  Need to write test for our command line
-  parser.  Next time...
+  What a horrible session.  Shows you what happens when
+  you only get 4 hours of sleep :-(  I will have a nap
+  and do another session later.  Until then!
 ** Burndown
 *** Interactive mode
     I'm going to add an interactive mode.  This will
