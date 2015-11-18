@@ -1,6 +1,6 @@
 * Core Wars Kata
-  End on a failing test again.  Very slow again.  The nap would
-  have been a good idea.
+  Making a lot of mistakes on ruby syntax.  Hopefully
+  I will start remembering the language again soon!
 ** Burndown
 *** Interactive mode
     I'm going to add an interactive mode.  This will
@@ -8,8 +8,7 @@
     There may be some argument that this should have been
     done first.
 **** TODO Add interactive exit command
-    Testing this is a bit tricky.  We need to wrap the Readline
-    so that we can mock/stub/fake it.
+     I suppose ctl-D can also exit since it already does that
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
@@ -71,3 +70,5 @@
      No idea how to test drive this.  Let's not.
      WRITE TESTS!!!
      Good enough for now.
+**** DONE Add a monitor that can take input
+     CLOSED: [2015-11-18 Wed 13:12]
