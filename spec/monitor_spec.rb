@@ -1,9 +1,22 @@
 require_relative "../lib/monitor"
 require_relative "fakes/readline"
 
+class FakeIO
+  attr_reader :output
+
+  def initialize
+    @output = []
+  end
+
+  def puts(string)
+    @output.push(string)
+  end
+end
+
 RSpec.describe Monitor do
   let(:reader) { FakeReadline.new() }
-  subject { Monitor.new("> ", reader) }
+  let(:writer) { FakeIO.new() }
+  subject { Monitor.new(reader, writer) }
 
   describe "reading a single command" do
     let(:command) { "hello" }
@@ -17,30 +30,46 @@ RSpec.describe Monitor do
     end
   end
 
-  describe "empty input" do
-    # I think readline also returns nil just like
-    # the fake.  However, this is obviously a
-    # self referential test, so you must be careful
-    # I'm only adding it so that when we loop over the
-    # input, I'm sure that the tests won't break internally.
-    it "returns the error value from readline" do
-      expect(subject.read()).to be_nil
-    end
-  end
-
   describe "event loop" do
-    let(:command1) {"hello"}
-    let(:command2) {"world"}
-
-    before(:each) do
-      reader.addInput(command1)
-      reader.addInput(command2)
+    describe "empty input" do
+      it "returns no commands" do
+        subject.process()
+        expect(writer.output).to be_empty
+      end
     end
 
-    it "reads all of the commands in the input" do
-      # Not exactly what I want, but will give us a failing
-      # test for tomorrow.  Until then!
-      expect(subject.process()).to eq(["hello", "world"])
+    describe "input" do
+      let(:command1) {"hello"}
+      let(:command2) {"world"}
+
+      before(:each) do
+        reader.addInput(command1)
+        reader.addInput(command2)
+      end
+
+      it "reads all of the commands in the input" do
+        subject.process()
+        expect(writer.output).to eq(
+          [
+            "Unknown command: hello",
+            "Unknown command: world"
+          ])
+      end
+    end
+
+    describe "exiting" do
+      let(:command1) {"exit"}
+      let(:command2) {"should not get here"}
+
+      before(:each) do
+        reader.addInput(command1)
+        reader.addInput(command2)
+      end
+
+      it "exits upon reading the exit command" do
+        subject.process()
+        expect(writer.output).to eq([])
+      end
     end
   end
 end
