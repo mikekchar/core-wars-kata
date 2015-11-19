@@ -1,14 +1,21 @@
 * Core Wars Kata
-  Making a lot of mistakes on ruby syntax.  Hopefully
-  I will start remembering the language again soon!
+  Slowly getting there.  Definitely turtle-like pace.  But
+  progress is progress.  Until next time!
 ** Burndown
 *** Interactive mode
     I'm going to add an interactive mode.  This will
     allow us to run the program and see that it works.
     There may be some argument that this should have been
     done first.
-**** TODO Add interactive exit command
+**** DONE Add interactive exit command
+     CLOSED: [2015-11-19 Thu 14:26]
      I suppose ctl-D can also exit since it already does that
+**** DONE Print error message for unknown commands
+     CLOSED: [2015-11-19 Thu 14:43]
+     You may have noticed that the Monitor code is sucky.
+     I'm waiting until the right time to refactor it.
+     Not sure when that will be...
+**** TODO Hook up the bin!!!!
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
