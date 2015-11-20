@@ -1,27 +1,15 @@
 * Core Wars Kata
-  Slowly getting there.  Definitely turtle-like pace.  But
-  progress is progress.  Until next time!
 ** Burndown
-*** Interactive mode
-    I'm going to add an interactive mode.  This will
-    allow us to run the program and see that it works.
-    There may be some argument that this should have been
-    done first.
-**** DONE Add interactive exit command
-     CLOSED: [2015-11-19 Thu 14:26]
-     I suppose ctl-D can also exit since it already does that
-**** DONE Print error message for unknown commands
-     CLOSED: [2015-11-19 Thu 14:43]
-     You may have noticed that the Monitor code is sucky.
-     I'm waiting until the right time to refactor it.
-     Not sure when that will be...
-**** TODO Hook up the bin!!!!
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
     machine language monitor
+**** DONE Create core at the start of the app
+     CLOSED: [2015-11-20 Fri 14:08]
 **** TODO {addr}
      Inspect one memory location
+     Sigh... I'm soooo sleepy.  Too many late nights.  Well, until
+     next time.
 **** TODO {addr1}.{addr2}
       Inspect memory from addr1 to addr2
 **** TODO [RETURN]
@@ -79,3 +67,13 @@
      Good enough for now.
 **** DONE Add a monitor that can take input
      CLOSED: [2015-11-18 Wed 13:12]
+**** DONE Add interactive exit command
+     CLOSED: [2015-11-19 Thu 14:26]
+     I suppose ctl-D can also exit since it already does that
+**** DONE Print error message for unknown commands
+     CLOSED: [2015-11-19 Thu 14:43]
+     You may have noticed that the Monitor code is sucky.
+     I'm waiting until the right time to refactor it.
+     Not sure when that will be...
+**** DONE Hook up the bin!!!!
+     CLOSED: [2015-11-20 Fri 13:53]
