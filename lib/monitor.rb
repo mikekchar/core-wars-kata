@@ -1,6 +1,9 @@
 class Monitor
-  def initialize(reader, writer)
-    @prompt = "> " # I can't remember what the Apple II monitor prompt was
+  ADDR_RE = /^d+$/
+
+  def initialize(core, reader, writer)
+    @prompt = "*" # Apple II Monitor prompt
+    @core = core
     @reader = reader
     @writer = writer
     @finished = false
@@ -8,6 +11,10 @@ class Monitor
 
   def read
     @reader.readline(@prompt, true)
+  end
+
+  def address?(command)
+    return ADDR_RE.match(command)
   end
 
   # Shouldn't use reserved words...

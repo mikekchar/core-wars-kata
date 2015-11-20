@@ -1,22 +1,13 @@
 require_relative "../lib/monitor"
+require_relative "../lib/core"
 require_relative "fakes/readline"
-
-class FakeIO
-  attr_reader :output
-
-  def initialize
-    @output = []
-  end
-
-  def puts(string)
-    @output.push(string)
-  end
-end
+require_relative "fakes/io"
 
 RSpec.describe Monitor do
-  let(:reader) { FakeReadline.new() }
-  let(:writer) { FakeIO.new() }
-  subject { Monitor.new(reader, writer) }
+  let(:core) { Core.new(1024) }
+  let(:reader) { Fake::Readline.new() }
+  let(:writer) { Fake::IO.new() }
+  subject { Monitor.new(core, reader, writer) }
 
   describe "reading a single command" do
     let(:command) { "hello" }
@@ -27,6 +18,16 @@ RSpec.describe Monitor do
 
     it "returns the entered command" do
       expect(subject.read()).to eq("hello")
+    end
+  end
+
+  describe "reading an address" do
+    it "identifies addresses" do
+      expect(subject.address?("1234")).to be true
+    end
+
+    it "rejects non-addresses" do
+      expect(subject.address?("hello")).to be false
     end
   end
 

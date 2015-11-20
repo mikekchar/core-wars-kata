@@ -1,16 +1,15 @@
-# This is a fake class that implements
-# the readline method for the Readline module.
-class FakeReadline
-  def initialize
-    @input = []
-  end
+module Fake
+  class Readline
+    def initialize
+      @input = []
+    end
 
-  def readline(prompt, storeHistory)
-    @input.shift
-  end
+    def readline(prompt, storeHistory)
+      @input.shift
+    end
 
-  def addInput(input)
-    @input << input
+    def addInput(input)
+      @input << input
+    end
   end
 end
-
