@@ -39,8 +39,9 @@ RSpec.describe Monitor do
     describe "fetching an invalid address" do
       it "outputs an error message" do
         # It is numbered from 0, so core.size is out of bounds
-        subject.inspect_address(core.size.to_s)
-        expect(writer.output).to eq(["Illegal address: #{core.size}"])
+        hex_size = core.size.to_s(16)
+        subject.inspect_address(hex_size)
+        expect(writer.output).to eq(["Illegal address: #{hex_size}"])
       end
 
       it "outputs an error message" do
@@ -99,9 +100,26 @@ RSpec.describe Monitor do
       before(:each) do
         reader.addInput(command1)
       end
+
       it "exits upon reading the exit command" do
         subject.process()
         expect(writer.output).to eq(["0"])
+      end
+
+      describe "addresses are in hexadecimal" do
+        let(:command1) {"10"}
+        let(:location) {16}
+
+        before(:each) do
+          core.store(location, 1)
+          reader.addInput(command1)
+        end
+
+        it "accesses decimal 16 for addr=10" do
+          # Not sure why we are getting 2 outputs.  Will fix later
+          subject.process()
+          expect(writer.output).to eq(["1"])
+        end
       end
     end
   end
