@@ -29,6 +29,26 @@ RSpec.describe Monitor do
     it "rejects non-addresses" do
       expect(subject.address?("hello")).to be false
     end
+
+    describe "fetching a valid address" do
+      it "outputs the value at an address" do
+        subject.inspect_address("10")
+        expect(writer.output).to eq(["0"])
+      end
+    end
+    describe "fetching an invalid address" do
+      it "outputs an error message" do
+        # It is numbered from 0, so core.size is out of bounds
+        subject.inspect_address(core.size.to_s)
+        expect(writer.output).to eq(["Illegal address: #{core.size}"])
+      end
+
+      it "outputs an error message" do
+        # It is numbered from 0, so core.size is out of bounds
+        subject.inspect_address("-1")
+        expect(writer.output).to eq(["Illegal address: -1"])
+      end
+    end
   end
 
   describe "event loop" do
@@ -70,6 +90,18 @@ RSpec.describe Monitor do
       it "exits upon reading the exit command" do
         subject.process()
         expect(writer.output).to eq([])
+      end
+    end
+
+    describe "reading an address" do
+      let(:command1) {"100"}
+
+      before(:each) do
+        reader.addInput(command1)
+      end
+      it "exits upon reading the exit command" do
+        subject.process()
+        expect(writer.output).to eq(["0"])
       end
     end
   end

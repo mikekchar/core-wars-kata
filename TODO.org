@@ -1,15 +1,25 @@
 * Core Wars Kata
+  That's it for now.  I'm travelling for the next couple of days
+  so I may do one more pomodoro today just to make sure I get
+  an average of one a day.
 ** Burndown
 *** Inspect running state of the memory
-    Since this is a "retro" project, I thought it would be fun
-    to implement the command set from the old Apple II
-    machine language monitor
 **** DONE Create core at the start of the app
      CLOSED: [2015-11-20 Fri 14:08]
 **** TODO {addr}
      Inspect one memory location
-     Sigh... I'm soooo sleepy.  Too many late nights.  Well, until
-     next time.
+     I *did* forget something: to test if it works in process()
+*** Set the state of the memory
+**** TODO {addr}:{val}
+     Sets the value at an address
+**** TODO {addr}:{val} {val} ...
+     Sets many values starting at an address
+**** TODO :{val} {val} ...
+     Sets many values starting at the last accessed address
+*** Inspect running state of the memory
+    Since this is a "retro" project, I thought it would be fun
+    to implement the command set from the old Apple II
+    machine language monitor
 **** TODO {addr1}.{addr2}
       Inspect memory from addr1 to addr2
 **** TODO [RETURN]
