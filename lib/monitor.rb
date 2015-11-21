@@ -1,5 +1,5 @@
 class Monitor
-  ADDR_RE = /^\d+$/
+  ADDR_RE = /^[0-9a-fA-F]+$/
 
   def initialize(core, reader, writer)
     @prompt = "*" # Apple II Monitor prompt
@@ -18,12 +18,12 @@ class Monitor
   end
 
   def inspect_address(command)
-    addr = command.to_i
+    addr = command.to_i(16)
     output = @core.fetch(addr)
     if !output.nil?
-      @writer.puts(output.to_s)
+      @writer.puts(output.to_s(16))
     else
-      @writer.puts("Illegal address: #{addr}")
+      @writer.puts("Illegal address: #{command}")
     end
   end
 
