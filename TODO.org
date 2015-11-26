@@ -1,14 +1,9 @@
 * Core Wars Kata
-  Pretty awful pomodoro :-P  Oh well.  Left myself a weird breaking
-  test.  Until next time!
+  Finish on a failing test.  Pretty slow, but I'm not too unhappy in
+  my jetlagged state.
 ** Burndown
 *** Inspect running state of the memory
-**** TODO addrs should be referenced in hexadecimal
-     The spec doesn't say this, but that's how the Apple II
-     monitor works.
-**** TODO memory contents should be printed in 2 hex digits
 *** Build the memory core
-    As I suspected the memory core is supposed to be circular
 **** TODO accessing memory greater than size should access addr % size
 **** TODO accessing negative addr should index size - addr - 1
 *** Set the state of the memory
@@ -96,3 +91,11 @@
      CLOSED: [2015-11-21 Sat 14:05]
      Inspect one memory location
      I *did* forget something: to test if it works in process()
+**** DONE addrs should be referenced in hexadecimal
+     CLOSED: [2015-11-26 Thu 17:52]
+     The spec doesn't say this, but that's how the Apple II
+     monitor works.
+**** DONE memory contents should be printed in hex digits
+     CLOSED: [2015-11-26 Thu 18:05]
+     Sigh... Not great, but it will do for now
+     

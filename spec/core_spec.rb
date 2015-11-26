@@ -17,9 +17,10 @@ RSpec.describe Core do
       expect(subject.fetch(0)).to eq(27)
     end
 
-    it "should do nothing when storing to an address of size or bigger" do
+    it "fetches core(0) for size" do
       subject.store(size, 27)
-      expect(subject.fetch(size)).to be_nil
+      expect(subject.fetch(size)).to eq(27)
+      expect(subject.fetch(0)).to eq(27)
     end
 
     it "should do nothing when storing to negative addresses" do
