@@ -95,31 +95,21 @@ RSpec.describe Monitor do
     end
 
     describe "reading an address" do
-      let(:command1) {"100"}
-
-      before(:each) do
-        reader.addInput(command1)
-      end
-
-      it "exits upon reading the exit command" do
-        subject.process()
-        expect(writer.output).to eq(["0"])
-      end
-
       describe "addresses are in hexadecimal" do
         let(:command1) {"10"}
         let(:location) {16}
+        let(:value) {16}
 
         before(:each) do
-          core.store(location, 1)
+          core.store(location, value)
           reader.addInput(command1)
         end
 
         it "accesses decimal 16 for addr=10" do
-          # Not sure why we are getting 2 outputs.  Will fix later
           subject.process()
-          expect(writer.output).to eq(["1"])
+          expect(writer.output).to eq(["10"])
         end
+
       end
     end
   end
