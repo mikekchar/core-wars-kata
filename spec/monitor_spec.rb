@@ -4,7 +4,8 @@ require_relative "fakes/readline"
 require_relative "fakes/io"
 
 RSpec.describe Monitor do
-  let(:core) { Core.new(1024) }
+  let(:core_size) { 1024 }
+  let(:core) { Core.new(core_size) }
   let(:reader) { Fake::Readline.new() }
   let(:writer) { Fake::IO.new() }
   subject { Monitor.new(core, reader, writer) }
@@ -30,24 +31,24 @@ RSpec.describe Monitor do
       expect(subject.address?("hello")).to be false
     end
 
-    describe "fetching a valid address" do
+    describe "fetching an address within bounds" do
       it "outputs the value at an address" do
         subject.inspect_address("10")
         expect(writer.output).to eq(["0"])
       end
     end
-    describe "fetching an invalid address" do
-      it "outputs an error message" do
+
+    describe "fetching an address out of bounds" do
+      it "outputs the value" do
         # It is numbered from 0, so core.size is out of bounds
         hex_size = core.size.to_s(16)
         subject.inspect_address(hex_size)
-        expect(writer.output).to eq(["Illegal address: #{hex_size}"])
+        expect(writer.output).to eq(["0"])
       end
 
       it "outputs an error message" do
-        # It is numbered from 0, so core.size is out of bounds
         subject.inspect_address("-1")
-        expect(writer.output).to eq(["Illegal address: -1"])
+        expect(writer.output).to eq(["0"])
       end
     end
   end
@@ -109,7 +110,36 @@ RSpec.describe Monitor do
           subject.process()
           expect(writer.output).to eq(["10"])
         end
+      end
 
+      describe "addresses are in hexadecimal" do
+        let(:command1) { "-10" }
+        let(:location) { core_size - 16 }
+        let(:value) { 16 }
+
+        before(:each) do
+          core.store(location, value)
+          reader.addInput(command1)
+        end
+
+        it "accesses core_size - 16" do
+          subject.process()
+          expect(writer.output).to eq(["10"])
+        end
+      end
+
+    end
+    describe "storing an address" do
+      let(:command1) {"10:FF"}
+      let(:location) {16}
+      let(:value) {255}
+
+      before(:each) do
+        reader.addInput(command1)
+      end
+
+      it "stores the value" do
+        expect(core.fetch(location)).to eq(value)
       end
     end
   end

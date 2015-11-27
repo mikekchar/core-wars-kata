@@ -23,20 +23,37 @@ RSpec.describe Core do
       expect(subject.fetch(0)).to eq(27)
     end
 
-    it "should do nothing when storing to negative addresses" do
-      subject.store(-1, 27)
-      expect(subject.fetch(-1)).to be_nil
+    describe "storing to negative addresses" do
+      it "should wrap" do
+        subject.store(-1, 27)
+        expect(subject.fetch(size - 1)).to eq(27)
+      end
+    end
+
+    describe "storing to addresses bigger than size" do
+      it "should wrap" do
+        subject.store(size + 1, 27)
+        expect(subject.fetch(1)).to eq(27)
+      end
+    end
+
+    describe "fetching from negative addresses" do
+      it "should wrap" do
+        subject.store(size - 1, 27)
+        expect(subject.fetch(-1)).to eq(27)
+      end
     end
     
+    describe "fetching addresses bigger than size" do
+      it "should wrap" do
+        subject.store(1, 27)
+        expect(subject.fetch(size + 1)).to eq(27)
+      end
+    end
+
     it "defaults to having 0 in the core" do
       # FIXME: Set to specific values at some point
       expect(subject.fetch(0)).to eq(0)
-    end
-
-    # We're already testing size.  I could delete this one,
-    # but why not have an extra one for size + 1
-    it "returns nil for addresses bigger than size" do
-      expect(subject.fetch(size + 1)).to be_nil
     end
   end
 end
