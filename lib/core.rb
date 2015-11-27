@@ -7,13 +7,10 @@ class Core
   end
 
   def store(addr, value)
-    # We are counting from zero ;-)
-    return if addr >= size || addr < 0
-    @impl[addr] = value
+    @impl[addr % size] = value
   end
   
   def fetch(addr)
-    return nil if addr < 0
-    @impl[addr]
+    @impl[addr % size]
   end
 end

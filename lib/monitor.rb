@@ -1,5 +1,6 @@
 class Monitor
-  ADDR_RE = /^[0-9a-fA-F]+$/
+  ADDR_RE = /^-?[0-9a-fA-F]+$/
+  STORE_RE = /^-?[0-9a-fA-F]+:^-?[0-9a-fA-F]+$/
 
   def initialize(core, reader, writer)
     @prompt = "*" # Apple II Monitor prompt

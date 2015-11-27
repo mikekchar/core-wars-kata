@@ -1,11 +1,7 @@
 * Core Wars Kata
-  Finish on a failing test.  Pretty slow, but I'm not too unhappy in
-  my jetlagged state.
+  Can't quite get it done before the end.  But always good to end
+  on a failing test.  Until next time!
 ** Burndown
-*** Inspect running state of the memory
-*** Build the memory core
-**** TODO accessing memory greater than size should access addr % size
-**** TODO accessing negative addr should index size - addr - 1
 *** Set the state of the memory
 **** TODO {addr}:{val}
      Sets the value at an address
@@ -66,6 +62,12 @@
       There appears to be a concept of "folding" that does this.
       I don't quite understand, but I will defer this until
       we implement addressing modes.
+**** DONE accessing memory greater than size should access addr % size
+     CLOSED: [2015-11-27 Fri 17:50]
+     Good enough for now.  I will add more tests when I implement
+     the maximum jump sizes, etc.
+**** DONE accessing negative addr should index size - addr - 1
+     CLOSED: [2015-11-27 Fri 17:50]
 *** Interactive mode
 **** DONE Add command switch to enter interactive mode
      CLOSED: [2015-11-17 Tue 14:49]
@@ -84,6 +86,8 @@
      Not sure when that will be...
 **** DONE Hook up the bin!!!!
      CLOSED: [2015-11-20 Fri 13:53]
+**** DONE Allow inputting negative addresses
+     CLOSED: [2015-11-27 Fri 17:59]
 *** Inspect running state of the memory
 **** DONE Create core at the start of the app
      CLOSED: [2015-11-20 Fri 14:08]
