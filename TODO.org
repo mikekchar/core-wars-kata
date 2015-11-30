@@ -1,10 +1,7 @@
 * Core Wars Kata
-  Can't quite get it done before the end.  But always good to end
-  on a failing test.  Until next time!
+  That's it for now.  Until next time.
 ** Burndown
 *** Set the state of the memory
-**** TODO {addr}:{val}
-     Sets the value at an address
 **** TODO {addr}:{val} {val} ...
      Sets many values starting at an address
 **** TODO :{val} {val} ...
@@ -103,3 +100,8 @@
      CLOSED: [2015-11-26 Thu 18:05]
      Sigh... Not great, but it will do for now
      
+*** Set the state of the memory
+**** DONE {addr}:{val}
+     CLOSED: [2015-11-30 Mon 18:00]
+     Sets the value at an address
+     We left a failing test for this one
