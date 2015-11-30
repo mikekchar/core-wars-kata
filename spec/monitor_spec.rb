@@ -53,6 +53,33 @@ RSpec.describe Monitor do
     end
   end
 
+  describe "storing a value" do
+    let(:command) {"10:FF"}
+    let(:location) {16}
+    let(:value) {255}
+
+    it "identifies store commands" do
+      expect(subject.store?(command)).to be true
+    end
+
+    it "stores the value at the location" do
+      subject.store_value(command)
+      expect(core.fetch(location)).to eq(value)
+    end
+
+    it "stores values at negative locations" do
+      subject.store_value("-10:ff")
+      expect(core.fetch(core_size - location)).to eq(value)
+    end
+
+    it "does not store negative values" do
+      subject.store_value("10:-ff")
+      expect(core.fetch(location)).to eq(0)
+      expect(writer.output).to eq(["Illegal store command: 10:-ff"])
+    end
+
+  end
+
   describe "event loop" do
     describe "empty input" do
       it "returns no commands" do
@@ -129,16 +156,19 @@ RSpec.describe Monitor do
       end
 
     end
+
     describe "storing an address" do
-      let(:command1) {"10:FF"}
+      let(:command) {"10:FF"}
       let(:location) {16}
       let(:value) {255}
 
       before(:each) do
-        reader.addInput(command1)
+        reader.addInput(command)
       end
 
       it "stores the value" do
+        subject.process()
+        expect(writer.output).to eq([])
         expect(core.fetch(location)).to eq(value)
       end
     end
