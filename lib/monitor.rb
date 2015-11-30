@@ -1,6 +1,35 @@
 class Monitor
-  ADDR_RE = /^-?[0-9a-fA-F]+$/
+  attr_reader :core, :writer
   STORE_RE = /^(-?[0-9a-fA-F]+):([0-9a-fA-F]+)$/
+
+  class Command
+    def initialize(command, monitor)
+      @matchdata = match(command)
+      @monitor = monitor
+    end
+
+    def valid?
+      !@matchdata.nil?
+    end
+  end
+
+  class Address < Command
+    ADDR_RE = /^-?[0-9a-fA-F]+$/
+
+    def match(command)
+      ADDR_RE.match(command)
+    end
+
+    def execute
+      addr = @matchdata[0].to_i(16)
+      output = @monitor.core.fetch(addr)
+      if !output.nil?
+        @monitor.writer.puts(output.to_s(16))
+      else
+        @monitor.writer.puts("Illegal address: #{command}")
+      end
+    end
+  end
 
   def initialize(core, reader, writer)
     @prompt = "*" # Apple II Monitor prompt
@@ -14,22 +43,8 @@ class Monitor
     @reader.readline(@prompt, true)
   end
 
-  def address?(command)
-    return !ADDR_RE.match(command).nil?
-  end
-
   def store?(command)
     return !STORE_RE.match(command).nil?
-  end
-
-  def inspect_address(command)
-    addr = command.to_i(16)
-    output = @core.fetch(addr)
-    if !output.nil?
-      @writer.puts(output.to_s(16))
-    else
-      @writer.puts("Illegal address: #{command}")
-    end
   end
 
   def store_value(command)
@@ -53,10 +68,11 @@ class Monitor
 
   def process
     while !@finished && command = read
+      address = Address.new(command, self)
       if command == "exit"
         exit_process()
-      elsif address?(command)
-        inspect_address(command)
+      elsif address.valid?
+        address.execute()
       elsif store?(command)
         store_value(command)
       else

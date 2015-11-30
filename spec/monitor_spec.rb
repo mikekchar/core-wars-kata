@@ -23,17 +23,22 @@ RSpec.describe Monitor do
   end
 
   describe "reading an address" do
+    let(:address) { Monitor::Address.new("1234", subject) }
+
     it "identifies addresses" do
-      expect(subject.address?("1234")).to be true
+      address = Monitor::Address.new("1234", subject) 
+      expect(address.valid?()).to be true
     end
 
     it "rejects non-addresses" do
-      expect(subject.address?("hello")).to be false
+      address = Monitor::Address.new("hello", subject) 
+      expect(address.valid?()).to be false
     end
 
     describe "fetching an address within bounds" do
       it "outputs the value at an address" do
-        subject.inspect_address("10")
+        address = Monitor::Address.new("10", subject) 
+        address.execute()
         expect(writer.output).to eq(["0"])
       end
     end
@@ -42,12 +47,14 @@ RSpec.describe Monitor do
       it "outputs the value" do
         # It is numbered from 0, so core.size is out of bounds
         hex_size = core.size.to_s(16)
-        subject.inspect_address(hex_size)
+        address = Monitor::Address.new("#{hex_size}", subject) 
+        address.execute()
         expect(writer.output).to eq(["0"])
       end
 
       it "outputs an error message" do
-        subject.inspect_address("-1")
+        address = Monitor::Address.new("-1", subject) 
+        address.execute()
         expect(writer.output).to eq(["0"])
       end
     end

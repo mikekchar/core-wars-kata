@@ -1,6 +1,7 @@
 * Core Wars Kata
-  That's it for now.  Until next time.
+  Continue later!
 ** Burndown
+*** TODO Finish refactoring Monitor::Command refactor
 *** Set the state of the memory
 **** TODO {addr}:{val} {val} ...
      Sets many values starting at an address
