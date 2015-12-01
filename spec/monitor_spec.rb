@@ -3,12 +3,12 @@ require_relative "../lib/core"
 require_relative "fakes/readline"
 require_relative "fakes/io"
 
-RSpec.describe Monitor do
+RSpec.describe Monitor::Monitor do
   let(:core_size) { 1024 }
   let(:core) { Core.new(core_size) }
   let(:reader) { Fake::Readline.new() }
   let(:writer) { Fake::IO.new() }
-  subject { Monitor.new(core, reader, writer) }
+  subject { Monitor::Monitor.new(core, reader, writer) }
 
   describe "reading a single command" do
     let(:command) { "hello" }
