@@ -1,7 +1,8 @@
 * Core Wars Kata
-  Continue later!
 ** Burndown
 *** TODO Finish refactoring Monitor::Command refactor
+    Not really enough time to finish the test.  Will do it
+    next time (maybe at lunch time today...)
 *** Set the state of the memory
 **** TODO {addr}:{val} {val} ...
      Sets many values starting at an address
