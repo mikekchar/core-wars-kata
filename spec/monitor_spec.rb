@@ -3,12 +3,12 @@ require_relative "../lib/core"
 require_relative "fakes/readline"
 require_relative "fakes/io"
 
-RSpec.describe Monitor::Monitor do
+RSpec.describe Monitor do
   let(:core_size) { 1024 }
   let(:core) { Core.new(core_size) }
   let(:reader) { Fake::Readline.new() }
   let(:writer) { Fake::IO.new() }
-  subject { Monitor::Monitor.new(core, reader, writer) }
+  subject { Monitor.new(core, reader, writer) }
 
   describe "reading a single command" do
     let(:command) { "hello" }
@@ -20,71 +20,6 @@ RSpec.describe Monitor::Monitor do
     it "returns the entered command" do
       expect(subject.read()).to eq("hello")
     end
-  end
-
-  describe "reading an address" do
-    let(:address) { Monitor::Address.new("1234", subject) }
-
-    it "identifies addresses" do
-      address = Monitor::Address.new("1234", subject) 
-      expect(address.valid?()).to be true
-    end
-
-    it "rejects non-addresses" do
-      address = Monitor::Address.new("hello", subject) 
-      expect(address.valid?()).to be false
-    end
-
-    describe "fetching an address within bounds" do
-      it "outputs the value at an address" do
-        address = Monitor::Address.new("10", subject) 
-        address.execute()
-        expect(writer.output).to eq(["0"])
-      end
-    end
-
-    describe "fetching an address out of bounds" do
-      it "outputs the value" do
-        # It is numbered from 0, so core.size is out of bounds
-        hex_size = core.size.to_s(16)
-        address = Monitor::Address.new("#{hex_size}", subject) 
-        address.execute()
-        expect(writer.output).to eq(["0"])
-      end
-
-      it "outputs an error message" do
-        address = Monitor::Address.new("-1", subject) 
-        address.execute()
-        expect(writer.output).to eq(["0"])
-      end
-    end
-  end
-
-  describe "storing a value" do
-    let(:command) {"10:FF"}
-    let(:location) {16}
-    let(:value) {255}
-
-    it "identifies store commands" do
-      expect(subject.store?(command)).to be true
-    end
-
-    it "stores the value at the location" do
-      subject.store_value(command)
-      expect(core.fetch(location)).to eq(value)
-    end
-
-    it "stores values at negative locations" do
-      subject.store_value("-10:ff")
-      expect(core.fetch(core_size - location)).to eq(value)
-    end
-
-    it "does not store negative values" do
-      subject.store_value("10:-ff")
-      expect(core.fetch(location)).to eq(0)
-      expect(writer.output).to eq(["Illegal store command: 10:-ff"])
-    end
-
   end
 
   describe "event loop" do

@@ -9,11 +9,11 @@ class Address < Command
 
   def execute
     addr = @matchdata[0].to_i(16)
-    output = @monitor.core.fetch(addr)
+    output = @monitor.fetch(addr)
     if !output.nil?
-      @monitor.writer.puts(output.to_s(16))
+      @monitor.puts(output.to_s(16))
     else
-      @monitor.writer.puts("Illegal address: #{command}")
+      @monitor.puts("Illegal address: #{command}")
     end
   end
 end
