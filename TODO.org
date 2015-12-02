@@ -1,6 +1,9 @@
 * Core Wars Kata
+  Doing this on the train, so it might not be that great...
+  Going to run out of time soon, so will stop here
 ** Burndown
-*** TODO Finish refactoring Monitor::Command refactor
+*** DONE Finish refactoring Monitor::Command refactor
+    CLOSED: [2015-12-02 Wed 04:38]
     Not really enough time to finish the test.  Will do it
     next time (maybe at lunch time today...)
 *** Set the state of the memory

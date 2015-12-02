@@ -10,7 +10,6 @@ class Store < Command
   def execute
     addr = @matchdata[1].to_i(16)
     value = @matchdata[2].to_i(16)
-    # FIXME: better access for the core
-    @monitor.core.store(addr, value)
+    @monitor.store(addr, value)
   end
 end

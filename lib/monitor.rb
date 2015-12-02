@@ -26,6 +26,18 @@ class Monitor
     @writer.puts("Unknown command: #{command}")
   end
 
+  def fetch(address)
+    @core.fetch(address)
+  end
+
+  def store(address, value)
+    @core.store(address, value)
+  end
+
+  def puts(value)
+    @writer.puts(value)
+  end
+
   def process
     while !@finished && command = read
       exit_cmd = Exit.new(command, self)
