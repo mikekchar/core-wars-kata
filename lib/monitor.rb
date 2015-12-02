@@ -5,6 +5,8 @@ require_relative "./monitor/store"
 class Monitor
   attr_reader :core, :writer
 
+  COMMANDS = [Exit, Address, Store]
+
   def initialize(core, reader, writer)
     @prompt = "*" # Apple II Monitor prompt
     @core = core
@@ -17,7 +19,6 @@ class Monitor
     @reader.readline(@prompt, true)
   end
 
-  # Shouldn't use reserved words...
   def exit_process
     @finished = true
   end
@@ -39,18 +40,14 @@ class Monitor
   end
 
   def process
-    while !@finished && command = read
-      exit_cmd = Exit.new(command, self)
-      address = Address.new(command, self)
-      store = Store.new(command, self)
-      if exit_cmd.valid?
-        exit_cmd.execute()
-      elsif address.valid?
-        address.execute()
-      elsif store.valid?
-        store.execute()
+    while !@finished && input = read
+      # FIXME: Find a more efficient way of doing this
+      command = COMMANDS.map { |klass| klass.new(input, self) }
+        .find { |cmd| cmd.valid? }
+      if !command.nil?
+        command.execute()
       else
-        error(command)
+        error(input)
       end
     end
   end

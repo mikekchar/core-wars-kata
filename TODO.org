@@ -1,11 +1,14 @@
 * Core Wars Kata
-  Doing this on the train, so it might not be that great...
-  Going to run out of time soon, so will stop here
+  That's all the time I have.  Will need to quickly check the spec
+  again next time, but I don't mind if I implemet it wrong at the
+  beginning.
 ** Burndown
-*** DONE Finish refactoring Monitor::Command refactor
-    CLOSED: [2015-12-02 Wed 04:38]
-    Not really enough time to finish the test.  Will do it
-    next time (maybe at lunch time today...)
+*** Implement an opcode
+**** Add a warrior
+     A warrior has a TaskQueue
+***** Add a Task to the Task Queue
+      A Task has a Program Counter (registers???)
+***** Remove Task from Task Queue when executing DAT instruction
 *** Set the state of the memory
 **** TODO {addr}:{val} {val} ...
      Sets many values starting at an address
@@ -90,6 +93,11 @@
      CLOSED: [2015-11-20 Fri 13:53]
 **** DONE Allow inputting negative addresses
      CLOSED: [2015-11-27 Fri 17:59]
+**** DONE Finish refactoring Monitor::Command refactor
+     CLOSED: [2015-12-02 Wed 04:38]
+     Good enough for now.  I don't like how we are passing
+     monitor around and how we need to build it for all of the
+     monitor command tests, but it isn't horrible yet.
 *** Inspect running state of the memory
 **** DONE Create core at the start of the app
      CLOSED: [2015-11-20 Fri 14:08]
