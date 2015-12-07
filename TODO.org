@@ -1,6 +1,7 @@
 * Core Wars Kata
-  Spent most of my time reading docs, but tomorrow we'll forge ahead.
-  Not sure my approach is very good at the moment, but that's OK.
+  Quite slow again.  Someday I will remember how to use Ruby... :-P
+  Until next time.  I'm on the plane for the next 2 days.  Will try to
+  bang out a session.
 ** Burndown
 *** Implement a DAT.F instruction
     An instruction is commposed of:
