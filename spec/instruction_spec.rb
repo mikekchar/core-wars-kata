@@ -1,4 +1,5 @@
 require_relative "../lib/instruction"
+require_relative "../lib/operand"
 
 RSpec.describe Instruction do
   let(:a) { Operand.new("#", 1234) }
@@ -15,22 +16,6 @@ RSpec.describe Instruction do
   it "can compare itself to another instruction" do
     # Useful for testing
     expect(instruction).to eql(Instruction.new("DAT", "F", a, b))
-  end
-
-  # FIXME: Test the opposite
-
-  describe "DAT" do
-    let(:dat) { Dat.new(a, b) }
-
-    it "exposes its guts" do
-      expect(dat.opcode).to eq("DAT")
-      expect(dat.modifier).to eq("F")
-      expect(dat.a).to eq(a)
-      expect(dat.b).to eq(b)
-    end
-
-    it "can match the opcode" do
-      expect(Dat.match?(dat)).to be(true)
-    end
+    expect(instruction).not_to eql(Instruction.new("DAT", "P", a, b))
   end
 end
