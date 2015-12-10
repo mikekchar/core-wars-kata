@@ -1,7 +1,6 @@
 * Core Wars Kata
-  Quite slow again.  Someday I will remember how to use Ruby... :-P
-  Until next time.  I'm on the plane for the next 2 days.  Will try to
-  bang out a session.
+  Not sure what's going on, but ending on a failing test is good :-)
+  Until next time!
 ** Burndown
 *** Implement a DAT.F instruction
     An instruction is commposed of:
@@ -12,7 +11,11 @@
     Operands are composed of
       - mode
       - number
+    Good enough for now.  Will want to change things around later, probably
+    but it's better not to think too hard at this stage.
 **** Initialize core with DAT.F #0, #0
+**** Write matcher for instructions
+**** Ensure that instructions are immutable
 **** Display instructions instead of integers in the core
 **** Allow the user to store a DAT.F #x, #y instruction
 **** Display warriors

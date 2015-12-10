@@ -1,8 +1,15 @@
 require_relative "../lib/core"
+require_relative "../lib/dat"
+require_relative "../lib/operand"
 
 RSpec.describe Core do
+  let(:a) { Operand.new("#", 123) }
+  let(:b) { Operand.new("#", 456) }
+  let(:inst) { Dat.new(a, b) }
+
   let(:size) { 1000 }
   subject { Core.new(size) }
+
   it "exists" do
     expect(subject).not_to be_nil
   end
@@ -11,49 +18,50 @@ RSpec.describe Core do
     expect(subject.size).to eq(size)
   end
 
-  describe "Storing and fetching values" do
-    it "stores values in the core" do
-      subject.store(0, 27)
-      expect(subject.fetch(0)).to eq(27)
+  describe "Storing and fetching instructions" do
+    it "stores instructions in the core" do
+      subject.store(0, inst)
+      expect(subject.fetch(0)).to eq(inst)
     end
 
     it "fetches core(0) for size" do
-      subject.store(size, 27)
-      expect(subject.fetch(size)).to eq(27)
-      expect(subject.fetch(0)).to eq(27)
+      subject.store(size, inst)
+      expect(subject.fetch(size)).to eq(inst)
+      expect(subject.fetch(0)).to eq(inst)
     end
 
     describe "storing to negative addresses" do
       it "should wrap" do
-        subject.store(-1, 27)
-        expect(subject.fetch(size - 1)).to eq(27)
+        subject.store(-1, inst)
+        expect(subject.fetch(size - 1)).to eq(inst)
       end
     end
 
     describe "storing to addresses bigger than size" do
       it "should wrap" do
-        subject.store(size + 1, 27)
-        expect(subject.fetch(1)).to eq(27)
+        subject.store(size + 1, inst)
+        expect(subject.fetch(1)).to eq(inst)
       end
     end
 
     describe "fetching from negative addresses" do
       it "should wrap" do
-        subject.store(size - 1, 27)
-        expect(subject.fetch(-1)).to eq(27)
+        subject.store(size - 1, inst)
+        expect(subject.fetch(-1)).to eq(inst)
       end
     end
     
     describe "fetching addresses bigger than size" do
       it "should wrap" do
-        subject.store(1, 27)
-        expect(subject.fetch(size + 1)).to eq(27)
+        subject.store(1, inst)
+        expect(subject.fetch(size + 1)).to eq(inst)
       end
     end
 
-    it "defaults to having 0 in the core" do
-      # FIXME: Set to specific values at some point
-      expect(subject.fetch(0)).to eq(0)
+    it "defaults to having 'DAT.F #0, #0' in the core" do
+      a = Operand.new("#", 0)
+      b = Operand.new("#", 0)
+      expect(subject.fetch(0)).to eql(Dat.new(a, b))
     end
   end
 end
