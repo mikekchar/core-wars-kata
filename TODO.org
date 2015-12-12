@@ -1,23 +1,19 @@
 * Core Wars Kata
-  Not sure what's going on, but ending on a failing test is good :-)
-  Until next time!
+  Kind of strange session where adding the DAT instruction
+  dictated the way the development was done.  But ended on a nice
+  failing test.  Until next time!
 ** Burndown
+*** Set the state of the memory
+**** TODO Allow user to add DAT.F instructions to core
+**** TODO Remove hexadecimal addressing from monitor
+     The spec uses decimal, so it will just get confusing
+**** TODO :{val}
+     Sets many values starting at the next address from the one
+     last accessed.
 *** Implement a DAT.F instruction
-    An instruction is commposed of:
-      - opcode
-      - modifier
-      - A operand
-      - B operand
-    Operands are composed of
-      - mode
-      - number
-    Good enough for now.  Will want to change things around later, probably
-    but it's better not to think too hard at this stage.
-**** Initialize core with DAT.F #0, #0
-**** Write matcher for instructions
-**** Ensure that instructions are immutable
-**** Display instructions instead of integers in the core
-**** Allow the user to store a DAT.F #x, #y instruction
+**** TODO Write matcher for instructions
+**** TODO Ensure that instructions are immutable
+**** TODO Allow the user to store a DAT.F #x, #y instruction
 **** Display warriors
      including taskqueue and number of tasks on the queue
      also dispay the program counter for each task and
@@ -31,11 +27,6 @@
 ***** Add a Task to the Task Queue
       A Task has a Program Counter (registers???)
 ***** Remove Task from Task Queue when executing DAT instruction
-*** Set the state of the memory
-**** TODO {addr}:{val} {val} ...
-     Sets many values starting at an address
-**** TODO :{val} {val} ...
-     Sets many values starting at the last accessed address
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
@@ -140,3 +131,16 @@
      CLOSED: [2015-11-30 Mon 18:00]
      Sets the value at an address
      We left a failing test for this one
+*** Implement a DAT.F instruction
+    An instruction is commposed of:
+      - opcode
+      - modifier
+      - A operand
+      - B operand
+    Operands are composed of
+      - mode
+      - number
+**** DONE Initialize core with DAT.F #0, #0
+     CLOSED: [2015-12-13 Sun 00:47]
+**** DONE Display instructions instead of integers in the core
+     CLOSED: [2015-12-13 Sun 00:47]

@@ -1,5 +1,6 @@
 require_relative "../lib/monitor"
 require_relative "../lib/core"
+require_relative "../lib/dat"
 require_relative "fakes/readline"
 require_relative "fakes/io"
 
@@ -68,7 +69,9 @@ RSpec.describe Monitor do
       describe "addresses are in hexadecimal" do
         let(:command1) {"10"}
         let(:location) {16}
-        let(:value) {16}
+        let(:a) { Operand.new("#", 0) }
+        let(:b) { Operand.new("#", 0) }
+        let(:value) { Dat.new(a, b) }
 
         before(:each) do
           core.store(location, value)
@@ -77,14 +80,16 @@ RSpec.describe Monitor do
 
         it "accesses decimal 16 for addr=10" do
           subject.process()
-          expect(writer.output).to eq(["10"])
+          expect(writer.output).to eq(["DAT.F #0, #0"])
         end
       end
 
       describe "addresses are in hexadecimal" do
         let(:command1) { "-10" }
         let(:location) { core_size - 16 }
-        let(:value) { 16 }
+        let(:a) { Operand.new("#", 0) }
+        let(:b) { Operand.new("#", 0) }
+        let(:value) { Dat.new(a, b) }
 
         before(:each) do
           core.store(location, value)
@@ -93,16 +98,18 @@ RSpec.describe Monitor do
 
         it "accesses core_size - 16" do
           subject.process()
-          expect(writer.output).to eq(["10"])
+          expect(writer.output).to eq(["DAT.F #0, #0"])
         end
       end
 
     end
 
     describe "storing an address" do
-      let(:command) {"10:FF"}
+      let(:command) {"10:DAT.F #0, #0"}
       let(:location) {16}
-      let(:value) {255}
+      let(:a) { Operand.new("#", 0) }
+      let(:b) { Operand.new("#", 0) }
+      let(:value) { Dat.new(a, b) }
 
       before(:each) do
         reader.addInput(command)
@@ -111,7 +118,7 @@ RSpec.describe Monitor do
       it "stores the value" do
         subject.process()
         expect(writer.output).to eq([])
-        expect(core.fetch(location)).to eq(value)
+        expect(core.fetch(location)).to eq(value.to_s)
       end
     end
   end
