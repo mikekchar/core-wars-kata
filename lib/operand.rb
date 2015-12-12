@@ -6,8 +6,12 @@ class Operand
     @number = number
   end
 
-  def eql?(other)
+  def ==(other)
     other.mode == @mode && other.number == @number
+  end
+
+  def to_s
+    "#{@mode}#{@number}"
   end
 end
 

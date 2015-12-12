@@ -9,13 +9,15 @@ RSpec.describe Instruction do
   it "exposes its guts" do
     expect(instruction.opcode).to eq("DAT")
     expect(instruction.modifier).to eq("F")
-    expect(instruction.a).to eql(a)
-    expect(instruction.b).to eql(b)
+    expect(instruction.a).to eq(a)
+    expect(instruction.b).to eq(b)
   end
 
   it "can compare itself to another instruction" do
+    newA = Operand.new("#", 1234)
+    newB = Operand.new("#", 4567)
     # Useful for testing
-    expect(instruction).to eql(Instruction.new("DAT", "F", a, b))
-    expect(instruction).not_to eql(Instruction.new("DAT", "P", a, b))
+    expect(instruction).to eq(Instruction.new("DAT", "F", newA, newB))
+    expect(instruction).not_to eq(Instruction.new("DAT", "P", a, b))
   end
 end

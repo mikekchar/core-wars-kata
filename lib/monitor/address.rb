@@ -11,7 +11,7 @@ class Address < Command
     addr = @matchdata[0].to_i(16)
     output = @monitor.fetch(addr)
     if !output.nil?
-      @monitor.puts(output.to_s(16))
+      @monitor.puts(output.to_s())
     else
       @monitor.puts("Illegal address: #{command}")
     end

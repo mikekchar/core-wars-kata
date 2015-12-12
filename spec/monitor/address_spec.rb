@@ -26,7 +26,7 @@ RSpec.describe Monitor do
       it "outputs the value at an address" do
         address = Address.new("10", subject) 
         address.execute()
-        expect(writer.output).to eq(["0"])
+        expect(writer.output).to eq(["DAT.F #0, #0"])
       end
     end
 
@@ -36,13 +36,13 @@ RSpec.describe Monitor do
         hex_size = core.size.to_s(16)
         address = Address.new("#{hex_size}", subject) 
         address.execute()
-        expect(writer.output).to eq(["0"])
+        expect(writer.output).to eq(["DAT.F #0, #0"])
       end
 
       it "outputs an error message" do
         address = Address.new("-1", subject) 
         address.execute()
-        expect(writer.output).to eq(["0"])
+        expect(writer.output).to eq(["DAT.F #0, #0"])
       end
     end
   end

@@ -10,8 +10,12 @@ class Instruction
     @b = b
   end
 
-  def eql?(other)
+  def ==(other)
     other.opcode == @opcode && other.modifier == @modifier &&
       other.a == @a && other.b == @b
+  end
+
+  def to_s
+    "#{@opcode}.#{@modifier} #{@a}, #{@b}"
   end
 end

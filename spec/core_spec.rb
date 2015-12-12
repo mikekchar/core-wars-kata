@@ -61,7 +61,7 @@ RSpec.describe Core do
     it "defaults to having 'DAT.F #0, #0' in the core" do
       a = Operand.new("#", 0)
       b = Operand.new("#", 0)
-      expect(subject.fetch(0)).to eql(Dat.new(a, b))
+      expect(subject.fetch(0)).to eq(Dat.new(a, b))
     end
   end
 end
