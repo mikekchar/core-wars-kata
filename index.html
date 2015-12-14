@@ -1,321 +1,376 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="third-party/asciinema-player/css/main.css" rel="stylesheet" type="text/css">
-    <style>
-      body { background-color: #666; }
-    </style>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
     <title>One Pomodoro A Day - A Core Wars Kata</title>
   </head>
   <body>
-    <h1>One Pomodoro A Day - A Core Wars Kata</h1>
-    <h2>What is One Pomodoro A Day?</h2>
-    <p>
-    On this page you can watch as I attempt to do a very long kata --
-    one pomodoro a day.  If you are not familiar with the concept of
-    a kata, it is a term taken from Japanese martial arts and refers
-    to a form that one executes in order to practice.  The term was
-    coined by Dave Thomas <a href="http://codekata.com">here</a>.
-    </p>
-    <p>
-    One of the downsides of doing a kata as practice is that it is
-    necessarily limited.  Usually it is a task that last 30 minutes
-    or so.  Trying to explore larger problems of requirements gathering
-    and program design is much more difficult because ordinarily
-    people don't have time to devote themselves to a large project
-    for an extended period of time.  Enter the pomodoro technique.
-    </p>
-    <p>
-    <a href="https://wikipedia.org/wiki/Pomodoro_Technique">
-      The pomodoro technique
-    </a> is a time management method for splitting up your task into
-    small chunks of time (usually 25 minutes), separated by short
-    breaks.  The chunks of time are called <em>pomodoros</em>.  My
-    approach in this experiment is to try to do a very long kata
-    (approximately 30-40 hours), doing an average of one pomodoro
-    a day.  Below you can follow my progress by watching the
-    <a href="https:asciinema.org">Asciinema</a> animations of each
-    pomodoro session.
-    </p>
-    <h2>What is Core Wars?</h2>
-    <p>
-    Core Wars is a game devised by computer scientist A. K. Dewdney
-    in 1984.  It was first described in an article in Scientific
-    American and became relatively popular in the late 1980s and
-    early 1990s with computer programmers.  From the original article:
-    </p>
-    <blockquote>
-      Two computer programs in their native habitat -- the memory
-      chips of a digital computer -- stalk each other from address to
-      address.  Sometimes they go scouting for the enemy; sometimes
-      they lay down a barrage of numeric bombs; sometimes they copy
-      themselves out of danger or stop to repair damage.  This is the
-      game I call Core War.  It is unlike almost all other computer
-      games in that people do not play at all!  The contending programs
-      are written by people, of course, but once a battle is under
-      way the creator of a program can do nothing but watch helplessly
-      as the product of hours spent in design and implementation either
-      lives or dies on the screen.  The outcome depends entirely on
-      which program is hit first in a vulnerable area.
-    </blockquote>
-    <p>
-    Core Wars is quite nostalgic for me as, after reading the original
-    article, I rushed to write my own implementation of the game.
-    I remember starting on a Friday evening and working every waking
-    hour so that I could have it functional by Sunday night.  It was
-    a crude implementation with numerous bugs, but it was very fun
-    to play.
-    </p>
-    <p>
-    I have often thought, "How long would it take me to
-    write Core Wars now".  It's been almost 30 years since
-    I first implemented it and I hope I have improved
-    a considerable amount.  The old me probably edges the
-    new me in raw mental horse power, but I should have
-    a trick or two up my sleeve now.
-    </p>
-    <p>
-    <script src="./third-party/asciinema-player/js/release.js" type="text/javascript"></script>
-    <h2>Part 1</h2>
-    <div id="player-part1"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part1', 80, 25,
-          '/core-wars-kata/sessions/1.ascii.json',
-          1297.556239,
-          {}
-      );
-    </script>
+    <div class="site">
+      <div class="title">
+        One Pomodoro A Day - A Core Wars Kata
+      </div>
+      <div class="author">
+        by <a href="https://mikekchar.github.io/portfolio/AboutMe">Mike Charlton</a>
+      </div>
+    </div>
+    <div class="abstract">
+      <div class="row">
+        <div class="content">
+          <h1>Core Wars Kata</h1>
+          <p class="description">Implementing a very long kata in Ruby
+            spending only 1 25-minute session every day.</p>
+        </div>
+        <div class="outline">
+          <div class="title">Latest Sessions</div>
+          <div class="list" title="Initial session">
+            <span class="posting">
+              <span class="date">2015-11-15</span>
+              <a href="#session1">Part 1 - The initial session</a>
+            </span>
+          </div>
+          <div class="list">
+            <span class="posting">
+              ...
+            </span>
+          </div>
+          <div class="list" title="Sketch out the DAT instruction">
+            <span class="posting">
+              <span class="date">2015-12-07</span>
+              <a href="#session20">Part 20 - Sketch out the DAT instruction</a>
+            </span>
+          </div>
+          <div class="list" title="Split instructions into own files, Initialize core with DAT">
+            <span class="posting">
+              <span class="date">2015-12-11</span>
+              <a href="#session21">Part 21 - Initialize core with DAT instructions</a>
+            </span>
+          </div>
+          <div class="list" title="Fix comparison operators, Use DATs in tests">
+            <span class="posting">
+              <span class="date">2015-12-12</span>
+              <a href="#session22">Part 22 - Make all tests use DAT instead of ints</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h2>Part 2</h2>
-    <div id="player-part2"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part2', 80, 25,
-          '/core-wars-kata/sessions/2.ascii.json',
-          1219.443466,
-          {}
-      );
-    </script>
+    <div class="content">
+      <h2>What is One Pomodoro A Day?</h2>
+      <p>
+      On this page you can watch as I attempt to do a very long kata --
+      one pomodoro a day.  If you are not familiar with the concept of
+      a kata, it is a term taken from Japanese martial arts and refers
+      to a form that one executes in order to practice.  The term was
+      coined by Dave Thomas <a href="http://codekata.com">here</a>.
+      </p>
+      <p>
+      One of the downsides of doing a kata as practice is that it is
+      necessarily limited.  Usually it is a task that last 30 minutes
+      or so.  Trying to explore larger problems of requirements gathering
+      and program design is much more difficult because ordinarily
+      people don't have time to devote themselves to a large project
+      for an extended period of time.  Enter the pomodoro technique.
+      </p>
+      <p>
+      <a href="https://wikipedia.org/wiki/Pomodoro_Technique">
+        The pomodoro technique
+      </a> is a time management method for splitting up your task into
+      small chunks of time (usually 25 minutes), separated by short
+      breaks.  The chunks of time are called <em>pomodoros</em>.  My
+      approach in this experiment is to try to do a very long kata
+      (approximately 30-40 hours), doing an average of one pomodoro
+      a day.  Below you can follow my progress by watching the
+      <a href="https:asciinema.org">Asciinema</a> animations of each
+      pomodoro session.
+      </p>
+      <h2>What is Core Wars?</h2>
+      <p>
+      Core Wars is a game devised by computer scientist A. K. Dewdney
+      in 1984.  It was first described in an article in Scientific
+      American and became relatively popular in the late 1980s and
+      early 1990s with computer programmers.  From the original article:
+      </p>
+      <blockquote>
+        Two computer programs in their native habitat -- the memory
+        chips of a digital computer -- stalk each other from address to
+        address.  Sometimes they go scouting for the enemy; sometimes
+        they lay down a barrage of numeric bombs; sometimes they copy
+        themselves out of danger or stop to repair damage.  This is the
+        game I call Core War.  It is unlike almost all other computer
+        games in that people do not play at all!  The contending programs
+        are written by people, of course, but once a battle is under
+        way the creator of a program can do nothing but watch helplessly
+        as the product of hours spent in design and implementation either
+        lives or dies on the screen.  The outcome depends entirely on
+        which program is hit first in a vulnerable area.
+      </blockquote>
+      <p>
+      Core Wars is quite nostalgic for me as, after reading the original
+      article, I rushed to write my own implementation of the game.
+      I remember starting on a Friday evening and working every waking
+      hour so that I could have it functional by Sunday night.  It was
+      a crude implementation with numerous bugs, but it was very fun
+      to play.
+      </p>
+      <p>
+      I have often thought, "How long would it take me to
+      write Core Wars now".  It's been almost 30 years since
+      I first implemented it and I hope I have improved
+      a considerable amount.  The old me probably edges the
+      new me in raw mental horse power, but I should have
+      a trick or two up my sleeve now.
+      </p>
 
-    <h2>Part 3</h2>
-    <div id="player-part3"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part3', 80, 25,
-          '/core-wars-kata/sessions/3.ascii.json',
-          1093.584875,
-          {}
-      );
-    </script>
+      <h2>Kata Sessions</h2>
+      <p>
+      I have recorded all of my programming sessions with Asciinema.  Click on the
+      play button of the desired session to see the session.  If you want the video
+      to go faster, you can press the "&gt;" button.  If you want it to go slower
+      you can press the "&lt; button.
+      </p>
+      <script src="./third-party/asciinema-player/js/release.js" type="text/javascript"></script>
+      <h3 id="session1">Part 1</h3>
+      <div id="player-part1"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part1', 80, 25,
+            '/core-wars-kata/sessions/1.ascii.json',
+            1297.556239,
+            {}
+        );
+      </script>
 
-    <h2>Part 4</h2>
-    <div id="player-part4"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part4', 80, 25,
-          '/core-wars-kata/sessions/4.ascii.json',
-          1203.642950,
-          {}
-      );
-    </script>
+      <h3 id="session2">Part 2</h3>
+      <div id="player-part2"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part2', 80, 25,
+            '/core-wars-kata/sessions/2.ascii.json',
+            1219.443466,
+            {}
+        );
+      </script>
 
-    <h2>Part 5</h2>
-    <div id="player-part5"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part5', 80, 25,
-          '/core-wars-kata/sessions/5.ascii.json',
-          1152.045882,
-          {}
-      );
-    </script>
+      <h3 id="session3">Part 3</h3>
+      <div id="player-part3"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part3', 80, 25,
+            '/core-wars-kata/sessions/3.ascii.json',
+            1093.584875,
+            {}
+        );
+      </script>
 
-    <h2>Part 6</h2>
-    <div id="player-part6"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part6', 80, 25,
-          '/core-wars-kata/sessions/6.ascii.json',
-          1166.272701,
-          {}
-      );
-    </script>
+      <h3 id="session4">Part 4</h3>
+      <div id="player-part4"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part4', 80, 25,
+            '/core-wars-kata/sessions/4.ascii.json',
+            1203.642950,
+            {}
+        );
+      </script>
 
-    <h2>Part 7</h2>
-    <div id="player-part7"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part7', 80, 25,
-          '/core-wars-kata/sessions/7.ascii.json',
-          1252.852585,
-          {}
-      );
-    </script>
+      <h3 id="session5">Part 5</h3>
+      <div id="player-part5"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part5', 80, 25,
+            '/core-wars-kata/sessions/5.ascii.json',
+            1152.045882,
+            {}
+        );
+      </script>
 
-    <h2>Part 8</h2>
-    <div id="player-part8"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part8', 80, 25,
-          '/core-wars-kata/sessions/8.ascii.json',
-          1308.771795,
-          {}
-      );
-    </script>
+      <h3 id="session6">Part 6</h3>
+      <div id="player-part6"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part6', 80, 25,
+            '/core-wars-kata/sessions/6.ascii.json',
+            1166.272701,
+            {}
+        );
+      </script>
 
-    <h2>Part 9</h2>
-    <div id="player-part9"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part9', 80, 25,
-          '/core-wars-kata/sessions/9.ascii.json',
-          1211.512275,
-          {}
-      );
-    </script>
+      <h3 id="session7">Part 7</h3>
+      <div id="player-part7"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part7', 80, 25,
+            '/core-wars-kata/sessions/7.ascii.json',
+            1252.852585,
+            {}
+        );
+      </script>
 
-    <h2>Part 10</h2>
-    <div id="player-part10"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part10', 80, 25,
-          '/core-wars-kata/sessions/10.ascii.json',
-          1323.855715,
-          {}
-      );
-    </script>
+      <h3 id="session8">Part 8</h3>
+      <div id="player-part8"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part8', 80, 25,
+            '/core-wars-kata/sessions/8.ascii.json',
+            1308.771795,
+            {}
+        );
+      </script>
 
-    <h2>Part 11</h2>
-    <div id="player-part11"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part11', 80, 25,
-          '/core-wars-kata/sessions/11.ascii.json',
-          1148.907858,
-          {}
-      );
-    </script>
+      <h3 id="session9">Part 9</h3>
+      <div id="player-part9"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part9', 80, 25,
+            '/core-wars-kata/sessions/9.ascii.json',
+            1211.512275,
+            {}
+        );
+      </script>
 
-    <h2>Part 12</h2>
-    <div id="player-part12"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part12', 80, 25,
-          '/core-wars-kata/sessions/12.ascii.json',
-          1088.455950,
-          {}
-      );
-    </script>
+      <h3 id="session10">Part 10</h3>
+      <div id="player-part10"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part10', 80, 25,
+            '/core-wars-kata/sessions/10.ascii.json',
+            1323.855715,
+            {}
+        );
+      </script>
 
-    <h2>Part 13</h2>
-    <div id="player-part13"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part13', 80, 25,
-          '/core-wars-kata/sessions/13.ascii.json',
-          1275.450396,
-          {}
-      );
-    </script>
+      <h3 id="session11">Part 11</h3>
+      <div id="player-part11"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part11', 80, 25,
+            '/core-wars-kata/sessions/11.ascii.json',
+            1148.907858,
+            {}
+        );
+      </script>
 
-    <h2>Part 14</h2>
-    <div id="player-part14"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part14', 80, 25,
-          '/core-wars-kata/sessions/14.ascii.json',
-          1400.053190,
-          {}
-      );
-    </script>
+      <h3 id="session12">Part 12</h3>
+      <div id="player-part12"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part12', 80, 25,
+            '/core-wars-kata/sessions/12.ascii.json',
+            1088.455950,
+            {}
+        );
+      </script>
 
-    <h2>Part 15</h2>
-    <div id="player-part15"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part15', 80, 25,
-          '/core-wars-kata/sessions/15.ascii.json',
-          1236.785509,
-          {}
-      );
-    </script>
+      <h3 id="session13">Part 13</h3>
+      <div id="player-part13"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part13', 80, 25,
+            '/core-wars-kata/sessions/13.ascii.json',
+            1275.450396,
+            {}
+        );
+      </script>
 
-    <h2>Part 16</h2>
-    <div id="player-part16"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part16', 80, 25,
-          '/core-wars-kata/sessions/16.ascii.json',
-          1138.144229,
-          {}
-      );
-    </script>
+      <h3 id="session14">Part 14</h3>
+      <div id="player-part14"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part14', 80, 25,
+            '/core-wars-kata/sessions/14.ascii.json',
+            1400.053190,
+            {}
+        );
+      </script>
 
-    <h2>Part 17</h2>
-    <div id="player-part17"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part17', 80, 25,
-          '/core-wars-kata/sessions/17.ascii.json',
-          1051.286808,
-          {}
-      );
-    </script>
+      <h3 id="session15">Part 15</h3>
+      <div id="player-part15"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part15', 80, 25,
+            '/core-wars-kata/sessions/15.ascii.json',
+            1236.785509,
+            {}
+        );
+      </script>
 
-    <h2>Part 18</h2>
-    <div id="player-part18"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part18', 80, 25,
-          '/core-wars-kata/sessions/18.ascii.json',
-          1119.250897,
-          {}
-      );
-    </script>
+      <h3 id="session16">Part 16</h3>
+      <div id="player-part16"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part16', 80, 25,
+            '/core-wars-kata/sessions/16.ascii.json',
+            1138.144229,
+            {}
+        );
+      </script>
 
-    <h2>Part 19</h2>
-    <div id="player-part19"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part19', 80, 25,
-          '/core-wars-kata/sessions/19.ascii.json',
-          1025.993397,
-          {}
-      );
-    </script>
+      <h3 id="session17">Part 17</h3>
+      <div id="player-part17"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part17', 80, 25,
+            '/core-wars-kata/sessions/17.ascii.json',
+            1051.286808,
+            {}
+        );
+      </script>
 
-    <h2>Part 20</h2>
-    <div id="player-part20"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part20', 80, 25,
-          '/core-wars-kata/sessions/20.ascii.json',
-          1271.815892,
-          {}
-      );
-    </script>
+      <h3 id="session18">Part 18</h3>
+      <div id="player-part18"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part18', 80, 25,
+            '/core-wars-kata/sessions/18.ascii.json',
+            1119.250897,
+            {}
+        );
+      </script>
 
-    <h2>Part 21</h2>
-    <div id="player-part21"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part21', 80, 25,
-          '/core-wars-kata/sessions/21.ascii.json',
-          1281.736190,
-          {}
-      );
-    </script>
+      <h3 id="session19">Part 19</h3>
+      <div id="player-part19"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part19', 80, 25,
+            '/core-wars-kata/sessions/19.ascii.json',
+            1025.993397,
+            {}
+        );
+      </script>
 
-    <h2>Part 22</h2>
-    <div id="player-part22"></div>
-    <script type="text/javascript">
-      asciinema_player.core.CreatePlayer(
-          'player-part22', 80, 25,
-          '/core-wars-kata/sessions/22.ascii.json',
-          1297.787543,
-          {}
-      );
-    </script>
+      <h3 id="session20">Part 20</h3>
+      <div id="player-part20"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part20', 80, 25,
+            '/core-wars-kata/sessions/20.ascii.json',
+            1271.815892,
+            {}
+        );
+      </script>
+
+      <h3 id="session21">Part 21</h3>
+      <div id="player-part21"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part21', 80, 25,
+            '/core-wars-kata/sessions/21.ascii.json',
+            1281.736190,
+            {}
+        );
+      </script>
+
+      <h3 id="session22">Part 22</h3>
+      <div id="player-part22"></div>
+      <script type="text/javascript">
+        asciinema_player.core.CreatePlayer(
+            'player-part22', 80, 25,
+            '/core-wars-kata/sessions/22.ascii.json',
+            1297.787543,
+            {}
+        );
+      </script>
+    </div>
   </body>
 </html>
