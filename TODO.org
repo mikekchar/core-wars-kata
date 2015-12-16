@@ -1,10 +1,12 @@
 * Core Wars Kata
-  Kind of strange session where adding the DAT instruction
-  dictated the way the development was done.  But ended on a nice
-  failing test.  Until next time!
+  Well... that was pretty horrible.  Amazing what a difference it
+  makes if you are tired or not (or if you have been drinking
+  IPA all night or not).  Until next time!
 ** Burndown
 *** Set the state of the memory
-**** TODO Allow user to add DAT.F instructions to core
+**** DONE Allow user to add DAT.F instructions to core
+     CLOSED: [2015-12-16 Wed 12:49]
+**** TODO Allow lower case and multiple spaces in DAT instruction
 **** TODO Remove hexadecimal addressing from monitor
      The spec uses decimal, so it will just get confusing
 **** TODO :{val}
