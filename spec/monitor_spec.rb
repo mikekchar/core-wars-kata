@@ -118,7 +118,7 @@ RSpec.describe Monitor do
       it "stores the value" do
         subject.process()
         expect(writer.output).to eq([])
-        expect(core.fetch(location)).to eq(value.to_s)
+        expect(core.fetch(location)).to eq(value)
       end
     end
   end
