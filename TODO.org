@@ -1,21 +1,14 @@
 * Core Wars Kata
-  Well... that was pretty horrible.  Amazing what a difference it
-  makes if you are tired or not (or if you have been drinking
-  IPA all night or not).  Until next time!
+  Because I haven't been working on this recently, I didn't
+  really feel comfortable hitting the meat and potatoes of
+  the functionality and instead just did some fiddly stuff.
+  Next time I may do something interesting... who knows...
 ** Burndown
-*** Set the state of the memory
-**** DONE Allow user to add DAT.F instructions to core
-     CLOSED: [2015-12-16 Wed 12:49]
-**** TODO Allow lower case and multiple spaces in DAT instruction
-**** TODO Remove hexadecimal addressing from monitor
-     The spec uses decimal, so it will just get confusing
-**** TODO :{val}
-     Sets many values starting at the next address from the one
-     last accessed.
+*** Inspect running state of the memory
+*** TODO print address when outputting the memory
 *** Implement a DAT.F instruction
 **** TODO Write matcher for instructions
 **** TODO Ensure that instructions are immutable
-**** TODO Allow the user to store a DAT.F #x, #y instruction
 **** Display warriors
      including taskqueue and number of tasks on the queue
      also dispay the program counter for each task and
@@ -29,6 +22,7 @@
 ***** Add a Task to the Task Queue
       A Task has a Program Counter (registers???)
 ***** Remove Task from Task Queue when executing DAT instruction
+** Backlog
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
@@ -37,7 +31,10 @@
       Inspect memory from addr1 to addr2
 **** TODO [RETURN]
       Display up to 8 locations following the last opened location.
-** Backlog
+*** Set the state of the memory
+**** TODO :{val}
+     Sets many values starting at the next address from the one
+     last accessed.
 *** Core options
 **** TODO Specify Initial core size
 **** TODO Specify Initial instruction to load into the whole core
@@ -133,6 +130,13 @@
      CLOSED: [2015-11-30 Mon 18:00]
      Sets the value at an address
      We left a failing test for this one
+**** DONE Allow user to add DAT.F instructions to core
+     CLOSED: [2015-12-16 Wed 12:49]
+**** DONE Allow lower case and multiple spaces in DAT instruction
+     CLOSED: [2015-12-20 Sun 06:05]
+**** DONE Remove hexadecimal addressing from monitor
+     CLOSED: [2015-12-20 Sun 06:15]
+     The spec uses decimal, so it will just get confusing
 *** Implement a DAT.F instruction
     An instruction is commposed of:
       - opcode
@@ -146,3 +150,5 @@
      CLOSED: [2015-12-13 Sun 00:47]
 **** DONE Display instructions instead of integers in the core
      CLOSED: [2015-12-13 Sun 00:47]
+**** DONE Allow the user to store a DAT.F #x, #y instruction
+     CLOSED: [2015-12-20 Sun 06:17]

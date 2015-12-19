@@ -65,50 +65,11 @@ RSpec.describe Monitor do
       end
     end
 
-    describe "reading an address" do
-      describe "addresses are in hexadecimal" do
-        let(:command1) {"10"}
-        let(:location) {16}
-        let(:a) { Operand.new("#", 0) }
-        let(:b) { Operand.new("#", 0) }
-        let(:value) { Dat.new(a, b) }
-
-        before(:each) do
-          core.store(location, value)
-          reader.addInput(command1)
-        end
-
-        it "accesses decimal 16 for addr=10" do
-          subject.process()
-          expect(writer.output).to eq(["DAT.F #0, #0"])
-        end
-      end
-
-      describe "addresses are in hexadecimal" do
-        let(:command1) { "-10" }
-        let(:location) { core_size - 16 }
-        let(:a) { Operand.new("#", 0) }
-        let(:b) { Operand.new("#", 0) }
-        let(:value) { Dat.new(a, b) }
-
-        before(:each) do
-          core.store(location, value)
-          reader.addInput(command1)
-        end
-
-        it "accesses core_size - 16" do
-          subject.process()
-          expect(writer.output).to eq(["DAT.F #0, #0"])
-        end
-      end
-
-    end
-
     describe "storing an address" do
-      let(:command) {"10:DAT.F #0, #0"}
-      let(:location) {16}
-      let(:a) { Operand.new("#", 0) }
-      let(:b) { Operand.new("#", 0) }
+      let(:command) {"10:DAT.F #123, #456"}
+      let(:location) {10}
+      let(:a) { Operand.new("#", 123) }
+      let(:b) { Operand.new("#", 456) }
       let(:value) { Dat.new(a, b) }
 
       before(:each) do

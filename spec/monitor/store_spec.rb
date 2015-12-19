@@ -20,7 +20,7 @@ RSpec.describe Store do
   subject { Store.new("10:DAT.F #123, #456", monitor) }
 
   describe "storing a value" do
-    let(:location) { 16 }
+    let(:location) { 10 }
 
     it "identifies store commands" do
       expect(subject).to be_valid
@@ -35,6 +35,18 @@ RSpec.describe Store do
       store = Store.new("-10:DAT.F #123, #456", monitor)
       store.execute()
       expect(core.fetch(core_size - location)).to eq(value)
+    end
+
+    it "is forgiving of spaces" do
+      store = Store.new("10:DAT.F   #123,   #456  ", monitor)
+      store.execute()
+      expect(core.fetch(location)).to eq(value)
+    end
+
+    it "is forgiving of case" do
+      store = Store.new("10:dat.f   #123,   #456  ", monitor)
+      store.execute()
+      expect(core.fetch(location)).to eq(value)
     end
 
     it "does not store numeric values" do
