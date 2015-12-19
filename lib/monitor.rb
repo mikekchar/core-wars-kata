@@ -1,11 +1,11 @@
-require_relative "./monitor/address"
+require_relative "./monitor/fetch"
 require_relative "./monitor/exit"
 require_relative "./monitor/store"
 
 class Monitor
   attr_reader :core, :writer
 
-  COMMANDS = [Exit, Address, Store]
+  COMMANDS = [Exit, Fetch, Store]
 
   def initialize(core, reader, writer)
     @prompt = "*" # Apple II Monitor prompt
