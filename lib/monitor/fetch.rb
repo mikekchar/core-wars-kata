@@ -8,9 +8,7 @@ class Fetch < Command
   end
 
   def execute
-    addr = @matchdata[0].to_i(10)
-    #TODO: probably need to add an address translation
-    #      mechanism to core so that I can call it here.
+    addr = @monitor.address(@matchdata[0].to_i(10))
     output = @monitor.fetch(addr)
     if !output.nil?
       @monitor.puts("#{addr}:#{output.to_s()}")

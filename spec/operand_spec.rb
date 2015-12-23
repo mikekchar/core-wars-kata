@@ -10,4 +10,8 @@ RSpec.describe Operand do
   it "exposes the number" do
     expect(subject.number).to eq(123)
   end
+
+  it "can be constructed from a string" do
+    expect(Operand.build("#123")).to eq(subject)
+  end
 end

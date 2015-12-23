@@ -1,14 +1,17 @@
 * Core Wars Kata
-  Because I haven't been working on this recently, I didn't
-  really feel comfortable hitting the meat and potatoes of
-  the functionality and instead just did some fiddly stuff.
-  Next time I may do something interesting... who knows...
+  More fiddling around today.  Probably I will get around to
+  more useful stuff next time.
 ** Burndown
-*** Inspect running state of the memory
-*** TODO print address when outputting the memory
 *** Implement a DAT.F instruction
-**** TODO Write matcher for instructions
+**** DONE Build operand more easily
+     CLOSED: [2015-12-24 Thu 01:58]
+     The code is littered with operand constructions.  It would
+     be nice to just be able to construct them from a string.
+**** TODO Build Dat instructions more easily
+     Now write a build() method on Dat that allows the operands
+     to be put in the constructor as a string.
 **** TODO Ensure that instructions are immutable
+**** TODO Write matcher for instructions
 **** Display warriors
      including taskqueue and number of tasks on the queue
      also dispay the program counter for each task and
@@ -125,6 +128,8 @@
      CLOSED: [2015-11-26 Thu 18:05]
      Sigh... Not great, but it will do for now
      
+**** DONE print address when outputting the memory
+     CLOSED: [2015-12-24 Thu 01:41]
 *** Set the state of the memory
 **** DONE {addr}:{val}
      CLOSED: [2015-11-30 Mon 18:00]
