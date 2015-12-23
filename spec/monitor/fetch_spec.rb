@@ -31,17 +31,17 @@ RSpec.describe Monitor do
     end
 
     describe "fetching an address out of bounds" do
-      it "outputs the value" do
+      it "wraps to zero" do
         # It is numbered from 0, so core.size is out of bounds
         fetch = Fetch.new("#{core.size}", subject) 
         fetch.execute()
-        expect(writer.output).to eq(["DAT.F #0, #0"])
+        expect(writer.output).to eq(["0:DAT.F #0, #0"])
       end
 
-      it "outputs an error message" do
+      it "wraps to size -x for negative numbers" do
         fetch = Fetch.new("-1", subject) 
         fetch.execute()
-        expect(writer.output).to eq(["DAT.F #0, #0"])
+        expect(writer.output).to eq(["#{core.size - 1}:DAT.F #0, #0"])
       end
     end
   end

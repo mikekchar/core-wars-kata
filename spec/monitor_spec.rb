@@ -68,8 +68,8 @@ RSpec.describe Monitor do
     describe "storing an address" do
       let(:command) {"10:DAT.F #123, #456"}
       let(:location) {10}
-      let(:a) { Operand.new("#", 123) }
-      let(:b) { Operand.new("#", 456) }
+      let(:a) { Operand.build("#123") }
+      let(:b) { Operand.build("#456") }
       let(:value) { Dat.new(a, b) }
 
       before(:each) do

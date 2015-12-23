@@ -2,8 +2,8 @@ require_relative "../lib/instruction"
 require_relative "../lib/operand"
 
 RSpec.describe Instruction do
-  let(:a) { Operand.new("#", 1234) }
-  let(:b) { Operand.new("#", 4567) }
+  let(:a) { Operand.build("#1234") }
+  let(:b) { Operand.build("#4567") }
   let(:instruction) { Instruction.new("DAT", "F", a, b) }
 
   it "exposes its guts" do
@@ -14,8 +14,8 @@ RSpec.describe Instruction do
   end
 
   it "can compare itself to another instruction" do
-    newA = Operand.new("#", 1234)
-    newB = Operand.new("#", 4567)
+    newA = Operand.build("#1234")
+    newB = Operand.build("#4567")
     # Useful for testing
     expect(instruction).to eq(Instruction.new("DAT", "F", newA, newB))
     expect(instruction).not_to eq(Instruction.new("DAT", "P", a, b))

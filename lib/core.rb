@@ -5,16 +5,20 @@ class Core
 
   def initialize(size)
     @size = size
-    a = Operand.new("#", 0)
-    b = Operand.new("#", 0)
+    a = Operand.build("#0")
+    b = Operand.build("#0")
     @impl = Array.new(size, Dat.new(a, b))
   end
 
+  def address(addr)
+    addr % size
+  end
+
   def store(addr, inst)
-    @impl[addr % size] = inst
+    @impl[address(addr)] = inst
   end
   
   def fetch(addr)
-    @impl[addr % size]
+    @impl[address(addr)]
   end
 end

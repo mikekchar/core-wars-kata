@@ -3,8 +3,8 @@ require_relative "../lib/dat"
 require_relative "../lib/operand"
 
 RSpec.describe Core do
-  let(:a) { Operand.new("#", 123) }
-  let(:b) { Operand.new("#", 456) }
+  let(:a) { Operand.build("#123") }
+  let(:b) { Operand.build("#456") }
   let(:inst) { Dat.new(a, b) }
 
   let(:size) { 1000 }
@@ -59,8 +59,8 @@ RSpec.describe Core do
     end
 
     it "defaults to having 'DAT.F #0, #0' in the core" do
-      a = Operand.new("#", 0)
-      b = Operand.new("#", 0)
+      a = Operand.build("#0")
+      b = Operand.build("#0")
       expect(subject.fetch(0)).to eq(Dat.new(a, b))
     end
   end

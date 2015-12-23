@@ -2,8 +2,8 @@ require_relative "../lib/dat"
 require_relative "../lib/operand"
 
 RSpec.describe Dat do
-  let(:a) { Operand.new("#", 1234) }
-  let(:b) { Operand.new("#", 4567) }
+  let(:a) { Operand.build("#1234") }
+  let(:b) { Operand.build("#4567") }
   let(:dat) { Dat.new(a, b) }
 
   it "exposes its guts" do

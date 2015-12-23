@@ -27,6 +27,10 @@ class Monitor
     @writer.puts("Unknown command: #{command}")
   end
 
+  def address(address)
+    @core.address(address)
+  end
+
   def fetch(address)
     @core.fetch(address)
   end
