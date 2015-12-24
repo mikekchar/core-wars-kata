@@ -1,17 +1,9 @@
 * Core Wars Kata
-  More fiddling around today.  Probably I will get around to
-  more useful stuff next time.
+  Not too bad given that I had a conversation about socio-political
+  topics while I was doing that.  Next time I should tackle the
+  warriors (finally!).  Until then.
 ** Burndown
 *** Implement a DAT.F instruction
-**** DONE Build operand more easily
-     CLOSED: [2015-12-24 Thu 01:58]
-     The code is littered with operand constructions.  It would
-     be nice to just be able to construct them from a string.
-**** TODO Build Dat instructions more easily
-     Now write a build() method on Dat that allows the operands
-     to be put in the constructor as a string.
-**** TODO Ensure that instructions are immutable
-**** TODO Write matcher for instructions
 **** Display warriors
      including taskqueue and number of tasks on the queue
      also dispay the program counter for each task and
@@ -25,6 +17,8 @@
 ***** Add a Task to the Task Queue
       A Task has a Program Counter (registers???)
 ***** Remove Task from Task Queue when executing DAT instruction
+**** TODO Ensure that instructions are immutable
+**** TODO Write matcher for instructions
 ** Backlog
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
@@ -157,3 +151,11 @@
      CLOSED: [2015-12-13 Sun 00:47]
 **** DONE Allow the user to store a DAT.F #x, #y instruction
      CLOSED: [2015-12-20 Sun 06:17]
+**** DONE Build operand more easily
+     CLOSED: [2015-12-24 Thu 01:58]
+     The code is littered with operand constructions.  It would
+     be nice to just be able to construct them from a string.
+**** DONE Build Dat instructions more easily
+     CLOSED: [2015-12-25 Fri 07:23]
+     Now write a build() method on Dat that allows the operands
+     to be put in the constructor as a string.

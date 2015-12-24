@@ -13,8 +13,8 @@ class Store < Command
     return if @matchdata.nil?
 
     addr = @matchdata[1].to_i(10)
-    a = Operand.new("#", @matchdata[2].to_i())
-    b = Operand.new("#", @matchdata[3].to_i())
-    @monitor.store(addr, Dat.new(a, b))
+    a = "##{@matchdata[2]}"
+    b = "##{@matchdata[3]}"
+    @monitor.store(addr, Dat.build("#{a}, #{b}"))
   end
 end

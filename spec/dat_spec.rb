@@ -16,4 +16,8 @@ RSpec.describe Dat do
   it "can match the opcode" do
     expect(Dat.match?(dat)).to be(true)
   end
+
+  it "can be built from a string" do
+    expect(Dat.build("#1234,  #4567")).to eq(dat)
+  end
 end

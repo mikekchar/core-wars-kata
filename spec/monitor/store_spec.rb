@@ -13,9 +13,7 @@ RSpec.describe Store do
   let(:writer) { Fake::IO.new() }
   let(:monitor) { Monitor.new(core, reader, writer) }
 
-  let(:a) { Operand.build("#123") }
-  let(:b) { Operand.build("#456") }
-  let(:value) { Dat.new(a, b) }
+  let(:value) { Dat.build("#123, #456") }
 
   subject { Store.new("10:DAT.F #123, #456", monitor) }
 
