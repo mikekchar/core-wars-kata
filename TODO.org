@@ -1,7 +1,6 @@
 * Core Wars Kata
-  Not too bad given that I had a conversation about socio-political
-  topics while I was doing that.  Next time I should tackle the
-  warriors (finally!).  Until then.
+  Ha ha!  Impossible to program on the couch at Christmas eve
+  when all others around you are drinking beer.  See you next time!
 ** Burndown
 *** Implement a DAT.F instruction
 **** Display warriors
@@ -12,6 +11,9 @@
      implementation second.
      I seem to remember that equivalent command in Apple II monitor
      is ^E.  Yes.  Stupid command, but oh well...
+***** Display an empty list of warriors when e is pressed
+      I'm not going for ^E as it is needlessly complicated for
+      no actual benefit.
 **** Add a warrior
      A warrior has a TaskQueue
 ***** Add a Task to the Task Queue

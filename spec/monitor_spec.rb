@@ -64,21 +64,5 @@ RSpec.describe Monitor do
         expect(writer.output).to eq([])
       end
     end
-
-    describe "storing an address" do
-      let(:command) {"10:DAT.F #123, #456"}
-      let(:location) {10}
-      let(:value) { Dat.build("#123, #456") }
-
-      before(:each) do
-        reader.addInput(command)
-      end
-
-      it "stores the value" do
-        subject.process()
-        expect(writer.output).to eq([])
-        expect(core.fetch(location)).to eq(value)
-      end
-    end
   end
 end
