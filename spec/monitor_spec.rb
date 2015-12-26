@@ -64,5 +64,23 @@ RSpec.describe Monitor do
         expect(writer.output).to eq([])
       end
     end
+
+    describe "examine" do
+      let(:command) { "e" }
+
+      before(:each) do
+        reader.addInput(command)
+      end
+
+      it "exits upon reading the exit command" do
+        subject.process()
+        expect(writer.output).to eq(
+          [
+            "Warriors",
+            "--------"
+          ]
+        )
+      end
+    end
   end
 end

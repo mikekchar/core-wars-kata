@@ -1,27 +1,30 @@
 * Core Wars Kata
-  Ha ha!  Impossible to program on the couch at Christmas eve
-  when all others around you are drinking beer.  See you next time!
+  Even as I wrote that, I realized that I needed to sort out
+  the requirements better.  Will need to continue a bit
+  next time too.  Until then!
 ** Burndown
-*** Implement a DAT.F instruction
-**** Display warriors
-     including taskqueue and number of tasks on the queue
-     also dispay the program counter for each task and
-     registers if any
-     Note I will implement the display first and the actual
-     implementation second.
-     I seem to remember that equivalent command in Apple II monitor
-     is ^E.  Yes.  Stupid command, but oh well...
-***** Display an empty list of warriors when e is pressed
-      I'm not going for ^E as it is needlessly complicated for
-      no actual benefit.
-**** Add a warrior
-     A warrior has a TaskQueue
+*** Add Step command
+**** Add a warrior when S command issued if there is no warrior present
+     Format: 123S
+             where 123 is the address
 ***** Add a Task to the Task Queue
-      A Task has a Program Counter (registers???)
-***** Remove Task from Task Queue when executing DAT instruction
+      A Task has a Program Counter
+***** Display the warrior
+      When the S command is first issued, display the Warrior including
+      the task queue.  Each task (there will only be one at the moment)
+      will have a program counter.  The warrior will only be
+      displayed after the execution of the opcode.
+**** S steps to the next address for each task in the current warrior
+***** It displays the task queue for that warrior
+*** Implement a DAT.F instruction
+**** Remove Task from Task Queue when executed
+      Display the number of remaining tasks in the task queue in
+      the monitor.  If there are no tasks remaining in the queue
+      remove the warrior and display a message in the monitor.
+** Backlog
+*** Instruction tech tasks :-P
 **** TODO Ensure that instructions are immutable
 **** TODO Write matcher for instructions
-** Backlog
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
@@ -161,3 +164,6 @@
      CLOSED: [2015-12-25 Fri 07:23]
      Now write a build() method on Dat that allows the operands
      to be put in the constructor as a string.
+*** Add a warrior
+**** DONE Display an empty list of warriors when e is pressed
+      CLOSED: [2015-12-26 Sat 14:17]
