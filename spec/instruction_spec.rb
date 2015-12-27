@@ -20,4 +20,30 @@ RSpec.describe Instruction do
     expect(instruction).to eq(Instruction.new("DAT", "F", newA, newB))
     expect(instruction).not_to eq(Instruction.new("DAT", "P", a, b))
   end
+  
+  describe "build_operands" do
+    it "builds operands" do
+      a = Operand.build("#1234")
+      b = Operand.build("#4567")
+      operands = Instruction.build_operands("#1234, #4567")
+      expect(operands[0]).to eq(a)
+      expect(operands[1]).to eq(b)
+    end
+
+    it "works with negative numbers" do
+      a = Operand.build("#-1234")
+      b = Operand.build("#-4567")
+      operands = Instruction.build_operands("#-1234, #-4567")
+      expect(operands[0]).to eq(a)
+      expect(operands[1]).to eq(b)
+    end
+
+    it "works with direct mode" do
+      a = Operand.build("$-1234")
+      b = Operand.build("$-4567")
+      operands = Instruction.build_operands("$-1234, $-4567")
+      expect(operands[0]).to eq(a)
+      expect(operands[1]).to eq(b)
+    end
+  end
 end

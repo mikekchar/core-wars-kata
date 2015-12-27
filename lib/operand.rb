@@ -1,5 +1,5 @@
 class Operand
-  IMMEDIATE_RE = /#(\d+)/
+  IMMEDIATE_RE = /(\S)(-?\d+)/
 
   attr_reader :mode, :number
 
@@ -19,8 +19,9 @@ class Operand
   def self.build(string)
     matchdata = string.match(IMMEDIATE_RE)
     if matchdata
-      address = matchdata[1].to_i(10)
-      return Operand.new("#", address)
+      mode = matchdata[1]
+      address = matchdata[2].to_i(10)
+      return Operand.new(mode, address)
     else
       nil
     end

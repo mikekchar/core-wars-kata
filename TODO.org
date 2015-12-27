@@ -1,8 +1,18 @@
 * Core Wars Kata
-  Even as I wrote that, I realized that I needed to sort out
-  the requirements better.  Will need to continue a bit
-  next time too.  Until then!
+  Trying to get the order of stories right is quite difficult.
+  I'm also finding that the pomodoro style is encouraging me
+  to neglect the neatness of my tests.  I need to spend more
+  time refactoring the test code to make it more efficient.
+  Next time hopefully get the add instructin implemented (maybe).
 ** Burndown
+*** TODO Add ADD.AB Instruction
+    We want to get
+      ADD.AB #4, $-1
+    implemented.  If I understand the docs, that adds 4 to the
+    number of the B operand in the previous address.
+**** DONE Add direct addressing mode
+     CLOSED: [2015-12-28 Mon 03:34]
+     Simply allow $ in the operand
 *** Add Step command
 **** Add a warrior when S command issued if there is no warrior present
      Format: 123S
@@ -164,6 +174,8 @@
      CLOSED: [2015-12-25 Fri 07:23]
      Now write a build() method on Dat that allows the operands
      to be put in the constructor as a string.
+**** DONE Allow negative numbers in the operand
+     CLOSED: [2015-12-28 Mon 03:29]
 *** Add a warrior
 **** DONE Display an empty list of warriors when e is pressed
       CLOSED: [2015-12-26 Sat 14:17]

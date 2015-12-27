@@ -1,7 +1,7 @@
 require_relative "./operand"
 
 class Instruction
-  OPERANDS_RE = /(\S\d+),\s*(\S\d+)/
+  OPERANDS_RE = /(\S-?\d+),\s*(\S-?\d+)/
   attr_reader :opcode, :modifier, :a, :b
 
   def initialize(opcode, modifier, a, b)
