@@ -3,10 +3,16 @@ require_relative "../dat"
 require_relative "../operand"
 
 class Store < Command
-  STORE_RE = /^(-?[0-9]+):DAT\.F\s+#([0-9]+),\s+#([0-9]+)\s*$/
+  STORE_RE = /^(-?[0-9]+):(.*)$/
 
   def match(command)
-    STORE_RE.match(command.upcase())
+    # Not exactly the most efficient way to do this
+    # i.e., if you build parsers this way, you are doing it wrong :-)
+    # But... performance is not an issue at all for us and it's
+    # a fun way to do it :-D
+    matchdata = STORE_RE.match(command.upcase())
+    instruction = matchdata[2]
+
   end
 
   def execute

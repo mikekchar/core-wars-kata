@@ -1,18 +1,13 @@
 * Core Wars Kata
-  Trying to get the order of stories right is quite difficult.
-  I'm also finding that the pomodoro style is encouraging me
-  to neglect the neatness of my tests.  I need to spend more
-  time refactoring the test code to make it more efficient.
-  Next time hopefully get the add instructin implemented (maybe).
+  Oooohh... I've left a right mess for myself next time ;-)
+  We'll have to wait to see how I get myself out of this one!
 ** Burndown
-*** TODO Add ADD.AB Instruction
+*** Add ADD.AB Instruction
     We want to get
       ADD.AB #4, $-1
     implemented.  If I understand the docs, that adds 4 to the
     number of the B operand in the previous address.
-**** DONE Add direct addressing mode
-     CLOSED: [2015-12-28 Mon 03:34]
-     Simply allow $ in the operand
+**** Store ADD.AB instruction via monitor
 *** Add Step command
 **** Add a warrior when S command issued if there is no warrior present
      Format: 123S
@@ -179,3 +174,7 @@
 *** Add a warrior
 **** DONE Display an empty list of warriors when e is pressed
       CLOSED: [2015-12-26 Sat 14:17]
+*** Add ADD.AB Instruction
+**** DONE Add direct addressing mode
+     CLOSED: [2015-12-28 Mon 03:34]
+     Simply allow $ in the operand
