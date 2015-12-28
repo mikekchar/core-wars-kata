@@ -1,6 +1,9 @@
 * Core Wars Kata
-  Oooohh... I've left a right mess for myself next time ;-)
-  We'll have to wait to see how I get myself out of this one!
+  Really not sure how I want to proceed.  We will need an
+  instruction parser/factory object eventually.  Now is
+  probably as good a time as any.  But I'm out of time.
+  I should just end on a failing test...  Obviously something
+  is desparately wrong ;-)  Until next time!
 ** Burndown
 *** Add ADD.AB Instruction
     We want to get

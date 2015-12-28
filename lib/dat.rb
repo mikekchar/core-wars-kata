@@ -4,17 +4,13 @@ class Dat < Instruction
   # The $ should make it greedy (and possibly slow...)
   # First make it work.  Then make it good.
   # FIXME: operand RE is going to be repeated a lot.
-  DAT_RE = /^DAT\.F\s+(\S-?\d+,\s*\S-?\d+)$/
+  DAT_RE = /^DAT\.F\s+(\S-?\d+,\s*\S-?\d+)\s*$/
 
   def initialize(a, b)
     @opcode = "DAT"
     @modifier = "F"
     @a = a
     @b = b
-  end
-
-  def Dat.match(command)
-    DAT_RE.match(command.upcase())
   end
 
   def Dat.match?(instruction)
@@ -28,6 +24,13 @@ class Dat < Instruction
     else
       nil
     end
+  end
+
+  def Dat.construct(string)
+    matchdata = DAT_RE.match(string)
+    return nil if matchdata.nil?
+
+    Dat.build(matchdata[1])
   end
 end
 

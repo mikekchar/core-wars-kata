@@ -36,25 +36,22 @@ RSpec.describe Store do
 
     it "is forgiving of spaces" do
       store = Store.new("10:DAT.F   #123,   #456  ", monitor)
+      expect(store).to be_valid()
       store.execute()
       expect(core.fetch(location)).to eq(dat)
     end
 
     it "is forgiving of case" do
-      store = Store.new("10:dat.f   #123,   #456  ", monitor)
+      store = Store.new("10:dat.f #123, #456", monitor)
       store.execute()
       expect(core.fetch(location)).to eq(dat)
     end
-
-    it "does not store numeric values" do
-      store = Store.new("10:123", monitor)
-      expect(store).not_to be_valid
-    end
   end
 
+  # FIXME: This should fail :-)
   describe "storing an ADD" do
     let(:location) { 10 }
-    let(:add) { Dat.build("#123, #456") }
+    let(:add) { Add.build("#123, #456") }
     subject { Store.new("10:ADD.AB #123, $-1", monitor) }
 
     it "identifies store commands" do
