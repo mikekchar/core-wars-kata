@@ -10,17 +10,18 @@ class Store < Command
     # i.e., if you build parsers this way, you are doing it wrong :-)
     # But... performance is not an issue at all for us and it's
     # a fun way to do it :-D
-    matchdata = STORE_RE.match(command.upcase())
-    instruction = matchdata[2]
+    STORE_RE.match(command.upcase())
+  end
 
+  def build_instruction(instruction)
+    Dat.construct(instruction)
   end
 
   def execute
     return if @matchdata.nil?
+    instruction = build_instruction(@matchdata[2])
 
     addr = @matchdata[1].to_i(10)
-    a = "##{@matchdata[2]}"
-    b = "##{@matchdata[3]}"
-    @monitor.store(addr, Dat.build("#{a}, #{b}"))
+    @monitor.store(addr, instruction)
   end
 end
