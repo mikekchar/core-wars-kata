@@ -1,6 +1,7 @@
 require_relative "./instruction"
 
 class Add < Instruction
+  INSTR_RE = /^ADD\.AB\s+(\S-?\d+,\s*\S-?\d+)\s*$/
 
   def initialize(a, b)
     @opcode = "ADD"
@@ -20,5 +21,12 @@ class Add < Instruction
     else
       nil
     end
+  end
+
+  def Add.construct(string)
+    matchdata = INSTR_RE.match(string)
+    return nil if matchdata.nil?
+
+    Add.build(matchdata[1])
   end
 end

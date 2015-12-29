@@ -1,6 +1,5 @@
 require_relative "./command"
-require_relative "../dat"
-require_relative "../operand"
+require_relative "../instruction_parser"
 
 class Store < Command
   STORE_RE = /^(-?[0-9]+):(.*)$/
@@ -13,13 +12,9 @@ class Store < Command
     STORE_RE.match(command.upcase())
   end
 
-  def build_instruction(instruction)
-    Dat.construct(instruction)
-  end
-
   def execute
     return if @matchdata.nil?
-    instruction = build_instruction(@matchdata[2])
+    instruction = InstructionParser::parse(@matchdata[2])
 
     addr = @matchdata[1].to_i(10)
     @monitor.store(addr, instruction)

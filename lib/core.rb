@@ -13,6 +13,7 @@ class Core
   end
 
   def store(addr, inst)
+    return if inst.nil?
     @impl[address(addr)] = inst
   end
   

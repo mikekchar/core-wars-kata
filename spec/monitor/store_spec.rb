@@ -14,6 +14,17 @@ RSpec.describe Store do
   let(:writer) { Fake::IO.new() }
   let(:monitor) { Monitor.new(core, reader, writer) }
 
+  describe "failing command" do
+    let(:location) { 10 }
+    let(:default) { Dat.build("#0, #0") }
+    subject { Store.new("10:gobbledegook", monitor) }
+
+    it "does not overwrite the default" do
+      subject.execute()
+      expect(core.fetch(location)).to eq(default)
+    end
+  end
+
   describe "storing a DAT" do
     let(:location) { 10 }
     let(:dat) { Dat.build("#123, #456") }
@@ -48,14 +59,18 @@ RSpec.describe Store do
     end
   end
 
-  # FIXME: This should fail :-)
   describe "storing an ADD" do
     let(:location) { 10 }
-    let(:add) { Add.build("#123, #456") }
+    let(:add) { Add.build("#123, $-1") }
     subject { Store.new("10:ADD.AB #123, $-1", monitor) }
 
     it "identifies store commands" do
       expect(subject).to be_valid
+    end
+
+    it "stores the ADD at the location" do
+      subject.execute()
+      expect(core.fetch(location)).to eq(add)
     end
   end
 end
