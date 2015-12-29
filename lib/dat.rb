@@ -4,7 +4,7 @@ class Dat < Instruction
   # The $ should make it greedy (and possibly slow...)
   # First make it work.  Then make it good.
   # FIXME: operand RE is going to be repeated a lot.
-  DAT_RE = /^DAT\.F\s+(\S-?\d+,\s*\S-?\d+)\s*$/
+  INSTR_RE = /^DAT\.F\s+(\S-?\d+,\s*\S-?\d+)\s*$/
 
   def initialize(a, b)
     @opcode = "DAT"
@@ -27,7 +27,7 @@ class Dat < Instruction
   end
 
   def Dat.construct(string)
-    matchdata = DAT_RE.match(string)
+    matchdata = INSTR_RE.match(string)
     return nil if matchdata.nil?
 
     Dat.build(matchdata[1])
