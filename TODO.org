@@ -1,14 +1,9 @@
 * Core Wars Kata
-  Out of time.  Should give better error messages everywhere...
-  Until next time!
+  Obviously error handling is a bit issue due to the not-so-nice
+  way I'm doing recursive descent.  However, it's orthagonal to
+  the creation of warriors, so I'm happy to back-burner it for a
+  while.  Until next time!
 ** Burndown
-*** Set the state of the memory
-    Give error message when mode or operands are incorrect
-*** Add ADD.AB Instruction
-    We want to get
-      ADD.AB #4, $-1
-    implemented.  If I understand the docs, that adds 4 to the
-    number of the B operand in the previous address.
 *** Add Step command
 **** Add a warrior when S command issued if there is no warrior present
      Format: 123S
@@ -22,6 +17,11 @@
       displayed after the execution of the opcode.
 **** S steps to the next address for each task in the current warrior
 ***** It displays the task queue for that warrior
+*** Add ADD.AB Instruction
+    We want to get
+      ADD.AB #4, $-1
+    implemented.  If I understand the docs, that adds 4 to the
+    number of the B operand in the previous address.
 *** Implement a DAT.F instruction
 **** Remove Task from Task Queue when executed
       Display the number of remaining tasks in the task queue in
@@ -147,6 +147,8 @@
 **** DONE Remove hexadecimal addressing from monitor
      CLOSED: [2015-12-20 Sun 06:15]
      The spec uses decimal, so it will just get confusing
+**** DONE Give error message when mode or operands are incorrect
+     CLOSED: [2015-12-31 Thu 02:48]
 *** Implement a DAT.F instruction
     An instruction is commposed of:
       - opcode
