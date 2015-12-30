@@ -17,20 +17,14 @@ class Dat < Instruction
     instruction.opcode == "DAT"
   end
 
+  # TODO: Mix this in at some point
   def Dat.build(operand_string)
     operands = Instruction.build_operands(operand_string)
     if !operands.nil?
-      Dat.new(*operands)
+      new(*operands)
     else
       nil
     end
-  end
-
-  def Dat.construct(string)
-    matchdata = INSTR_RE.match(string)
-    return nil if matchdata.nil?
-
-    Dat.build(matchdata[1])
   end
 end
 

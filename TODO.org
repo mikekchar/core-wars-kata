@@ -1,13 +1,14 @@
 * Core Wars Kata
-  Not sure what the problem is.  Once again my unfamiliarity
-  with Ruby syntax is letting me down.  Until next time!
+  Out of time.  Should give better error messages everywhere...
+  Until next time!
 ** Burndown
+*** Set the state of the memory
+    Give error message when mode or operands are incorrect
 *** Add ADD.AB Instruction
     We want to get
       ADD.AB #4, $-1
     implemented.  If I understand the docs, that adds 4 to the
     number of the B operand in the previous address.
-**** Store ADD.AB instruction via monitor
 *** Add Step command
 **** Add a warrior when S command issued if there is no warrior present
      Format: 123S
@@ -178,3 +179,5 @@
 **** DONE Add direct addressing mode
      CLOSED: [2015-12-28 Mon 03:34]
      Simply allow $ in the operand
+**** DONE Store ADD.AB instruction via monitor
+     CLOSED: [2015-12-30 Wed 08:50]
