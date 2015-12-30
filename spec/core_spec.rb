@@ -22,6 +22,15 @@ RSpec.describe Core do
       expect(subject.fetch(0)).to eq(inst)
     end
 
+    it "returns the instruction it stored" do
+      expect(subject.store(0, inst)).to eq(inst)
+    end
+
+    it "does not store nil" do
+      expect(subject.store(0, nil)).to be_nil
+      expect(subject.fetch(0)).not_to be_nil
+    end
+
     it "fetches core(0) for size" do
       subject.store(size, inst)
       expect(subject.fetch(size)).to eq(inst)

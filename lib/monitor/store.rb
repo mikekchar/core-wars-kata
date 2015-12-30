@@ -17,6 +17,8 @@ class Store < Command
     instruction = InstructionParser::parse(@matchdata[2])
 
     addr = @matchdata[1].to_i(10)
-    @monitor.store(addr, instruction)
+    if @monitor.store(addr, instruction).nil?
+      @monitor.error(@matchdata[2])
+    end
   end
 end

@@ -14,19 +14,13 @@ class Add < Instruction
     instruction.opcode == "ADD"
   end
 
+  # TODO: Mix this in at some point
   def Add.build(operand_string)
     operands = Instruction.build_operands(operand_string)
     if !operands.nil?
-      Add.new(*operands)
+      new(*operands)
     else
       nil
     end
-  end
-
-  def Add.construct(string)
-    matchdata = INSTR_RE.match(string)
-    return nil if matchdata.nil?
-
-    Add.build(matchdata[1])
   end
 end

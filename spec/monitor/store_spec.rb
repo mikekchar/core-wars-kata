@@ -22,6 +22,9 @@ RSpec.describe Store do
     it "does not overwrite the default" do
       subject.execute()
       expect(core.fetch(location)).to eq(default)
+      expect(writer.output).to eq(
+        ["Unknown command: GOBBLEDEGOOK"]
+      )
     end
   end
 
