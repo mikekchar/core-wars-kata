@@ -66,20 +66,46 @@ RSpec.describe Monitor do
     end
 
     describe "examine" do
-      let(:command) { "e" }
+      describe "when there are no executing warriors" do
+        let(:command) { "e" }
 
-      before(:each) do
-        reader.addInput(command)
+        before(:each) do
+          reader.addInput(command)
+          subject.process()
+        end
+
+        it "prints an empty list of warriors" do
+          expect(writer.output).to eq(
+            [
+              "Warriors",
+              "--------"
+            ]
+          )
+        end
       end
 
-      it "exits upon reading the exit command" do
-        subject.process()
-        expect(writer.output).to eq(
-          [
-            "Warriors",
-            "--------"
-          ]
-        )
+      describe "when there is an actively executing warrior" do
+        let(:add)     { "11:ADD.AB #4, $-1" }
+        let(:step)    { "11S" }
+        let(:examine) { "E" }
+
+        before(:each) do
+          reader.addInput(add)
+          reader.addInput(step)
+          reader.addInput(examine)
+          subject.process()
+        end
+
+        it "lists the warrior" do
+          subject.process()
+          expect(writer.output).to eq(
+            [
+              "Warriors",
+              "--------",
+              "0 - PC:12"
+            ]
+          )
+        end
       end
     end
   end
