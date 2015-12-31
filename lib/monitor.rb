@@ -5,13 +5,13 @@ require_relative "./monitor/step"
 require_relative "./monitor/examine"
 
 class Monitor
-  attr_reader :core, :writer
+  attr_reader :mars, :writer
 
   COMMANDS = [Exit, Fetch, Store, Step, Examine]
 
-  def initialize(core, reader, writer)
+  def initialize(mars, reader, writer)
     @prompt = "*" # Apple II Monitor prompt
-    @core = core
+    @mars = mars
     @reader = reader
     @writer = writer
     @finished = false
@@ -30,15 +30,15 @@ class Monitor
   end
 
   def address(address)
-    @core.address(address)
+    @mars.address(address)
   end
 
   def fetch(address)
-    @core.fetch(address)
+    @mars.fetch(address)
   end
 
   def store(address, value)
-    @core.store(address, value)
+    @mars.store(address, value)
   end
 
   def puts(value)
