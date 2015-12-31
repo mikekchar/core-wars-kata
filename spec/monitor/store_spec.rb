@@ -1,5 +1,5 @@
 require_relative "../../lib/monitor"
-require_relative "../../lib/core"
+require_relative "../../lib/mars"
 require_relative "../fakes/readline"
 require_relative "../fakes/io"
 require_relative "../../lib/monitor/store"
@@ -9,10 +9,10 @@ require_relative "../../lib/operand"
 
 RSpec.describe Store do
   let(:core_size) { 1024 }
-  let(:core) { Core.new(core_size) }
+  let(:mars) { Mars.new(core_size) }
   let(:reader) { Fake::Readline.new() }
   let(:writer) { Fake::IO.new() }
-  let(:monitor) { Monitor.new(core, reader, writer) }
+  let(:monitor) { Monitor.new(mars, reader, writer) }
 
   describe "failing command" do
     let(:location) { 10 }
@@ -21,7 +21,7 @@ RSpec.describe Store do
 
     it "does not overwrite the default" do
       subject.execute()
-      expect(core.fetch(location)).to eq(default)
+      expect(mars.fetch(location)).to eq(default)
       expect(writer.output).to eq(
         ["Unknown command: GOBBLEDEGOOK"]
       )
@@ -39,26 +39,26 @@ RSpec.describe Store do
 
     it "stores the DAT at the location" do
       subject.execute()
-      expect(core.fetch(location)).to eq(dat)
+      expect(mars.fetch(location)).to eq(dat)
     end
 
     it "stores values at negative locations" do
       store = Store.new("-10:DAT.F #123, #456", monitor)
       store.execute()
-      expect(core.fetch(core_size - location)).to eq(dat)
+      expect(mars.fetch(core_size - location)).to eq(dat)
     end
 
     it "is forgiving of spaces" do
       store = Store.new("10:DAT.F   #123,   #456  ", monitor)
       expect(store).to be_valid()
       store.execute()
-      expect(core.fetch(location)).to eq(dat)
+      expect(mars.fetch(location)).to eq(dat)
     end
 
     it "is forgiving of case" do
       store = Store.new("10:dat.f #123, #456", monitor)
       store.execute()
-      expect(core.fetch(location)).to eq(dat)
+      expect(mars.fetch(location)).to eq(dat)
     end
   end
 
@@ -73,7 +73,7 @@ RSpec.describe Store do
 
     it "stores the ADD at the location" do
       subject.execute()
-      expect(core.fetch(location)).to eq(add)
+      expect(mars.fetch(location)).to eq(add)
     end
   end
 end

@@ -1,8 +1,6 @@
 * Core Wars Kata
-  Obviously error handling is a bit issue due to the not-so-nice
-  way I'm doing recursive descent.  However, it's orthagonal to
-  the creation of warriors, so I'm happy to back-burner it for a
-  while.  Until next time!
+  Not much done, but not too bad considering the time of day.
+  Until next time...
 ** Burndown
 *** Add Step command
 **** Add a warrior when S command issued if there is no warrior present

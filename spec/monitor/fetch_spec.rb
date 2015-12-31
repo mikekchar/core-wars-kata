@@ -1,15 +1,15 @@
 require_relative "../../lib/monitor"
-require_relative "../../lib/core"
+require_relative "../../lib/mars"
 require_relative "../fakes/readline"
 require_relative "../fakes/io"
 require_relative "../../lib/monitor/fetch"
 
 RSpec.describe Monitor do
   let(:core_size) { 1024 }
-  let(:core) { Core.new(core_size) }
+  let(:mars) { Mars.new(core_size) }
   let(:reader) { Fake::Readline.new() }
   let(:writer) { Fake::IO.new() }
-  subject { Monitor.new(core, reader, writer) }
+  subject { Monitor.new(mars, reader, writer) }
 
   describe "reading an address" do
     it "identifies addresses" do
@@ -33,7 +33,7 @@ RSpec.describe Monitor do
     describe "fetching an address out of bounds" do
       it "wraps to zero" do
         # It is numbered from 0, so core.size is out of bounds
-        fetch = Fetch.new("#{core.size}", subject) 
+        fetch = Fetch.new("#{core_size}", subject) 
         fetch.execute()
         expect(writer.output).to eq(["0:DAT.F #0, #0"])
       end
@@ -41,7 +41,7 @@ RSpec.describe Monitor do
       it "wraps to size -x for negative numbers" do
         fetch = Fetch.new("-1", subject) 
         fetch.execute()
-        expect(writer.output).to eq(["#{core.size - 1}:DAT.F #0, #0"])
+        expect(writer.output).to eq(["#{core_size - 1}:DAT.F #0, #0"])
       end
     end
   end
