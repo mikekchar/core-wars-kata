@@ -1,6 +1,8 @@
 * Core Wars Kata
-  Not much done, but not too bad considering the time of day.
-  Until next time...
+  Not really feeling well today, so I'm going to leave it at that.
+  Failing tests are good.  I'm not super happy with all the delegation, etc
+  so I need to think about the overall shape of the code at some point.
+  Until next time!
 ** Burndown
 *** Add Step command
 **** Add a warrior when S command issued if there is no warrior present

@@ -16,6 +16,6 @@ class Step < Command
     return if @matchdata.nil?
     addr = @matchdata[1].to_i(10)
     # Just for now
-    @monitor.puts(addr.to_s)
+    @monitor.step(addr)
   end
 end

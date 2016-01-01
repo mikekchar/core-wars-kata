@@ -1,4 +1,5 @@
 require_relative "../lib/monitor"
+require_relative "../lib/core"
 require_relative "../lib/mars"
 require_relative "../lib/dat"
 require_relative "fakes/readline"
@@ -6,7 +7,8 @@ require_relative "fakes/io"
 
 RSpec.describe Monitor do
   let(:core_size) { 1024 }
-  let(:mars) { Mars.new(core_size) }
+  let(:core) { Core.new(core_size) }
+  let(:mars) { Mars.new(core) }
   let(:reader) { Fake::Readline.new() }
   let(:writer) { Fake::IO.new() }
   subject { Monitor.new(mars, reader, writer) }

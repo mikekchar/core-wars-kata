@@ -1,5 +1,6 @@
 require_relative "../../lib/monitor"
 require_relative "../../lib/mars"
+require_relative "../../lib/core"
 require_relative "../fakes/readline"
 require_relative "../fakes/io"
 require_relative "../../lib/monitor/store"
@@ -9,7 +10,8 @@ require_relative "../../lib/operand"
 
 RSpec.describe Store do
   let(:core_size) { 1024 }
-  let(:mars) { Mars.new(core_size) }
+  let(:core) { Core.new(core_size) }
+  let(:mars) { Mars.new(core) }
   let(:reader) { Fake::Readline.new() }
   let(:writer) { Fake::IO.new() }
   let(:monitor) { Monitor.new(mars, reader, writer) }
