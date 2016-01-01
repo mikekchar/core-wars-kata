@@ -45,6 +45,10 @@ class Monitor
     @writer.puts(value)
   end
 
+  def step(address)
+    @mars.step(address)
+  end
+
   def process
     while !@finished && input = read
       # FIXME: Find a more efficient way of doing this
