@@ -1,22 +1,16 @@
 * Core Wars Kata
-  Not really feeling well today, so I'm going to leave it at that.
-  Failing tests are good.  I'm not super happy with all the delegation, etc
-  so I need to think about the overall shape of the code at some point.
-  Until next time!
+  Still quite a lot to do.  This is the point where there are lots
+  of possibilities for design.  I'm going to try to hold off making
+  decisions until more of the code is written.  Until next time!
 ** Burndown
 *** Add Step command
-**** Add a warrior when S command issued if there is no warrior present
-     Format: 123S
-             where 123 is the address
-***** Add a Task to the Task Queue
-      A Task has a Program Counter
-***** Display the warrior
-      When the S command is first issued, display the Warrior including
-      the task queue.  Each task (there will only be one at the moment)
-      will have a program counter.  The warrior will only be
-      displayed after the execution of the opcode.
-**** S steps to the next address for each task in the current warrior
-***** It displays the task queue for that warrior
+**** TODO Add a Task to the Task Queue when stepping with an argument
+     Each task contains a PC.  
+**** TODO It displays the task queue for each warrior when stepping
+**** S steps to the next PC address when there is no argument
+     for each task in all warriors
+     IIRC, you load the instructions first and then execute them.
+     however, there is still an order for the memory...
 *** Add ADD.AB Instruction
     We want to get
       ADD.AB #4, $-1
@@ -183,3 +177,14 @@
      Simply allow $ in the operand
 **** DONE Store ADD.AB instruction via monitor
      CLOSED: [2015-12-30 Wed 08:50]
+*** Add Step command
+**** DONE Add a warrior when S command issued
+     CLOSED: [2016-01-03 Sun 06:36]
+     Format: 123S
+             where 123 is the address
+**** DONE Display the warrior after step command
+     CLOSED: [2016-01-03 Sun 06:35]
+     When the S command is first issued, display the Warrior including
+     the task queue.  Each task (there will only be one at the moment)
+     will have a program counter.  The warrior will only be
+     displayed after the execution of the opcode.

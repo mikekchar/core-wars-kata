@@ -10,10 +10,6 @@ class Examine < Command
 
   def execute
     return if @matchdata.nil?
-    @monitor.puts("Warriors")
-    @monitor.puts("--------")
-    @monitor.mars.warriors.each_with_index do |warrior, i|
-      @monitor.puts("#{i} - #{warrior}")
-    end
+    @monitor.examine()
   end
 end

@@ -49,6 +49,13 @@ class Monitor
     @mars.step(address)
   end
 
+  def examine
+    @writer.puts("Warriors")
+    @writer.puts("--------")
+    data = @mars.warriors_to_s()
+    @writer.puts(data) if !data.empty?
+  end
+
   def process
     while !@finished && input = read
       # FIXME: Find a more efficient way of doing this
