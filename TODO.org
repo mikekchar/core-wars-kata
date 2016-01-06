@@ -1,11 +1,11 @@
 * Core Wars Kata
-  Still quite a lot to do.  This is the point where there are lots
-  of possibilities for design.  I'm going to try to hold off making
-  decisions until more of the code is written.  Until next time!
+  Ha ha!  Well, I did something.  I'm getting more used to it.  I might
+  try again a little later.  Until then!
 ** Burndown
 *** Add Step command
 **** TODO Add a Task to the Task Queue when stepping with an argument
      Each task contains a PC.  
+***** TODO Write tests for TaskQueue
 **** TODO It displays the task queue for each warrior when stepping
 **** S steps to the next PC address when there is no argument
      for each task in all warriors
