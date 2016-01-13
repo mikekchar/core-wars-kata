@@ -9,5 +9,9 @@ module Fake
     def puts(string)
       @output.push(string)
     end
+
+    def reset
+      @output = []
+    end
   end
 end

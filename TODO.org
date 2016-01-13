@@ -1,20 +1,30 @@
 * Core Wars Kata
-  Quite sleepy (and jetlagged), but it's nice to get those tests
-  done.  Next time finish step and then we can actually implement
-  the instructions.  Until then.
+  Not much done, but it was good to get back into it.  Until next time!
 ** Burndown
 *** Add Step command
-**** TODO It displays the task queue for each warrior when stepping
+**** DONE It displays the task queue for each warrior when stepping
+     CLOSED: [2016-01-12 Tue 09:29]
 **** S steps to the next PC address when there is no argument
      for each task in all warriors
-     IIRC, you load the instructions first and then execute them.
-     however, there is still an order for the memory...
-*** Add ADD.AB Instruction
-    We want to get
-      ADD.AB #4, $-1
-    implemented.  If I understand the docs, that adds 4 to the
-    number of the B operand in the previous address.
-*** Implement a DAT.F instruction
+*** Execution
+    Not sure where to put this...
+    I *think* for each task in each warrior we are supposed to:
+      - fetch the instructions
+      - fetch any direct or indirect operands
+      - execute the instruction, caching the result internally
+      - write the cached results
+        - cached results will be written a FIFO manner
+          hmmm...  this is still not fair because the first warrior
+          always has an advantage...  Need to think about it.
+
+    The reference implementation does not do this.  It modifies the
+    core during fetching/execution.  That seems wrong to me, so
+    I will implement it as above.
+*** Implement ADD.AB Instruction
+**** Implement ADD with direct addressing
+     ADD.AB #4, $-1
+     Adds 4 to the B operand of the address: PC - 1
+*** Implement DAT.F instruction
 **** Remove Task from Task Queue when executed
       Display the number of remaining tasks in the task queue in
       the monitor.  If there are no tasks remaining in the queue
@@ -141,7 +151,7 @@
      The spec uses decimal, so it will just get confusing
 **** DONE Give error message when mode or operands are incorrect
      CLOSED: [2015-12-31 Thu 02:48]
-*** Implement a DAT.F instruction
+*** Implement DAT.F instruction
     An instruction is commposed of:
       - opcode
       - modifier
@@ -169,7 +179,7 @@
 *** Add a warrior
 **** DONE Display an empty list of warriors when e is pressed
       CLOSED: [2015-12-26 Sat 14:17]
-*** Add ADD.AB Instruction
+*** Implement ADD.AB Instruction
 **** DONE Add direct addressing mode
      CLOSED: [2015-12-28 Mon 03:34]
      Simply allow $ in the operand

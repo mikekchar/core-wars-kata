@@ -47,6 +47,7 @@ class Monitor
 
   def step(address)
     @mars.step(address)
+    examine()
   end
 
   def examine

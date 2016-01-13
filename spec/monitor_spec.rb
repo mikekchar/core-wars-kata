@@ -94,6 +94,9 @@ RSpec.describe Monitor do
         before(:each) do
           reader.addInput(add)
           reader.addInput(step)
+          subject.process()
+          # Clear the output from the previous commands
+          writer.reset
           reader.addInput(examine)
           subject.process()
         end
