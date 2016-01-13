@@ -46,5 +46,16 @@ RSpec.describe Step do
       subject.execute()
       expect(mars.warriors.length).to eq(1)
     end
+
+    it "writes the state of the warriors after execution" do
+      subject.execute()
+      expect(writer.output).to eq(
+        [
+          "Warriors",
+          "--------",
+          "0 - PC:11"
+        ]
+      )
+    end
   end
 end
