@@ -27,6 +27,13 @@ class Instruction
       other.a == @a && other.b == @b
   end
 
+  # The next PC is dependent on the instruction.  Most will
+  # simply increment the PC, but jumps will need to do something
+  # different.
+  def nextPC(taskState)
+    taskState.incrementPC()
+  end
+
   def to_s
     "#{@opcode}.#{@modifier} #{@a}, #{@b}"
   end

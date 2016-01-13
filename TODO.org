@@ -1,34 +1,34 @@
 * Core Wars Kata
-  Not much done, but it was good to get back into it.  Until next time!
+  TaskState is really just the set of registers and memory cache for
+  the task.  We are implementing a multiple processor/single memory
+  architecture for multi-processing.  However, since we are implementing
+  it in memory, the registers in the processors can be ephemeral.
+  Not entirely happy with the design (as usual), but I will again
+  try to put off decisions as long as possible (but no longer).
+  Until next time.
 ** Burndown
-*** Add Step command
-**** DONE It displays the task queue for each warrior when stepping
-     CLOSED: [2016-01-12 Tue 09:29]
-**** S steps to the next PC address when there is no argument
-     for each task in all warriors
-*** Execution
-    Not sure where to put this...
-    I *think* for each task in each warrior we are supposed to:
-      - fetch the instructions
-      - fetch any direct or indirect operands
-      - execute the instruction, caching the result internally
-      - write the cached results
-        - cached results will be written a FIFO manner
-          hmmm...  this is still not fair because the first warrior
-          always has an advantage...  Need to think about it.
-
-    The reference implementation does not do this.  It modifies the
-    core during fetching/execution.  That seems wrong to me, so
-    I will implement it as above.
 *** Implement ADD.AB Instruction
 **** Implement ADD with direct addressing
      ADD.AB #4, $-1
      Adds 4 to the B operand of the address: PC - 1
+***** TODO Fetch instruction into a memory cache
+      It has been fetched into a register, but it still needs to be
+      put into the cache.  Not really necessary for this instruction,
+      but I think I will do it anyway.
+***** TODO Fetch instruction pointed to by operand B into the memory cache
+***** TODO Add operand A to the instruction in the memory cache
+***** TODO Write the memory cache to the core
 *** Implement DAT.F instruction
 **** Remove Task from Task Queue when executed
       Display the number of remaining tasks in the task queue in
       the monitor.  If there are no tasks remaining in the queue
       remove the warrior and display a message in the monitor.
+*** Devise strategy for writing the memory cache to core
+    The order in which the tasks write their cache is important.
+    Find a fair way to do it.
+*** Add Step command
+**** S steps to the next PC address when there is no argument
+     for each task in all warriors
 ** Backlog
 *** Instruction tech tasks :-P
 **** TODO Ensure that instructions are immutable
@@ -201,3 +201,5 @@
      Each task contains a PC.  
 ***** DONE Write tests for TaskQueue
       CLOSED: [2016-01-07 Thu 06:48]
+**** DONE It displays the task queue for each warrior when stepping
+     CLOSED: [2016-01-12 Tue 09:29]
