@@ -1,18 +1,4 @@
-class TaskState
-  def initialize(mars, address)
-    @mars = mars
-    @pc = address
-    @instruction = @mars.fetch(@pc)
-  end
-
-  def incrementPC
-    @mars.address(@pc + 1)
-  end
-
-  def nextPC
-    @instruction.nextPC(self)
-  end
-end
+require_relative "./register_set"
 
 class Task
   attr_reader :pc
@@ -23,8 +9,8 @@ class Task
   end
 
   def step
-    state = TaskState.new(@mars, @pc)
-    @pc = state.nextPC()
+    registers = RegisterSet.new(@mars, @pc)
+    @pc = registers.nextPC()
   end
 
   def to_s
