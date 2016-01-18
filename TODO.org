@@ -1,17 +1,12 @@
 * Core Wars Kata
-  TaskState is really just the set of registers and memory cache for
-  the task.  We are implementing a multiple processor/single memory
-  architecture for multi-processing.  However, since we are implementing
-  it in memory, the registers in the processors can be ephemeral.
-  Not entirely happy with the design (as usual), but I will again
-  try to put off decisions as long as possible (but no longer).
-  Until next time.
+  Went a little over. Until next time.
 ** Burndown
 *** Implement ADD.AB Instruction
 **** Implement ADD with direct addressing
      ADD.AB #4, $-1
      Adds 4 to the B operand of the address: PC - 1
-***** TODO Fetch instruction into a memory cache
+***** DONE Fetch instruction into a memory cache
+      CLOSED: [2016-01-18 Mon 12:00]
       It has been fetched into a register, but it still needs to be
       put into the cache.  Not really necessary for this instruction,
       but I think I will do it anyway.
