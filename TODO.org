@@ -1,16 +1,10 @@
 * Core Wars Kata
-  Went a little over. Until next time.
+  Ha ha!  Lots of problems with my implementation.  Will fix it next time!
 ** Burndown
 *** Implement ADD.AB Instruction
-**** Implement ADD with direct addressing
+**** Direct Addressing Mode
      ADD.AB #4, $-1
      Adds 4 to the B operand of the address: PC - 1
-***** DONE Fetch instruction into a memory cache
-      CLOSED: [2016-01-18 Mon 12:00]
-      It has been fetched into a register, but it still needs to be
-      put into the cache.  Not really necessary for this instruction,
-      but I think I will do it anyway.
-***** TODO Fetch instruction pointed to by operand B into the memory cache
 ***** TODO Add operand A to the instruction in the memory cache
 ***** TODO Write the memory cache to the core
 *** Implement DAT.F instruction
@@ -180,6 +174,16 @@
      Simply allow $ in the operand
 **** DONE Store ADD.AB instruction via monitor
      CLOSED: [2015-12-30 Wed 08:50]
+**** Direct Addressing Mode
+    ADD.AB #4, $-1
+    Adds 4 to the B operand of the address: PC - 1
+***** DONE Fetch instruction into a memory cache
+      CLOSED: [2016-01-18 Mon 12:00]
+      It has been fetched into a register, but it still needs to be
+      put into the cache.  Not really necessary for this instruction,
+      but I think I will do it anyway.
+***** DONE Fetch instruction pointed to by operand B into the memory cache
+      CLOSED: [2016-01-20 Wed 09:52]
 *** Add Step command
 **** DONE Add a warrior when S command issued
      CLOSED: [2016-01-03 Sun 06:36]

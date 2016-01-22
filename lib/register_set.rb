@@ -24,5 +24,12 @@ class RegisterSet
   def nextPC
     @instruction.nextPC(self)
   end
+
+  def execute
+    @instruction = fetch(@pc)
+    @instruction.fetchOperands(self)
+    @instruction.execute(self)
+    @pc = nextPC()
+  end
 end
 

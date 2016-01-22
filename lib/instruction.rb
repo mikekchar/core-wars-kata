@@ -30,8 +30,12 @@ class Instruction
   # The next PC is dependent on the instruction.  Most will
   # simply increment the PC, but jumps will need to do something
   # different.
-  def nextPC(taskState)
-    taskState.incrementPC()
+  def nextPC(registers)
+    registers.incrementPC()
+  end
+
+  def fetchOperands(registers)
+    # Nothing to do in the general case
   end
 
   def to_s

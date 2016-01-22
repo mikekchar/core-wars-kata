@@ -23,4 +23,16 @@ class Add < Instruction
       nil
     end
   end
+
+  def fetchOperands(registers)
+    pc = registers.pc
+    # FIXME: Hard coding to direct addressing mode
+    registers.fetch(pc + @b.number)
+  end
+
+  def execute(registers)
+    pc = registers.pc
+    # FIXME: Hard coding to direct addressing mode
+    registers.cache[pc + @b.number].a.number += a.number
+  end
 end

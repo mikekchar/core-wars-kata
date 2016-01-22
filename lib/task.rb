@@ -10,7 +10,7 @@ class Task
 
   def step
     registers = RegisterSet.new(@mars, @pc)
-    @pc = registers.nextPC()
+    @pc = registers.execute()
   end
 
   def to_s
