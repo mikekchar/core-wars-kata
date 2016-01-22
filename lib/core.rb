@@ -5,7 +5,7 @@ class Core
 
   def initialize(size)
     @size = size
-    @impl = Array.new(size, Dat.build("#0, #0"))
+    @impl = Array.new(size) { Dat.build("#0, #0") }
   end
 
   def address(addr)

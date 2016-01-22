@@ -27,7 +27,6 @@ class RegisterSet
 
   def execute
     @instruction = fetch(@pc)
-    @instruction.fetchOperands(self)
     @instruction.execute(self)
     @pc = nextPC()
   end

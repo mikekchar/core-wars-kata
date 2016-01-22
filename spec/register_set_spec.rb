@@ -48,8 +48,12 @@ RSpec.describe RegisterSet do
       end
 
       it "caches data" do
-        expect(subject.fetch(new_location)).to eq(add)
+        subject.fetch(new_location)
         expect(subject.cache[new_location]).to eq(add)
+      end
+
+      it "returns the cached instruction" do
+        expect(subject.fetch(new_location)).to eq(add)
       end
 
       it "wraps addresses" do
@@ -60,6 +64,8 @@ RSpec.describe RegisterSet do
   end
 
   describe "#execute" do
+    let(:added_dat) { Dat.build("#4, #0") }
+
     before(:each) do
       subject.execute()
     end
@@ -68,8 +74,8 @@ RSpec.describe RegisterSet do
       expect(subject.cache[location]).to eq(add)
     end
 
-    it "fetches the operands into the cache" do
-      expect(subject.cache[location - 1]).to eq(dat)
+    it "stores the result of the operation in the cache" do
+      expect(subject.cache[location - 1]).to eq(added_dat)
     end
   end
 end
