@@ -1,11 +1,13 @@
 * Core Wars Kata
-  Ha ha!  Lots of problems with my implementation.  Will fix it next time!
+  Out of time.  Thank you for joining me.  It was quite fun trying
+  to get out of the mess I was in.  Still a ways to go.  I hope you
+  join me again next time.  This has been One Pomodoro a Day.  Until
+  then!
 ** Burndown
 *** Implement ADD.AB Instruction
 **** Direct Addressing Mode
      ADD.AB #4, $-1
      Adds 4 to the B operand of the address: PC - 1
-***** TODO Add operand A to the instruction in the memory cache
 ***** TODO Write the memory cache to the core
 *** Implement DAT.F instruction
 **** Remove Task from Task Queue when executed
@@ -184,6 +186,12 @@
       but I think I will do it anyway.
 ***** DONE Fetch instruction pointed to by operand B into the memory cache
       CLOSED: [2016-01-20 Wed 09:52]
+***** DONE Add operand A to the instruction in the memory cache
+      CLOSED: [2016-01-22 Fri 12:58]
+      It occurs to me that I have sufferred slightly from too much
+      design up front.  You may be thinking, "What design???  You've been
+      hacking every second."  However, it is important to try to keep
+      and empty mind when starting each piece of code.
 *** Add Step command
 **** DONE Add a warrior when S command issued
      CLOSED: [2016-01-03 Sun 06:36]
@@ -202,3 +210,7 @@
       CLOSED: [2016-01-07 Thu 06:48]
 **** DONE It displays the task queue for each warrior when stepping
      CLOSED: [2016-01-12 Tue 09:29]
+*** Bugs
+**** DONE Bug: All memory locations are initialize with the same instruction
+     CLOSED: [2016-01-22 Fri 13:03]
+     as in the same object.  There should be a new one for each object.

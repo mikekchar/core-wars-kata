@@ -16,6 +16,12 @@ RSpec.describe Core do
     expect(subject.size).to eq(size)
   end
 
+  it "has different instructions in each location" do
+    first = subject.fetch(1)
+    second = subject.fetch(2)
+    expect(first).not_to be(second)
+  end
+
   describe "Storing and fetching instructions" do
     it "stores instructions in the core" do
       subject.store(0, inst)

@@ -1,13 +1,19 @@
 require_relative "../lib/task"
 require_relative "../lib/core"
 require_relative "../lib/mars"
+require_relative "../lib/add"
 
 RSpec.describe Task do
   let(:core_size) { 1024 }
   let(:core) { Core.new(core_size) }
   let(:mars) { Mars.new(core) }
   let(:location) { 10 }
+  let(:add) { Add.build("#4, $-1") }
   subject { Task.new(mars, location) }
+
+  before(:each) do
+    core.store(location, add)
+  end
 
   describe "#step" do
     it "increments the PC" do

@@ -2,6 +2,7 @@ class Operand
   IMMEDIATE_RE = /(\S)(-?\d+)/
 
   attr_reader :mode, :number
+  attr_writer :number
 
   def initialize(mode, number)
     @mode = mode
