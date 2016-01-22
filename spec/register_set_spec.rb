@@ -9,6 +9,7 @@ RSpec.describe RegisterSet do
   let(:mars) { Mars.new(core) }
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
+  let(:dat) { Dat.build("#0, #0") }
   subject { RegisterSet.new(mars, location) }
 
   before(:each) do
@@ -36,7 +37,6 @@ RSpec.describe RegisterSet do
 
     describe "#fetch" do
       let(:new_location) { 5 }
-      let(:dat) { Dat.build("#0, #0") }
 
       before(:each) do
         expect(core.fetch(new_location)).to eq(dat)
@@ -56,6 +56,20 @@ RSpec.describe RegisterSet do
         expect(subject.fetch(new_location + core_size)).to eq(add)
         expect(subject.cache[new_location]).to eq(add)
       end
+    end
+  end
+
+  describe "#execute" do
+    before(:each) do
+      subject.execute()
+    end
+
+    it "fetches the instruction into the cache" do
+      expect(subject.cache[location]).to eq(add)
+    end
+
+    it "fetches the operands into the cache" do
+      expect(subject.cache[location - 1]).to eq(dat)
     end
   end
 end

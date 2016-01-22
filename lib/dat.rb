@@ -26,5 +26,9 @@ class Dat < Instruction
       nil
     end
   end
+
+  def execute(registers)
+    # FIXME: Remove task from task queue
+  end
 end
 
