@@ -10,7 +10,7 @@ class RegisterSet
 
   # fetch the address and cache the contents
   def fetch(address)
-    cache[@mars.address(address)] = @mars.fetch(address)
+    cache[@mars.address(address)] = @mars.fetch(address).clone()
   end
 
   # Used by instructions to calculate the next PC

@@ -37,6 +37,7 @@ RSpec.describe RegisterSet do
 
     describe "#fetch" do
       let(:new_location) { 5 }
+      let(:new_add) { Add.build("#4, $-1") }
 
       before(:each) do
         expect(core.fetch(new_location)).to eq(dat)
@@ -49,7 +50,12 @@ RSpec.describe RegisterSet do
 
       it "caches data" do
         subject.fetch(new_location)
-        expect(subject.cache[new_location]).to eq(add)
+        expect(subject.cache[new_location]).to eq(new_add)
+      end
+
+      it "caches a copy, not the actual object" do
+        subject.fetch(new_location)
+        expect(subject.cache[new_location]).not_to be(add)
       end
 
       it "returns the cached instruction" do
