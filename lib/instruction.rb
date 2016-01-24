@@ -4,12 +4,9 @@ class Instruction
   OPERANDS_RE = /(\S-?\d+),\s*(\S-?\d+)/
   attr_reader :opcode, :modifier, :a, :b
 
-  def initialize(opcode, modifier, a, b)
-    @opcode = opcode
-    @modifier = modifier
-    @a = a
-    @b = b
-  end
+  # Instruction is an abstract class.  Make sure to set
+  # the opcode, modifier, a and b in the derived class's
+  # constructor.
 
   def Instruction.build_operands(string)
     matchdata = OPERANDS_RE.match(string)
@@ -20,6 +17,11 @@ class Instruction
     else
       nil
     end
+  end
+
+  def clone
+    # FIXME: This will break when we implement multiple modes
+    self.class.build("#{a}, #{b}")
   end
 
   def ==(other)

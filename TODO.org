@@ -1,8 +1,11 @@
 * Core Wars Kata
-  Out of time.  Thank you for joining me.  It was quite fun trying
-  to get out of the mess I was in.  Still a ways to go.  I hope you
-  join me again next time.  This has been One Pomodoro a Day.  Until
-  then!
+  Well, I've been caught out a bit with not really understanding
+  how Ruby handles inheritance and also because I have intentionally
+  deferred dealing with the modifier (forgot what it was called)...
+  But failing tests will guide our way tomorrow!
+
+  This has been One Pomodoro a Day.  Thanks for watching.  Until
+  next time!
 ** Burndown
 *** Implement ADD.AB Instruction
 **** Direct Addressing Mode
@@ -214,3 +217,4 @@
 **** DONE Bug: All memory locations are initialize with the same instruction
      CLOSED: [2016-01-22 Fri 13:03]
      as in the same object.  There should be a new one for each object.
+**** DONE Bug: Cache fetches actual objects rather than copy
