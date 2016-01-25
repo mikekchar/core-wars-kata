@@ -14,16 +14,6 @@ class Add < Instruction
     instruction.opcode == "ADD"
   end
 
-  # TODO: Mix this in at some point
-  def Add.build(operand_string)
-    operands = Instruction.build_operands(operand_string)
-    if !operands.nil?
-      new(*operands)
-    else
-      nil
-    end
-  end
-
   def execute(registers)
     pc = registers.pc
     # FIXME: Hard coding to direct addressing mode

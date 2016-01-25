@@ -30,5 +30,15 @@ class RegisterSet
     @instruction.execute(self)
     @pc = nextPC()
   end
+
+  # FIXME: Obviously this should be on a Cache object
+  # But Easiest Thing First, Refactor Mercilessly!
+  def writeCache
+  end
+
+  def to_s
+    "PC:#{@pc}"
+  end
+
 end
 

@@ -17,16 +17,6 @@ class Dat < Instruction
     instruction.opcode == "DAT"
   end
 
-  # TODO: Mix this in at some point
-  def Dat.build(operand_string)
-    operands = Instruction.build_operands(operand_string)
-    if !operands.nil?
-      new(*operands)
-    else
-      nil
-    end
-  end
-
   def execute(registers)
     # FIXME: Remove task from task queue
   end

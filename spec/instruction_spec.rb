@@ -1,27 +1,16 @@
 require_relative "../lib/instruction"
 require_relative "../lib/operand"
 
-class TestInstruction
+class TestF < Instruction
   def initialize(a, b)
     @opcode = "TEST"
     @modifier = "F"
     @a = a
     @b = b
   end
-
-  # TODO: Mix this in at some point
-  def TestInstruction.build(operand_string)
-    operands = Instruction.build_operands(operand_string)
-    if !operands.nil?
-      new(*operands)
-    else
-      nil
-    end
-  end
 end
 
-#I wonder if this will work...
-class TestP < TestInstruction
+class TestP < Instruction
   def initialize(a, b)
     @opcode = "TEST"
     @modifier = "P"
@@ -33,7 +22,7 @@ end
 RSpec.describe Instruction do
   let(:a) { Operand.build("#1234") }
   let(:b) { Operand.build("#4567") }
-  let(:instruction) { TestInstruction.build("#1234, #4567") }
+  let(:instruction) { TestF.build("#1234, #4567") }
 
   it "exposes its guts" do
     expect(instruction.opcode).to eq("TEST")
@@ -43,11 +32,9 @@ RSpec.describe Instruction do
   end
 
   it "can compare itself to another instruction" do
-    newA = Operand.build("#1234")
-    newB = Operand.build("#4567")
     # Useful for testing
-    expect(instruction).to eq(TestInstruction.new(newA, newB))
-    expect(instruction).not_to eq(TestP.new(a, b))
+    expect(instruction).to eq(TestF.build("#1234, #4567"))
+    expect(instruction).not_to eq(TestP.build("#1234, #4567"))
   end
   
   describe "build_operands" do
