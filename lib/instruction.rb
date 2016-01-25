@@ -19,6 +19,16 @@ class Instruction
     end
   end
 
+  # TODO: Mix this in at some point
+  def Instruction.build(operand_string)
+    operands = Instruction.build_operands(operand_string)
+    if !operands.nil?
+      new(*operands)
+    else
+      nil
+    end
+  end
+
   def clone
     # FIXME: This will break when we implement multiple modes
     self.class.build("#{a}, #{b}")

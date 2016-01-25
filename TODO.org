@@ -1,10 +1,6 @@
 * Core Wars Kata
-  Well, I've been caught out a bit with not really understanding
-  how Ruby handles inheritance and also because I have intentionally
-  deferred dealing with the modifier (forgot what it was called)...
-  But failing tests will guide our way tomorrow!
-
-  This has been One Pomodoro a Day.  Thanks for watching.  Until
+  Just needed a failing test to keep track of where I was.
+  Thanks for watching.  This was One Pomodoro a Day.  Until
   next time!
 ** Burndown
 *** Implement ADD.AB Instruction
@@ -17,9 +13,10 @@
       Display the number of remaining tasks in the task queue in
       the monitor.  If there are no tasks remaining in the queue
       remove the warrior and display a message in the monitor.
-*** Devise strategy for writing the memory cache to core
-    The order in which the tasks write their cache is important.
-    Find a fair way to do it.
+*** Ensure fair distribution of cache writes between warriors
+    If there are 2 warriors, A and B, and A gets to write before
+    B each time, then A will have an advantage.  Ideally we will
+    randomly write the chache for all of the tasks.
 *** Add Step command
 **** S steps to the next PC address when there is no argument
      for each task in all warriors
@@ -45,9 +42,6 @@
 **** TODO Specify that the core has the same state as last run
      Might have to save the state somehow
 **** TODO Specify that the core has a random value
-*** TODO Create Core Wars virtual machine
-    In this section I will write stories for making the virtual
-    machine
 *** TODO Load a File into the virtual machine
     Thinking about it, I may need to interleave these stories.
 

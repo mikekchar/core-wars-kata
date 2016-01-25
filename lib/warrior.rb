@@ -10,6 +10,7 @@ class Warrior
 
   def step
     @tasks.step()
+    @tasks.writeCache()
   end
 
   def to_s
