@@ -1,7 +1,10 @@
 * Core Wars Kata
-  Just needed a failing test to keep track of where I was.
-  Thanks for watching.  This was One Pomodoro a Day.  Until
-  next time!
+  Interesting.  I wonder if my refactoring caught a bug.  I was not
+  feeling very well again today.  Bad migraines, but it looks like
+  I made a little bit of progress, and that's the point, isn't it.
+  
+  Anyway, thanks for watching.  This has been One Pomodoro a Day.
+  Until next time!
 ** Burndown
 *** Implement ADD.AB Instruction
 **** Direct Addressing Mode
