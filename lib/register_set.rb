@@ -1,16 +1,37 @@
+class Cache
+  def initialize(mars)
+    @mars = mars
+    @impl = {}
+  end
+
+  def fetch(address)
+    @impl[@mars.address(address)] = @mars.fetch(address).clone()
+  end
+
+  def write
+    @impl.each_pair do |address, instruction|
+      @mars.store(address, instruction)
+    end
+  end
+
+  def inspect(address)
+    @impl[@mars.address(address)]
+  end
+end
+
 class RegisterSet
   attr_reader :pc, :cache
 
   def initialize(mars, address)
     @mars = mars
     @pc = address
-    @cache = {}
+    @cache = Cache.new(@mars)
     @instruction = fetch(@pc)
   end
 
   # fetch the address and cache the contents
   def fetch(address)
-    cache[@mars.address(address)] = @mars.fetch(address).clone()
+    @cache.fetch(address)
   end
 
   # Used by instructions to calculate the next PC
@@ -31,9 +52,8 @@ class RegisterSet
     @pc = nextPC()
   end
 
-  # FIXME: Obviously this should be on a Cache object
-  # But Easiest Thing First, Refactor Mercilessly!
   def writeCache
+    @cache.write()
   end
 
   def to_s

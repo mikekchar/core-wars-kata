@@ -16,6 +16,12 @@ class TaskQueue
     @queue.each do |task| task.step() end
   end
 
+  def writeCache
+    # FIXME:  We shouldn't write the caches for all the
+    # tasks at once.
+    @queue.each do |task| task.writeCache() end
+  end
+
   def status
     @queue.map do |task| task.to_s() end
   end

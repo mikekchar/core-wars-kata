@@ -10,6 +10,7 @@ RSpec.describe RegisterSet do
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
   let(:dat) { Dat.build("#0, #0") }
+  let(:added_dat) { Dat.build("#4, #0") }
   subject { RegisterSet.new(mars, location) }
 
   before(:each) do
@@ -32,7 +33,7 @@ RSpec.describe RegisterSet do
 
   describe "caching memory addresses" do
     it "caches the initial address" do
-      expect(subject.cache[location]).to eq(add)
+      expect(subject.cache.inspect(location)).to eq(add)
     end
 
     describe "#fetch" do
@@ -45,17 +46,17 @@ RSpec.describe RegisterSet do
       end
 
       it "defaults to nil" do
-        expect(subject.cache[new_location]).to be_nil
+        expect(subject.cache.inspect(location)).to be_nil
       end
 
       it "caches data" do
         subject.fetch(new_location)
-        expect(subject.cache[new_location]).to eq(new_add)
+        expect(subject.cache.inspect(location)).to eq(new_add)
       end
 
       it "caches a copy, not the actual object" do
         subject.fetch(new_location)
-        expect(subject.cache[new_location]).not_to be(add)
+        expect(subject.cache.inspect(location)).not_to be(add)
       end
 
       it "returns the cached instruction" do
@@ -64,24 +65,41 @@ RSpec.describe RegisterSet do
 
       it "wraps addresses" do
         expect(subject.fetch(new_location + core_size)).to eq(add)
-        expect(subject.cache[new_location]).to eq(add)
+        expect(subject.cache.inspect(location)).to eq(add)
       end
     end
   end
 
   describe "#execute" do
-    let(:added_dat) { Dat.build("#4, #0") }
-
     before(:each) do
       subject.execute()
     end
 
     it "fetches the instruction into the cache" do
-      expect(subject.cache[location]).to eq(add)
+      expect(subject.cache.inspect(location)).to eq(add)
     end
 
     it "stores the result of the operation in the cache" do
-      expect(subject.cache[location - 1]).to eq(added_dat)
+      expect(subject.cache.inspect(location - 1)).to eq(added_dat)
+    end
+  end
+
+  describe "#writeCache" do
+    before(:each) do
+      subject.execute()
+    end
+
+    it "should have the cache unwritten after the execute" do
+      expect(subject.cache.inspect(location)).to eq(add)
+      expect(subject.cache.inspect(location - 1)).to eq(added_dat)
+      expect(core.fetch(location)).to eq(add)
+      expect(core.fetch(location - 1)).to eq(dat)
+    end
+
+    it "should write the cache" do
+      subject.writeCache()
+      expect(core.fetch(location)).to eq(add)
+      expect(core.fetch(location - 1)).to eq(added_dat)
     end
   end
 end
