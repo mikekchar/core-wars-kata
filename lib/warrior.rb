@@ -1,5 +1,5 @@
 require_relative "./task_queue"
-
+# Interesting... No specs for Warrior class...
 class Warrior
   def initialize(mars, address)
     @mars = mars

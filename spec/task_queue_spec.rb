@@ -55,6 +55,15 @@ RSpec.describe TaskQueue do
       end
     end
 
+    describe "#writeCache" do
+      it "writes the cache for each task" do
+        expect(@task1).to receive(:writeCache)
+        expect(@task2).to receive(:writeCache)
+        expect(@task3).to receive(:writeCache)
+        subject.writeCache()
+      end
+    end
+
     describe "#status" do
       it "has status for each task" do
         expect(subject.status()).to eq(
