@@ -31,6 +31,13 @@ RSpec.describe Task do
     end
   end
 
+  describe "writeCache" do
+    it "writes the register set's cache" do
+      expect(subject.registers).to receive(:writeCache)
+      subject.writeCache()
+    end
+  end
+
   describe "#to_s" do
     it "prints the PC" do
       expect(subject.to_s).to eq("PC:10")

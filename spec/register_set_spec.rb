@@ -2,6 +2,7 @@ require_relative "../lib/register_set"
 require_relative "../lib/core"
 require_relative "../lib/mars"
 require_relative "../lib/add"
+require_relative "../lib/dat"
 
 RSpec.describe RegisterSet do
   let(:core_size) { 1024 }
@@ -46,17 +47,17 @@ RSpec.describe RegisterSet do
       end
 
       it "defaults to nil" do
-        expect(subject.cache.inspect(location)).to be_nil
+        expect(subject.cache.inspect(new_location)).to be_nil
       end
 
       it "caches data" do
         subject.fetch(new_location)
-        expect(subject.cache.inspect(location)).to eq(new_add)
+        expect(subject.cache.inspect(new_location)).to eq(new_add)
       end
 
       it "caches a copy, not the actual object" do
         subject.fetch(new_location)
-        expect(subject.cache.inspect(location)).not_to be(add)
+        expect(subject.cache.inspect(new_location)).not_to be(add)
       end
 
       it "returns the cached instruction" do
@@ -65,7 +66,7 @@ RSpec.describe RegisterSet do
 
       it "wraps addresses" do
         expect(subject.fetch(new_location + core_size)).to eq(add)
-        expect(subject.cache.inspect(location)).to eq(add)
+        expect(subject.cache.inspect(new_location)).to eq(add)
       end
     end
   end
