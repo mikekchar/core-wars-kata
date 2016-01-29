@@ -1,6 +1,8 @@
 require_relative "./task_queue"
-# Interesting... No specs for Warrior class...
+
 class Warrior
+  attr_reader :tasks
+
   def initialize(mars, address)
     @mars = mars
     @address = address

@@ -3,7 +3,8 @@ require_relative "./register_set"
 class Task
   attr_reader :registers
 
-  def initialize(mars, address)
+  def initialize(queue, mars, address)
+    @queue = queue
     @mars = mars
     @registers = RegisterSet.new(mars, address)
   end
