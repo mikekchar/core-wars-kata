@@ -1,28 +1,13 @@
 * Core Wars Kata
-  Out of time, but almost done.  It's a bit of a pity because
-  I would like to get on to implementing the DAT instruction, which
-  is going to be tricky.  As usual, you can see a lot of delegation
-  very far down into the object tree.  Later we'll see if we can
-  clean that up. But before we have implemented a couple of
-  instructions, it's hard to see what the ultimate shape should be.
-  Better to carry a slightly smelly architecture than to make
-  decisions too early in the game.  Who knows, I might even leave
-  it that way if it isn't in the way.
-
-  Thanks for watching.  This has been One Pomodoro a Day.  Until 
-  next time!
+  Went over a bit.  Was hoping to get the quick refactor done.
+  Oh well.  This has been One Pomodoro a Day.  Until next time!
 ** Burndown
-*** Implement ADD.AB Instruction
-**** Direct Addressing Mode
-     ADD.AB #4, $-1
-     Adds 4 to the B operand of the address: PC - 1
-***** TODO Write the memory cache to the core
-****** TODO Write tests for warrior
 *** Implement DAT.F instruction
 **** Remove Task from Task Queue when executed
       Display the number of remaining tasks in the task queue in
       the monitor.  If there are no tasks remaining in the queue
       remove the warrior and display a message in the monitor.
+**** Remove Warrior from warriors when it has no tasks
 *** Ensure fair distribution of cache writes between warriors
     If there are 2 warriors, A and B, and A gets to write before
     B each time, then A will have an advantage.  Ideally we will
@@ -183,6 +168,10 @@
      Simply allow $ in the operand
 **** DONE Store ADD.AB instruction via monitor
      CLOSED: [2015-12-30 Wed 08:50]
+**** DONE Write the memory cache to the core
+     CLOSED: [2016-01-29 Fri 11:33]
+***** DONE Write tests for warrior
+      CLOSED: [2016-01-29 Fri 11:33]
 **** Direct Addressing Mode
     ADD.AB #4, $-1
     Adds 4 to the B operand of the address: PC - 1

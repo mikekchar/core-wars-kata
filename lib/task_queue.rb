@@ -7,7 +7,7 @@ class TaskQueue
   end
 
   def new_task(address)
-    task = Task.new(@mars, address)
+    task = Task.new(queue, @mars, address)
     @queue << task
     task
   end
@@ -28,5 +28,9 @@ class TaskQueue
 
   def length
     @queue.length
+  end
+
+  def [](index)
+    @queue[index]
   end
 end
