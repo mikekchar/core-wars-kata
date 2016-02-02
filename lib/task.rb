@@ -19,6 +19,10 @@ class Task
     @registers.writeCache()
   end
 
+  def exit
+    @queue.remove(self)
+  end
+
   def to_s
     @registers.to_s()
   end

@@ -18,6 +18,20 @@ RSpec.describe RegisterSet do
     core.store(location, add)
   end
 
+  describe "#alive" do
+    it "is true by default" do
+      expect(subject.alive).to be(true)
+    end
+
+    describe "executing a DAT.F instruction" do
+      it "is not alive" do
+        core.store(location, dat)
+        subject.execute()
+        expect(subject.alive).to be(false)
+      end
+    end
+  end
+
   describe "#incrementPC" do
     it "returns the PC + 1" do
       expect(subject.incrementPC()).to eq(location + 1)

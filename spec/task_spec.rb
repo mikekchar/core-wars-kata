@@ -40,6 +40,13 @@ RSpec.describe Task do
     end
   end
 
+  describe "#exit" do
+    it "removes itself from its queue" do
+      subject.exit()
+      expect(queue.length).to eq(0)
+    end
+  end
+
   describe "#to_s" do
     it "prints the PC" do
       expect(subject.to_s).to eq("PC:10")

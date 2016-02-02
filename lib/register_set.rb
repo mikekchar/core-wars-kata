@@ -1,13 +1,14 @@
 require_relative "./cache"
 
 class RegisterSet
-  attr_reader :pc, :cache
+  attr_reader :pc, :cache, :alive
 
   def initialize(mars, address)
     @mars = mars
     @pc = address
     @cache = Cache.new(@mars)
     @instruction = fetch(@pc)
+    @alive = true
   end
 
   # fetch the address and cache the contents
@@ -40,6 +41,5 @@ class RegisterSet
   def to_s
     "PC:#{@pc}"
   end
-
 end
 
