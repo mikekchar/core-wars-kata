@@ -7,7 +7,7 @@ class TaskQueue
   end
 
   def new_task(address)
-    task = Task.new(queue, @mars, address)
+    task = Task.new(self, @mars, address)
     @queue << task
     task
   end
@@ -24,6 +24,10 @@ class TaskQueue
 
   def status
     @queue.map do |task| task.to_s() end
+  end
+
+  def remove(task)
+    @queue.delete(task)
   end
 
   def length

@@ -1,12 +1,23 @@
 * Core Wars Kata
-  Went over a bit.  Was hoping to get the quick refactor done.
-  Oh well.  This has been One Pomodoro a Day.  Until next time!
+  Almost finished the DAT.F instruction.  It was less trouble
+  than I imagined.  Hopefully things will go quickly from here.
+  After this, I should probably spend some time looking at the
+  design and see what I can do to clean it up.
+
+  This has been One Pomodoro a Day.  Until next time!
 ** Burndown
 *** Implement DAT.F instruction
 **** Remove Task from Task Queue when executed
       Display the number of remaining tasks in the task queue in
       the monitor.  If there are no tasks remaining in the queue
       remove the warrior and display a message in the monitor.
+
+      Basically, I've already got a situation where the tail
+      is wagging the dog: the task removes itself from its
+      queue.  However, I don't really want the register to tell
+      the task to remove itself from the queue.  Instead we
+      will have a special flag on the register to say whether
+      the task is alive or dead.
 **** Remove Warrior from warriors when it has no tasks
 *** Ensure fair distribution of cache writes between warriors
     If there are 2 warriors, A and B, and A gets to write before

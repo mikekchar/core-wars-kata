@@ -28,9 +28,16 @@ RSpec.describe TaskQueue do
       end
     end
 
-    describe "status" do
+    describe "#status" do
       it "returns an empty array" do
         expect(subject.status()).to eq([])
+      end
+    end
+
+    describe "#remove" do
+      it "does nothing" do
+        expect(subject.remove("fake task")).to be_nil
+        expect(subject.length).to eq(0)
       end
     end
   end
@@ -73,6 +80,25 @@ RSpec.describe TaskQueue do
             "PC:12"
           ]
         )
+      end
+    end
+
+    describe "#remove" do
+      it "removes the task" do
+        subject.remove(@task1)
+        expect(subject[0]).to be(@task2)
+        expect(subject[1]).to be(@task3)
+        expect(subject[2]).to be(nil)
+        expect(subject.length).to eq(2)
+      end
+
+      it "returns the removed task" do
+        expect(subject.remove(@task1)).to be(@task1)
+      end
+
+      it "doesn't remove tasks that don't exist" do
+        expect(subject.remove("fake task")).to be_nil
+        expect(subject.length).to eq(3)
       end
     end
   end
