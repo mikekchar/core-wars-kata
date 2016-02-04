@@ -11,6 +11,10 @@ class RegisterSet
     @alive = true
   end
 
+  def kill
+    @alive = false
+  end
+
   # fetch the address and cache the contents
   def fetch(address)
     @cache.fetch(address)

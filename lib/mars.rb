@@ -23,7 +23,8 @@ class Mars
 
   def step(addr)
     @warriors << Warrior.new(self, addr)
-    @warriors.each do |warrior| warrior.step() end
+    @warriors.each { |warrior| warrior.step() }
+    @warriors.delete_if { |warrior| warrior.killed? }
   end
 
   # TODO: make a Warriors class????

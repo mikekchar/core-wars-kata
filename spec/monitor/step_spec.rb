@@ -32,30 +32,58 @@ RSpec.describe Step do
     end
   end
 
-  describe "stepping into an executable instruction" do
+  describe "stepping into an instruction" do
     let(:location) { 10 }
-    let(:add) { Add.build("#123, $-1") }
     subject { Step.new("10S", monitor) }
 
     it "identifies store commands" do
       expect(subject).to be_valid
     end
 
-    it "adds a warrior..." do
-      expect(mars.warriors.length).to eq(0)
-      subject.execute()
-      expect(mars.warriors.length).to eq(1)
+    describe "an executable instruction" do
+      let(:add) { Add.build("#123, $-1") }
+
+      before(:each) do
+        core.store(location, add)
+      end
+
+      it "adds a warrior..." do
+        expect(mars.warriors.length).to eq(0)
+        subject.execute()
+        expect(mars.warriors.length).to eq(1)
+      end
+
+      it "writes the state of the warriors after execution" do
+        subject.execute()
+        expect(writer.output).to eq(
+          [
+            "Warriors",
+            "--------",
+            "0 - PC:11"
+          ]
+        )
+      end
     end
 
-    it "writes the state of the warriors after execution" do
-      subject.execute()
-      expect(writer.output).to eq(
-        [
-          "Warriors",
-          "--------",
-          "0 - PC:11"
-        ]
-      )
+    describe "stepping into a DAT" do
+      before(:each) do
+        subject.execute()
+      end
+
+      describe "after executing" do
+        it "does not have any warriors left" do
+          expect(mars.warriors.length).to eq(0)
+        end
+
+        it "writes and empty list of warriors" do
+          expect(writer.output).to eq(
+            [
+              "Warriors",
+              "--------",
+            ]
+          )
+        end
+      end
     end
   end
 end

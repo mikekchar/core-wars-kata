@@ -18,4 +18,8 @@ class Warrior
   def to_s
     @tasks.status.join("\n")
   end
+
+  def killed?
+    @tasks.empty?
+  end
 end

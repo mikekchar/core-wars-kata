@@ -23,6 +23,11 @@ RSpec.describe RegisterSet do
       expect(subject.alive).to be(true)
     end
 
+    it "can be killed" do
+      subject.kill()
+      expect(subject.alive).to be(false)
+    end
+
     describe "executing a DAT.F instruction" do
       it "is not alive" do
         core.store(location, dat)
