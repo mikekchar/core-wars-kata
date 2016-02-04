@@ -1,18 +1,16 @@
 require_relative "../lib/register_set"
 require_relative "../lib/core"
-require_relative "../lib/mars"
 require_relative "../lib/add"
 require_relative "../lib/dat"
 
 RSpec.describe RegisterSet do
   let(:core_size) { 1024 }
   let(:core) { Core.new(core_size) }
-  let(:mars) { Mars.new(core) }
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
   let(:dat) { Dat.build("#0, #0") }
   let(:added_dat) { Dat.build("#4, #0") }
-  subject { RegisterSet.new(mars, location) }
+  subject { RegisterSet.new(core, location) }
 
   before(:each) do
     core.store(location, add)

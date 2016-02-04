@@ -1,39 +1,44 @@
 * Core Wars Kata
-  Waaay over.  Until next time!
+  OK.  A little bit more refactoring to do.  Then we will get
+  back to implementing new code.  This has been One Pomodoro a Day.
+  Until next time!
 ** Burndown
-*** Implement DAT.F instruction
-**** Remove Warrior from warriors when it has no tasks
-*** Ensure fair distribution of cache writes between warriors
-    If there are 2 warriors, A and B, and A gets to write before
-    B each time, then A will have an advantage.  Ideally we will
-    randomly write the chache for all of the tasks.
 *** Add Step command
 **** S steps to the next PC address when there is no argument
      for each task in all warriors
+*** Log events
+**** TODO Log the creation of warriors
+**** TODO Log the death of warriors
+**** TODO Log the creation of a new task in a warrior
+**** TODO Log the end of a task in a warrior
 ** Backlog
-*** Instruction tech tasks :-P
-**** TODO Ensure that instructions are immutable
-**** TODO Write matcher for instructions
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
     machine language monitor
-**** TODO {addr1}.{addr2}
-      Inspect memory from addr1 to addr2
 **** TODO [RETURN]
       Display up to 8 locations following the last opened location.
+**** TODO {addr1}.{addr2}
+      Inspect memory from addr1 to addr2
 *** Set the state of the memory
 **** TODO :{val}
-     Sets many values starting at the next address from the one
+     Sets a value starting at the next address from the one
      last accessed.
+*** Loading Files
+*** Ensure fair distribution of cache writes between warriors
+    If there are 2 warriors, A and B, and A gets to write before
+    B each time, then A will have an advantage.  Ideally we will
+    randomly write the chache for all of the tasks.
+*** Instruction tech tasks :-P
+    I bet I never do this :-)
+**** TODO Ensure that instructions are immutable
+**** TODO Write matcher for instructions
 *** Core options
 **** TODO Specify Initial core size
 **** TODO Specify Initial instruction to load into the whole core
 **** TODO Specify that the core has the same state as last run
      Might have to save the state somehow
 **** TODO Specify that the core has a random value
-*** TODO Load a File into the virtual machine
-    Thinking about it, I may need to interleave these stories.
 
 ** Done
 *** Setup
@@ -166,6 +171,8 @@
       the task to remove itself from the queue.  Instead we
       will have a special flag on the register to say whether
       the task is alive or dead.
+**** DONE Remove Warrior from warriors when it has no tasks
+     CLOSED: [2016-02-04 Thu 12:11]
 *** Add a warrior
 **** DONE Display an empty list of warriors when e is pressed
       CLOSED: [2015-12-26 Sat 14:17]

@@ -34,7 +34,13 @@ class Monitor
   end
 
   def fetch(address)
-    @mars.fetch(address)
+    addr = @mars.address(address)
+    output = @mars.fetch(addr)
+    if !output.nil?
+      @writer.puts("#{addr}:#{output.to_s()}")
+    else
+      @writer.puts("Illegal address: #{command}")
+    end
   end
 
   def store(address, value)
@@ -53,7 +59,7 @@ class Monitor
   def examine
     @writer.puts("Warriors")
     @writer.puts("--------")
-    data = @mars.warriors_to_s()
+    data = @mars.to_s()
     @writer.puts(data) if !data.empty?
   end
 

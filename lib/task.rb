@@ -3,14 +3,14 @@ require_relative "./register_set"
 class Task
   attr_reader :registers
 
-  def initialize(queue, mars, address)
+  def initialize(queue, core, address)
     @queue = queue
-    @mars = mars
-    @registers = RegisterSet.new(mars, address)
+    @core = core
+    @registers = RegisterSet.new(core, address)
   end
 
   def step
-    @registers = RegisterSet.new(@mars, pc())
+    @registers = RegisterSet.new(@core, pc())
     @registers.execute()
     remove() if !@registers.alive
   end

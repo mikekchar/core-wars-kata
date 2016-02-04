@@ -1,5 +1,4 @@
 require_relative "../lib/warrior"
-require_relative "../lib/mars"
 require_relative "../lib/core"
 require_relative "../lib/add"
 require_relative "../lib/dat"
@@ -7,10 +6,9 @@ require_relative "../lib/dat"
 RSpec.describe Warrior do
   let(:core_size) { 1024 }
   let(:core) { Core.new(core_size) }
-  let(:mars) { Mars.new(core) }
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
-  subject { Warrior.new(mars, location) }
+  subject { Warrior.new(core, location) }
 
   before(:each) do
     core.store(location, add)

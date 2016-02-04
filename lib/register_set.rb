@@ -3,10 +3,10 @@ require_relative "./cache"
 class RegisterSet
   attr_reader :pc, :cache, :alive
 
-  def initialize(mars, address)
-    @mars = mars
+  def initialize(core, address)
+    @core = core
     @pc = address
-    @cache = Cache.new(@mars)
+    @cache = Cache.new(@core)
     @instruction = fetch(@pc)
     @alive = true
   end
@@ -23,7 +23,7 @@ class RegisterSet
   # Used by instructions to calculate the next PC
   # in the case that it is incremented
   def incrementPC
-    @mars.address(@pc + 1)
+    @core.address(@pc + 1)
   end
 
   # Return what the PC should be set to after the instruction

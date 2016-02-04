@@ -1,16 +1,14 @@
 require_relative "../lib/task"
 require_relative "../lib/core"
-require_relative "../lib/mars"
 require_relative "../lib/add"
 require_relative "../lib/task_queue"
 
 RSpec.describe Task do
   let(:core_size) { 1024 }
   let(:core) { Core.new(core_size) }
-  let(:mars) { Mars.new(core) }
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
-  let(:queue) { TaskQueue.new(mars) }
+  let(:queue) { TaskQueue.new(core) }
   subject { queue.new_task(location) }
 
   before(:each) do
