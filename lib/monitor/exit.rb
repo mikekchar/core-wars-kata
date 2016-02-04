@@ -8,6 +8,6 @@ class Exit < Command
   end
 
   def execute
-    @monitor.exit_process
+    @monitor.exit_process()
   end
 end

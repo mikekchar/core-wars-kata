@@ -8,12 +8,6 @@ class Fetch < Command
   end
 
   def execute
-    addr = @monitor.address(@matchdata[0].to_i(10))
-    output = @monitor.fetch(addr)
-    if !output.nil?
-      @monitor.puts("#{addr}:#{output.to_s()}")
-    else
-      @monitor.puts("Illegal address: #{command}")
-    end
+    @monitor.fetch(@matchdata[0].to_i(10))
   end
 end

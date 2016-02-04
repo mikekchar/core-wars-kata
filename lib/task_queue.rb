@@ -1,13 +1,13 @@
 require_relative "./task"
 
 class TaskQueue
-  def initialize(mars)
-    @mars = mars
+  def initialize(core)
+    @core = core
     @queue = []
   end
 
   def new_task(address)
-    task = Task.new(self, @mars, address)
+    task = Task.new(self, @core, address)
     @queue << task
     task
   end

@@ -22,14 +22,12 @@ class Mars
   end
 
   def step(addr)
-    @warriors << Warrior.new(self, addr)
+    @warriors << Warrior.new(@core, addr)
     @warriors.each { |warrior| warrior.step() }
     @warriors.delete_if { |warrior| warrior.killed? }
   end
 
-  # TODO: make a Warriors class????
-  # Also probably better to return the array...
-  def warriors_to_s
+  def to_s
     output = []
     @warriors.each_with_index do |warrior, i|
       output << "#{i} - #{warrior}"
