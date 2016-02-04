@@ -28,6 +28,13 @@ RSpec.describe TaskQueue do
       end
     end
 
+    describe "#writeCache" do
+      it "should not attempt to write to the core" do
+        expect(core).not_to receive(:store)
+        subject.writeCache()
+      end
+    end
+
     describe "#status" do
       it "returns an empty array" do
         expect(subject.status()).to eq([])

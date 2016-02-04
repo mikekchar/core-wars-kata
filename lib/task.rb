@@ -10,16 +10,16 @@ class Task
   end
 
   def step
-    # FIXME: This construction might be a pain for tests eventually
     @registers = RegisterSet.new(@mars, pc())
     @registers.execute()
+    remove() if !@registers.alive
   end
 
   def writeCache
     @registers.writeCache()
   end
 
-  def exit
+  def remove
     @queue.remove(self)
   end
 

@@ -40,9 +40,9 @@ RSpec.describe Task do
     end
   end
 
-  describe "#exit" do
+  describe "#remove" do
     it "removes itself from its queue" do
-      subject.exit()
+      subject.remove()
       expect(queue.length).to eq(0)
     end
   end

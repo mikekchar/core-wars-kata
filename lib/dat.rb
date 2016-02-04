@@ -18,7 +18,7 @@ class Dat < Instruction
   end
 
   def execute(registers)
-    # FIXME: Remove task from task queue
+    registers.kill()
   end
 end
 

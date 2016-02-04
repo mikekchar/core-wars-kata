@@ -34,6 +34,10 @@ class TaskQueue
     @queue.length
   end
 
+  def empty?
+    @queue.length == 0
+  end
+
   def [](index)
     @queue[index]
   end
