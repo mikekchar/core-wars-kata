@@ -22,7 +22,9 @@ class Mars
   end
 
   def step(addr)
-    @warriors << Warrior.new(@core, addr)
+    if !addr.nil?
+      @warriors << Warrior.new(@core, addr)
+    end
     @warriors.each { |warrior| warrior.step() }
     @warriors.delete_if { |warrior| warrior.killed? }
   end

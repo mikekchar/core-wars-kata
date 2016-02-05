@@ -25,12 +25,8 @@ class Monitor
     @finished = true
   end
 
-  def error(command)
-    @writer.puts("Unknown command: #{command}")
-  end
-
-  def address(address)
-    @mars.address(address)
+  def error(errorText, command)
+    @writer.puts("#{errorText}: #{command}")
   end
 
   def fetch(address)
@@ -39,16 +35,17 @@ class Monitor
     if !output.nil?
       @writer.puts("#{addr}:#{output.to_s()}")
     else
-      @writer.puts("Illegal address: #{command}")
+      error("Illegal address:", "#{command}")
     end
   end
 
-  def store(address, value)
-    @mars.store(address, value)
-  end
-
-  def puts(value)
-    @writer.puts(value)
+  def store(address, instructionString)
+    instruction = InstructionParser::parse(instructionString)
+    if instruction.nil?
+      error("Unknown instruction", instructionString)
+    else
+      @mars.store(address, instruction)
+    end
   end
 
   def step(address)
@@ -71,7 +68,7 @@ class Monitor
       if !command.nil?
         command.execute()
       else
-        error(input)
+        error("Unknown command", input)
       end
     end
   end
