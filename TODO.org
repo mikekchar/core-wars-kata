@@ -1,10 +1,13 @@
 * Core Wars Kata
-  OK.  A little bit more refactoring to do.  Then we will get
-  back to implementing new code.  This has been One Pomodoro a Day.
+  Passing nil into an argument is really questionable, but
+  I'm going to leave it for now because it is very simple code.
+
+  That's all for today.  This has been One Pomodoro a Day.
   Until next time!
 ** Burndown
 *** Add Step command
-**** S steps to the next PC address when there is no argument
+**** DONE S steps to the next PC address when there is no argument
+     CLOSED: [2016-02-05 Fri 17:04]
      for each task in all warriors
 *** Log events
 **** TODO Log the creation of warriors

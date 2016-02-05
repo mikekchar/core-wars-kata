@@ -25,7 +25,7 @@ RSpec.describe Store do
       subject.execute()
       expect(mars.fetch(location)).to eq(default)
       expect(writer.output).to eq(
-        ["Unknown command: GOBBLEDEGOOK"]
+        ["Unknown instruction: GOBBLEDEGOOK"]
       )
     end
   end

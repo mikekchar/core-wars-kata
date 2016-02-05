@@ -14,11 +14,8 @@ class Store < Command
 
   def execute
     return if @matchdata.nil?
-    instruction = InstructionParser::parse(@matchdata[2])
 
     addr = @matchdata[1].to_i(10)
-    if @monitor.store(addr, instruction).nil?
-      @monitor.error(@matchdata[2])
-    end
+    @monitor.store(addr, @matchdata[2])
   end
 end

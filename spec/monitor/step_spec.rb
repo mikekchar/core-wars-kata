@@ -32,11 +32,11 @@ RSpec.describe Step do
     end
   end
 
-  describe "stepping into an instruction" do
+  describe "stepping into a location" do
     let(:location) { 10 }
     subject { Step.new("10S", monitor) }
 
-    it "identifies store commands" do
+    it "identifies step commands" do
       expect(subject).to be_valid
     end
 
@@ -75,7 +75,7 @@ RSpec.describe Step do
           expect(mars.warriors.length).to eq(0)
         end
 
-        it "writes and empty list of warriors" do
+        it "writes an empty list of warriors" do
           expect(writer.output).to eq(
             [
               "Warriors",
@@ -85,5 +85,29 @@ RSpec.describe Step do
         end
       end
     end
+  end
+
+  describe "continuing" do
+    subject { Step.new("S", monitor) }
+
+    it "identifies step commands" do
+      expect(subject).to be_valid
+    end
+
+    describe "when there are no warriors" do
+      before(:each) do
+        subject.execute()
+      end
+
+      it "writes an empty list of warriors" do
+        expect(writer.output).to eq(
+          [
+            "Warriors",
+            "--------",
+          ]
+        )
+      end
+    end
+
   end
 end
