@@ -49,7 +49,8 @@ class Monitor
   end
 
   def step(address)
-    @mars.step(address)
+    output = @mars.step(address)
+    output.each { |line| @writer.puts(line) }
     examine()
   end
 

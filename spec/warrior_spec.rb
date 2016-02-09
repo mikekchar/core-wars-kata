@@ -8,7 +8,7 @@ RSpec.describe Warrior do
   let(:core) { Core.new(core_size) }
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
-  subject { Warrior.new(core, location) }
+  subject { Warrior.new(0, core, location) }
 
   before(:each) do
     core.store(location, add)
@@ -24,7 +24,7 @@ RSpec.describe Warrior do
 
   describe "#to_s" do
     it "outputs the task information" do
-      expect(subject.to_s).to eq("PC:10")
+      expect(subject.to_s).to eq("0 - PC:10")
     end
   end
 
@@ -33,7 +33,7 @@ RSpec.describe Warrior do
 
     it "does something" do
       subject.step()
-      expect(subject.to_s).to eq("PC:11")
+      expect(subject.to_s).to eq("0 - PC:11")
       expect(subject.tasks.length).to eq(1)
       task = subject.tasks[0]
       expect(core.fetch(task.pc())).to eq(dat)

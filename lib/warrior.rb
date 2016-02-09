@@ -3,7 +3,8 @@ require_relative "./task_queue"
 class Warrior
   attr_reader :tasks
 
-  def initialize(core, address)
+  def initialize(id, core, address)
+    @id = id
     @address = address
     @tasks = TaskQueue.new(core)
     @tasks.new_task(address)
@@ -15,7 +16,9 @@ class Warrior
   end
 
   def to_s
-    @tasks.status.join("\n")
+    return "" if @tasks.length == 0
+    # FIXME: The \n is probably not what I want...
+    "#{@id} - #{@tasks.status.join("\n")}"
   end
 
   def killed?

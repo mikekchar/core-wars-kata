@@ -1,16 +1,10 @@
 * Core Wars Kata
-  Passing nil into an argument is really questionable, but
-  I'm going to leave it for now because it is very simple code.
+  Left myself a failing test.  Getting a bit messy in there.  Lots
+  of opportunity to improve the code.  Let's see what I do next time.
 
-  That's all for today.  This has been One Pomodoro a Day.
-  Until next time!
+  This has been One Pomodoro a Day.  Until next time!
 ** Burndown
-*** Add Step command
-**** DONE S steps to the next PC address when there is no argument
-     CLOSED: [2016-02-05 Fri 17:04]
-     for each task in all warriors
 *** Log events
-**** TODO Log the creation of warriors
 **** TODO Log the death of warriors
 **** TODO Log the creation of a new task in a warrior
 **** TODO Log the end of a task in a warrior
@@ -223,6 +217,12 @@
       CLOSED: [2016-01-07 Thu 06:48]
 **** DONE It displays the task queue for each warrior when stepping
      CLOSED: [2016-01-12 Tue 09:29]
+**** DONE S steps to the next PC address when there is no argument
+     CLOSED: [2016-02-05 Fri 17:04]
+     for each task in all warriors
+*** Log events
+**** DONE Log the creation of warriors
+     CLOSED: [2016-02-09 Tue 14:11]
 *** Bugs
 **** DONE Bug: All memory locations are initialize with the same instruction
      CLOSED: [2016-01-22 Fri 13:03]
