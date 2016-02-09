@@ -21,19 +21,24 @@ class Mars
     @core.fetch(addr)
   end
 
+  def addWarrior(addr)
+    warrior = Warrior.new(@warriors.length, @core, addr)
+    @warriors << warrior
+  end
+
   def step(addr)
+    output = []
     if !addr.nil?
-      @warriors << Warrior.new(@core, addr)
+      output << ">> Warrior #{@warriors.length} added"
+      addWarrior(addr)
     end
     @warriors.each { |warrior| warrior.step() }
     @warriors.delete_if { |warrior| warrior.killed? }
+    output
   end
 
   def to_s
-    output = []
-    @warriors.each_with_index do |warrior, i|
-      output << "#{i} - #{warrior}"
-    end
+    output = @warriors.map { |warrior| warrior.to_s }
     output.join("\n")
   end
 end
