@@ -1,12 +1,19 @@
 require_relative "./core"
 require_relative "./warrior"
 
+class Log
+  def initialize(writer)
+    @writer = writer
+  end
+end
+
 class Mars
   attr_reader :warriors
 
-  def initialize(core)
+  def initialize(core, logWriter)
     @core = core
     @warriors = []
+    @log = Log.new(logWriter)
   end
 
   def address(addr)
@@ -26,6 +33,17 @@ class Mars
     @warriors << warrior
   end
 
+  def removeDeadWarriors
+    output = []
+    @warriors.each.with_index do |warrior, i|
+      if warrior.killed?
+        @warriors.delete_at(i)
+        output << ">> Warrior #{i} killed"
+      end
+    end
+    output
+  end
+
   def step(addr)
     output = []
     if !addr.nil?
@@ -33,7 +51,7 @@ class Mars
       addWarrior(addr)
     end
     @warriors.each { |warrior| warrior.step() }
-    @warriors.delete_if { |warrior| warrior.killed? }
+    output += removeDeadWarriors()
     output
   end
 

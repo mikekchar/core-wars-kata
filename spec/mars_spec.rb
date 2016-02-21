@@ -1,9 +1,11 @@
 require_relative "../lib/mars"
 require_relative "../lib/core"
+require_relative "fakes/io"
 
 RSpec.describe Mars do
   let(:core) { Core.new(1024) }
-  subject    { Mars.new(core) }
+  let(:logWriter) { Fake::IO.new() }
+  subject    { Mars.new(core, logWriter) }
 
   describe "delegation to core" do
     it "delegates address" do
