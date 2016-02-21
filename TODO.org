@@ -1,11 +1,18 @@
 * Core Wars Kata
-  Left myself a failing test.  Getting a bit messy in there.  Lots
-  of opportunity to improve the code.  Let's see what I do next time.
+  More failing tests.  I hate log objects.  I wish I could find a
+  decent way of dealing with the problem that everything needs access
+  to it.  Singleton pattern is one way to go, but I'd rather avoid
+  it.  Let's see how it goes (same problem exists with Config
+  objects).
 
-  This has been One Pomodoro a Day.  Until next time!
+  Anyway, this has been One Pomodoro a Day.  Until next time!
 ** Burndown
 *** Log events
-**** TODO Log the death of warriors
+**** DONE Log the death of warriors
+     CLOSED: [2016-02-21 Sun 10:54]
+     Going to keep it like that because I don't know what I want
+     to do yet.
+**** TODO Create a log object
 **** TODO Log the creation of a new task in a warrior
 **** TODO Log the end of a task in a warrior
 ** Backlog
