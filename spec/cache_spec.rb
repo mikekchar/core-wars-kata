@@ -1,13 +1,11 @@
 require_relative "../lib/cache"
-require_relative "../lib/core"
-require_relative "../lib/mars"
 require_relative "../lib/add"
 require_relative "../lib/dat"
+require_relative "setup"
 
 RSpec.describe Cache do
-  let(:core_size) { 1024 }
-  let(:core) { Core.new(core_size) }
-  let(:mars) { Mars.new(core) }
+  include_context "mars setup"
+
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
   let(:dat) { Dat.build("#0, #0") }
