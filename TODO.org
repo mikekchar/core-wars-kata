@@ -1,13 +1,16 @@
 * Core Wars Kata
-  Boring day, but that happens.  This has been One Pomodoro a Day.
-  Until next time!
+  Well, hacking out of the gate today.  I have a bit of an idea
+  of how to make the log more or less tolerable.  I think it will work
+  based on this.  Until tomorrow: this has been One Pomodoro a Day.
+  
 ** Burndown
 *** Log events
 **** DONE Log the death of warriors
      CLOSED: [2016-02-21 Sun 10:54]
      Going to keep it like that because I don't know what I want
      to do yet.
-**** TODO Create shared context for setting up monitor
+**** DONE Create shared context for setting up monitor
+     CLOSED: [2016-03-07 Mon 14:59]
 **** TODO Create a log object
 **** TODO Log the creation of a new task in a warrior
 **** TODO Log the end of a task in a warrior

@@ -4,10 +4,7 @@ require_relative "../../lib/monitor/examine"
 require_relative "../setup"
 
 RSpec.describe Examine do
-  include_context "mars setup"
-  let(:reader) { Fake::Readline.new() }
-  let(:writer) { logWriter }
-  let(:monitor) { Monitor.new(mars, reader, writer) }
+  include_context "monitor setup"
 
   subject { Examine.new("e", monitor) }
 

@@ -5,11 +5,7 @@ require_relative "fakes/io"
 require_relative "setup"
 
 RSpec.describe Monitor do
-  include_context "mars setup"
-
-  let(:reader) { Fake::Readline.new() }
-  let(:writer) { logWriter }
-  subject { Monitor.new(mars, reader, writer) }
+  include_context "monitor setup"
 
   describe "reading a single command" do
     let(:command) { "hello" }
@@ -19,14 +15,14 @@ RSpec.describe Monitor do
     end
 
     it "returns the entered command" do
-      expect(subject.read()).to eq("hello")
+      expect(monitor.read()).to eq("hello")
     end
   end
 
   describe "event loop" do
     describe "empty input" do
       it "returns no commands" do
-        subject.process()
+        monitor.process()
         expect(writer.output).to be_empty
       end
     end
@@ -41,7 +37,7 @@ RSpec.describe Monitor do
       end
 
       it "reads all of the commands in the input" do
-        subject.process()
+        monitor.process()
         expect(writer.output).to eq(
           [
             "Unknown command: hello",
@@ -60,7 +56,7 @@ RSpec.describe Monitor do
       end
 
       it "exits upon reading the exit command" do
-        subject.process()
+        monitor.process()
         expect(writer.output).to eq([])
       end
     end
@@ -71,7 +67,7 @@ RSpec.describe Monitor do
 
         before(:each) do
           reader.addInput(command)
-          subject.process()
+          monitor.process()
         end
 
         it "prints an empty list of warriors" do
@@ -92,15 +88,15 @@ RSpec.describe Monitor do
         before(:each) do
           reader.addInput(add)
           reader.addInput(step)
-          subject.process()
+          monitor.process()
           # Clear the output from the previous commands
           writer.reset
           reader.addInput(examine)
-          subject.process()
+          monitor.process()
         end
 
         it "lists the warrior" do
-          subject.process()
+          monitor.process()
           expect(writer.output).to eq(
             [
               "Warriors",
