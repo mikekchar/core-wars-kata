@@ -1,8 +1,5 @@
 * Core Wars Kata
-  Well, hacking out of the gate today.  I have a bit of an idea
-  of how to make the log more or less tolerable.  I think it will work
-  based on this.  Until tomorrow: this has been One Pomodoro a Day.
-  
+  Enough for today.  This has been One Pomodoro a Day.  Until tomorrow!
 ** Burndown
 *** Log events
 **** DONE Log the death of warriors
@@ -12,6 +9,13 @@
 **** DONE Create shared context for setting up monitor
      CLOSED: [2016-03-07 Mon 14:59]
 **** TODO Create a log object
+**** TODO Print only the log for the last step in the step command
+     At the moment it will print the entire log.
+**** TODO Write some more tests for mars
+     While we have full test coverage (I think), it is spread out
+     in the monitor/step test for instance.  This makes it easy to
+     miss breakages.  It's a pain, but it's a good idea to have a
+     similar test in mars.
 **** TODO Log the creation of a new task in a warrior
 **** TODO Log the end of a task in a warrior
 ** Backlog
