@@ -8,3 +8,11 @@ RSpec.shared_context "mars setup" do
   let(:logWriter) { Fake::IO.new() }
   let(:mars) { Mars.new(core, logWriter) }
 end
+
+RSpec.shared_context "monitor setup" do
+  include_context "mars setup"
+
+  let(:reader) { Fake::Readline.new() }
+  let(:writer) { logWriter }
+  let(:monitor) { Monitor.new(mars, reader, writer) }
+end
