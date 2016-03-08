@@ -1,34 +1,7 @@
 require_relative "./core"
 require_relative "./warrior"
-
-class Event
-  def initialize(object, num, message)
-    @object = object
-    @num = num
-    @message = message
-  end
-
-  def to_s
-    ">> #{@object} ##{@num} #{@messge}"
-  end
-end
-
-class Log
-  def initialize(writer)
-    @writer = writer
-    @events = []
-  end
-
-  def addEvent(event)
-    @events << event
-  end
-
-  def to_s
-    @events.each do |event|
-      event.to_s
-    end
-  end
-end
+require_relative "./event"
+require_relative "./log"
 
 class Mars
   attr_reader :warriors, :log
@@ -60,17 +33,18 @@ class Mars
     @warriors.each.with_index do |warrior, i|
       if warrior.killed?
         @warriors.delete_at(i)
-        @log.addEvent(Event.new("Warrior", i, "killed"))
+        @log.add(Event.new("Warrior", i, "killed"))
       end
     end
   end
 
   def step(addr)
     if !addr.nil?
-      @log.addEvent(Event.new("Warrior", @warriors.length, "added"))
+      @log.add(Event.new("Warrior", @warriors.length, "added"))
       addWarrior(addr)
     end
     @warriors.each { |warrior| warrior.step() }
+    removeDeadWarriors()
   end
 
   def to_s

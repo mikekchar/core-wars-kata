@@ -50,7 +50,7 @@ class Monitor
 
   def step(address)
     @mars.step(address)
-    @writer.puts(@mars.log.to_s)
+    @mars.log.to_strings.each { |event| @writer.puts(event) }
     examine()
   end
 
