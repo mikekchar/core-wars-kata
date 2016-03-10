@@ -1,8 +1,7 @@
 require_relative "./event"
 
 class Log
-  def initialize(writer)
-    @writer = writer
+  def initialize()
     @events = []
   end
 

@@ -7,7 +7,7 @@ require "readline"
 options = Options.new()
 options.parse(ARGV)
 core = Core.new(1024)
-mars = Mars.new(core, STDOUT)
+mars = Mars.new(core)
 if options.interactive? then
   Monitor.new(mars, Readline, STDOUT).process()
 else

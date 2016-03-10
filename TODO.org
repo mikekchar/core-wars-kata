@@ -1,5 +1,9 @@
 * Core Wars Kata
-  Enough for today.  This has been One Pomodoro a Day.  Until tomorrow!
+  Ran out of time.  Curious about the S step... Either I am confused
+  about what should be happening, or there is a bug.  But it's
+  good to find out soon.
+
+  This has been One Pomodoro a Day.  Until tomorrow!
 ** Burndown
 *** Log events
 **** DONE Log the death of warriors
@@ -8,14 +12,18 @@
      to do yet.
 **** DONE Create shared context for setting up monitor
      CLOSED: [2016-03-07 Mon 14:59]
-**** TODO Create a log object
-**** TODO Print only the log for the last step in the step command
-     At the moment it will print the entire log.
+**** DONE Create a log object
+     CLOSED: [2016-03-10 Thu 15:22]
+     I think that's good enough for now
 **** TODO Write some more tests for mars
+     Going to do this first
      While we have full test coverage (I think), it is spread out
      in the monitor/step test for instance.  This makes it easy to
      miss breakages.  It's a pain, but it's a good idea to have a
      similar test in mars.
+**** TODO Print only the log for the last step in the step command
+     At the moment it will print the entire log.
+**** TODO Test S by hand again
 **** TODO Log the creation of a new task in a warrior
 **** TODO Log the end of a task in a warrior
 ** Backlog
