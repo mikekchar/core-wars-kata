@@ -13,4 +13,11 @@ RSpec.describe Log do
     subject.add(event)
     expect(subject.to_strings).to eq([">> Warrior 0 added"])
   end
+
+  it "can be reset" do
+    event = Event.new("Warrior", 0, "added")
+    subject.add(event)
+    subject.reset()
+    expect(subject.to_strings).to eq([])
+  end
 end

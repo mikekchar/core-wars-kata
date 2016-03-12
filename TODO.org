@@ -1,8 +1,5 @@
 * Core Wars Kata
-  Ran out of time.  Curious about the S step... Either I am confused
-  about what should be happening, or there is a bug.  But it's
-  good to find out soon.
-
+  Ran out of time without noticing!  I wonder how far I went over...
   This has been One Pomodoro a Day.  Until tomorrow!
 ** Burndown
 *** Log events

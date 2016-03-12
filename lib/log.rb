@@ -5,6 +5,10 @@ class Log
     @events = []
   end
 
+  def reset
+    @events = []
+  end
+
   def add(event)
     @events << event
   end
