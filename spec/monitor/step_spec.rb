@@ -2,9 +2,7 @@ require_relative "../../lib/monitor"
 require_relative "../fakes/readline"
 require_relative "../fakes/io"
 require_relative "../../lib/monitor/step"
-require_relative "../../lib/dat"
 require_relative "../../lib/add"
-require_relative "../../lib/operand"
 require_relative "../setup"
 
 RSpec.describe Step do

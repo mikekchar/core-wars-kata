@@ -39,7 +39,7 @@ class Mars
     end
   end
 
-  def step(addr)
+  def step(addr=nil)
     if !addr.nil?
       addWarrior(addr)
     end
