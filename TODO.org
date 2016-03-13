@@ -1,5 +1,5 @@
 * Core Wars Kata
-  Ran out of time without noticing!  I wonder how far I went over...
+  Sigh... It happened again.  Obviously I want to work on this :-)
   This has been One Pomodoro a Day.  Until tomorrow!
 ** Burndown
 *** Log events
@@ -12,12 +12,14 @@
 **** DONE Create a log object
      CLOSED: [2016-03-10 Thu 15:22]
      I think that's good enough for now
-**** TODO Write some more tests for mars
+**** DONE Write some more tests for mars
+     CLOSED: [2016-03-13 Sun 11:22]
      Going to do this first
      While we have full test coverage (I think), it is spread out
      in the monitor/step test for instance.  This makes it easy to
      miss breakages.  It's a pain, but it's a good idea to have a
      similar test in mars.
+     Good enough for now.
 **** TODO Print only the log for the last step in the step command
      At the moment it will print the entire log.
 **** TODO Test S by hand again
