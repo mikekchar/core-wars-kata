@@ -49,7 +49,7 @@ RSpec.describe Step do
         subject.execute()
         expect(writer.output).to eq(
           [
-            ">> Warrior 0 added",
+            "[0] Warrior 0 added",
             "Warriors",
             "--------",
             "0 - PC:11"
@@ -71,8 +71,8 @@ RSpec.describe Step do
         it "writes an empty list of warriors" do
           expect(writer.output).to eq(
             [
-              ">> Warrior 0 added",
-              ">> Warrior 0 killed",
+              "[0] Warrior 0 added",
+              "[0] Warrior 0 killed",
               "Warriors",
               "--------",
             ]

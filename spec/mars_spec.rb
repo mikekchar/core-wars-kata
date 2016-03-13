@@ -11,6 +11,12 @@ RSpec.describe Mars do
 
   subject    { Mars.new(core) }
 
+  before do
+    subject.store(location, add)
+    subject.store(location + 1, add)
+    subject.store(location + 2, dat)
+  end
+
   describe "delegation to core" do
     it "delegates address" do
       expect(core).to receive(:address)
@@ -42,23 +48,20 @@ RSpec.describe Mars do
     end
 
     it "logs the addition" do
-      expect(subject.log.to_strings).to eq([">> Warrior 0 added"])
+      expect(subject.log.to_strings).to eq(["[0] Warrior 0 added"])
     end
 
     it "can add multiple warriors" do
       subject.addWarrior(location)
       expect(subject.warriors.length).to eq(2)
       expect(subject.log.to_strings).to eq([
-        ">> Warrior 0 added", ">> Warrior 1 added"
+        "[0] Warrior 0 added", "[0] Warrior 1 added"
       ])
     end
   end
 
   describe "removing warriors" do
     before do
-      subject.store(location, add)
-      subject.store(location + 1, add)
-      subject.store(location + 2, dat)
       subject.addWarrior(location)
       subject.addWarrior(location + 1)
       subject.addWarrior(location + 2)
@@ -90,7 +93,7 @@ RSpec.describe Mars do
         subject.log.reset()
         subject.removeDeadWarriors()
         expect(subject.warriors.length).to eq(2)
-        expect(subject.log.to_strings).to eq([">> Warrior 2 killed"])
+        expect(subject.log.to_strings).to eq(["[0] Warrior 2 killed"])
       end
     end
 
@@ -102,7 +105,75 @@ RSpec.describe Mars do
 
       it "removes the killed warriors" do
         expect(subject.warriors.length).to eq(2)
-        expect(subject.log.to_strings).to eq([">> Warrior 2 killed"])
+        expect(subject.log.to_strings).to eq(["[0] Warrior 2 killed"])
+      end
+    end
+  end
+
+  context "using #step" do
+    it "starts with a step_num of 0" do
+      expect(subject.step_num).to eq(0)
+    end
+
+    context "after an initial step into an add" do
+      before do
+        subject.step(location)
+      end
+
+      it "adds a warrior" do
+        expect(subject.log.to_strings).to eq(["[0] Warrior 0 added"])
+      end
+
+      it "increments the step_num" do
+        expect(subject.step_num).to eq(1)
+      end
+
+      context "adding another warrior" do
+        before do
+          # Remove the log from the first step
+          subject.log.reset()
+          subject.step(location)
+        end
+
+        it "adds a warrior" do
+          expect(subject.log.to_strings).to eq(["[1] Warrior 1 added"])
+        end
+
+        it "increments the step_num" do
+          expect(subject.step_num).to eq(2)
+        end
+      end
+
+      context "step into another add" do
+        before do
+          # Remove the log from the first step
+          subject.log.reset()
+          subject.step()
+        end
+
+        it "adds nothing to the log" do
+          expect(subject.log.to_strings).to eq([])
+        end
+
+        it "increments the step_num" do
+          expect(subject.step_num).to eq(2)
+        end
+
+        context "step into a dat" do
+          before do
+            # Remove the log from the first step
+            subject.log.reset()
+            subject.step()
+          end
+
+          it "kills the warrior" do
+            expect(subject.log.to_strings).to eq(["[2] Warrior 0 killed"])
+          end
+
+          it "increments the step_num" do
+            expect(subject.step_num).to eq(3)
+          end
+        end
       end
     end
   end

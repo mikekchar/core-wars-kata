@@ -9,15 +9,26 @@ RSpec.describe Log do
   end
 
   it "can add an event" do
-    event = Event.new("Warrior", 0, "added")
+    event = Event.new(0, "Warrior", 0, "added")
     subject.add(event)
-    expect(subject.to_strings).to eq([">> Warrior 0 added"])
+    expect(subject.to_strings).to eq(["[0] Warrior 0 added"])
   end
 
   it "can be reset" do
-    event = Event.new("Warrior", 0, "added")
+    event = Event.new(0, "Warrior", 0, "added")
     subject.add(event)
     subject.reset()
     expect(subject.to_strings).to eq([])
+  end
+
+  context "outputting for a certain step_num" do
+    before do
+      event0 = Event.new(0, "Warrior", 0, "added")
+      event1 = Event.new(1, "Warrior", 0, "added")
+      subject.add(event0)
+      subject.add(event1)
+    end
+
+    it "can output for a certain step_num"
   end
 end
