@@ -12,7 +12,7 @@ class TaskQueue
     task
   end
 
-  def step
+  def step()
     @queue.each do |task| task.step() end
   end
 

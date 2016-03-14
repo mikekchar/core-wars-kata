@@ -24,11 +24,14 @@ RSpec.describe Log do
   context "outputting for a certain step_num" do
     before do
       event0 = Event.new(0, "Warrior", 0, "added")
-      event1 = Event.new(1, "Warrior", 0, "added")
+      event1 = Event.new(1, "Warrior", 1, "added")
       subject.add(event0)
       subject.add(event1)
     end
 
-    it "can output for a certain step_num"
+    it "can output for a certain step_num" do
+      expect(subject.at_step(0)).to eq(["[0] Warrior 0 added"])
+      expect(subject.at_step(1)).to eq(["[1] Warrior 1 added"])
+    end
   end
 end

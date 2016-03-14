@@ -10,7 +10,7 @@ class Warrior
     @tasks.new_task(address)
   end
 
-  def step
+  def step()
     @tasks.step()
     @tasks.writeCache()
   end

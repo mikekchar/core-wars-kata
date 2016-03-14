@@ -49,8 +49,10 @@ class Monitor
   end
 
   def step(address)
+    current_step = @mars.step_num
     @mars.step(address)
-    @mars.log.to_strings.each { |event| @writer.puts(event) }
+    @mars.log.at_step(current_step).each { |event| @writer.puts(event) }
+    @writer.puts("")
     examine()
   end
 
