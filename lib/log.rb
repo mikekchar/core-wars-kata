@@ -18,4 +18,10 @@ class Log
       event.to_s
     end
   end
+
+  def at_step(step)
+    @events.select { |event| event.step_num == step }.map do |event|
+      event.to_s
+    end
+  end
 end
