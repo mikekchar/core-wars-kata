@@ -1,4 +1,5 @@
 * Core Wars Kata
+  Out of time.  Will definitely finish this logging tomorrow.
   This has been One Pomodoro a Day.  Until tomorrow!
 ** Burndown
 *** Log events
@@ -27,12 +28,10 @@
 **** DONE Test S by hand again
      CLOSED: [2016-03-14 Mon 10:07]
 **** TODO Log the end of a task in a warrior
-     It seems that I have no choice but to pass Mars into the
-     tasks.  Oh well.  I've run out of time, so I will sleep on it.
-**** TODO Log the creation of a new task in a warrior
-     We don't actually have that many places where the task is created
-     (at the moment, only one).  I'm going to put this one on the back
-     burner until we have opcodes that create new tasks.
+***** TODO Store ids on Warrior and Task
+***** TODO Log the creation of a new task in a warrior
+      Going to do these together since I had to refactor all that
+      code anyway...
 ** Backlog
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
