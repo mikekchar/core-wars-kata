@@ -2,13 +2,14 @@ require_relative "../lib/task"
 require_relative "../lib/core"
 require_relative "../lib/add"
 require_relative "../lib/task_queue"
+require_relative "setup"
 
 RSpec.describe Task do
-  let(:core_size) { 1024 }
-  let(:core) { Core.new(core_size) }
+  include_context "mars setup"
+
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
-  let(:queue) { TaskQueue.new(core) }
+  let(:queue) { TaskQueue.new(mars) }
   subject { queue.new_task(location) }
 
   before(:each) do

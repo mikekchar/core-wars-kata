@@ -2,13 +2,14 @@ require_relative "../lib/warrior"
 require_relative "../lib/core"
 require_relative "../lib/add"
 require_relative "../lib/dat"
+require_relative "setup"
 
 RSpec.describe Warrior do
-  let(:core_size) { 1024 }
-  let(:core) { Core.new(core_size) }
+  include_context "mars setup"
+
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
-  subject { Warrior.new(0, core, location) }
+  subject { Warrior.new(mars, 0, location) }
 
   before(:each) do
     core.store(location, add)

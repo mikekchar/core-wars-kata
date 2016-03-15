@@ -1,12 +1,14 @@
 require_relative "./task"
 
 class TaskQueue
-  def initialize(core)
-    @core = core
+  def initialize(mars)
+    @mars = mars
+    @core = mars.core
     @queue = []
   end
 
   def new_task(address)
+    @mars.addLog("Task", @queue.length, "added")
     task = Task.new(self, @core, address)
     @queue << task
     task
@@ -27,6 +29,8 @@ class TaskQueue
   end
 
   def remove(task)
+    # FIXME: Put the correct id here
+    @mars.addLog("Task", -1, "removed")
     @queue.delete(task)
   end
 

@@ -3,10 +3,10 @@ require_relative "./task_queue"
 class Warrior
   attr_reader :tasks
 
-  def initialize(id, core, address)
+  def initialize(mars, id, address)
     @id = id
     @address = address
-    @tasks = TaskQueue.new(core)
+    @tasks = TaskQueue.new(mars)
     @tasks.new_task(address)
   end
 

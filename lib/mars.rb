@@ -4,7 +4,7 @@ require_relative "./event"
 require_relative "./log"
 
 class Mars
-  attr_reader :warriors, :log, :step_num
+  attr_reader :warriors, :log, :step_num, :core
 
   def initialize(core)
     @core = core
@@ -25,16 +25,20 @@ class Mars
     @core.fetch(addr)
   end
 
+  def addLog(object, id, message)
+    @log.add(Event.new(@step_num, object, id, message))
+  end
+
   def addWarrior(addr)
-    warrior = Warrior.new(@warriors.length, @core, addr)
-    @log.add(Event.new(@step_num, "Warrior", @warriors.length, "added"))
+    addLog("Warrior", @warriors.length, "added")
+    warrior = Warrior.new(self, @warriors.length, addr)
     @warriors << warrior
   end
 
   def removeDeadWarriors
     @warriors.each.with_index do |warrior, i|
       if warrior.killed?
-        @log.add(Event.new(@step_num, "Warrior", i, "killed"))
+        addLog("Warrior", i, "killed")
         @warriors.delete_at(i)
       end
     end

@@ -1,12 +1,13 @@
 require_relative "../lib/task_queue"
 require_relative "../lib/task"
 require_relative "../lib/core"
+require_relative "setup"
 
 RSpec.describe TaskQueue do
-  let(:core_size) { 1024 }
-  let(:core) { Core.new(core_size) }
+  include_context "mars setup"
+
   let(:location) { 10 }
-  subject { TaskQueue.new(core) }
+  subject { TaskQueue.new(mars) }
 
   describe "#new_task" do
     it "returns the added task" do
