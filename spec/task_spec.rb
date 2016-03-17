@@ -9,7 +9,7 @@ RSpec.describe Task do
 
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
-  let(:queue) { TaskQueue.new(mars) }
+  let(:queue) { TaskQueue.new(mars, "0") }
   subject { queue.new_task(location) }
 
   before(:each) do

@@ -7,7 +7,7 @@ RSpec.describe TaskQueue do
   include_context "mars setup"
 
   let(:location) { 10 }
-  subject { TaskQueue.new(mars) }
+  subject { TaskQueue.new(mars, "0") }
 
   describe "#new_task" do
     it "returns the added task" do

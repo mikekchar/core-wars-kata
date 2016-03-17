@@ -49,7 +49,7 @@ RSpec.describe Mars do
 
     it "logs the addition" do
       expect(subject.log.to_strings).to eq(
-        ["[0] Warrior 0 added", "[0] Task 0 added"]
+        ["[0] Warrior 0 added", "[0] Task 0:0 added"]
       )
     end
 
@@ -57,8 +57,8 @@ RSpec.describe Mars do
       subject.addWarrior(location)
       expect(subject.warriors.length).to eq(2)
       expect(subject.log.to_strings).to eq([
-        "[0] Warrior 0 added", "[0] Task 0 added",
-        "[0] Warrior 1 added", "[0] Task 0 added"
+        "[0] Warrior 0 added", "[0] Task 0:0 added",
+        "[0] Warrior 1 added", "[0] Task 1:0 added"
       ])
     end
   end
@@ -111,7 +111,7 @@ RSpec.describe Mars do
       it "removes the killed warriors" do
         expect(subject.warriors.length).to eq(2)
         expect(subject.log.to_strings).to eq(
-          ["[0] Task -1 removed", "[0] Warrior 2 killed"]
+          ["[0] Task 2:0 removed", "[0] Warrior 2 killed"]
         )
       end
     end
@@ -129,7 +129,7 @@ RSpec.describe Mars do
 
       it "adds a warrior" do
         expect(subject.log.to_strings).to eq(
-          ["[0] Warrior 0 added", "[0] Task 0 added"]
+          ["[0] Warrior 0 added", "[0] Task 0:0 added"]
         )
       end
 
@@ -146,7 +146,7 @@ RSpec.describe Mars do
 
         it "adds a warrior" do
           expect(subject.log.to_strings).to eq(
-            ["[1] Warrior 1 added", "[1] Task 0 added"]
+            ["[1] Warrior 1 added", "[1] Task 1:0 added"]
           )
         end
 
@@ -179,7 +179,7 @@ RSpec.describe Mars do
 
           it "kills the warrior" do
             expect(subject.log.to_strings).to eq(
-              ["[2] Task -1 removed", "[2] Warrior 0 killed"]
+              ["[2] Task 0:0 removed", "[2] Warrior 0 killed"]
             )
           end
 

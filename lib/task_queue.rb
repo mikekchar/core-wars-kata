@@ -1,14 +1,16 @@
 require_relative "./task"
 
 class TaskQueue
-  def initialize(mars)
+  def initialize(mars, warrior_id)
     @mars = mars
     @core = mars.core
+    @warrior_id = warrior_id
     @queue = []
   end
 
   def new_task(address)
-    task = Task.new(self, @core, address)
+    new_id = "#{@warrior_id}:#{@queue.length}"
+    task = Task.new(self, @core, address, new_id)
     @mars.addLog(task, "added")
     @queue << task
     task

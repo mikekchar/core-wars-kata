@@ -9,10 +9,11 @@ RSpec.describe Warrior do
 
   let(:location) { 10 }
   let(:add) { Add.build("#4, $-1") }
-  subject { Warrior.new(mars, 0, location) }
+  subject { Warrior.new(mars, 0) }
 
   before(:each) do
     core.store(location, add)
+    subject.new_task(location)
   end
 
   describe "#step" do
