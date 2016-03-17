@@ -50,7 +50,7 @@ RSpec.describe Step do
         expect(writer.output).to eq(
           [
             "[0] Warrior 0 added",
-            "[0] Task 0 added",
+            "[0] Task 0:0 added",
             "",
             "Warriors",
             "--------",
@@ -74,8 +74,8 @@ RSpec.describe Step do
           expect(writer.output).to eq(
             [
               "[0] Warrior 0 added",
-              "[0] Task 0 added",
-              "[0] Task -1 removed",
+              "[0] Task 0:0 added",
+              "[0] Task 0:0 removed",
               "[0] Warrior 0 killed",
               "",
               "Warriors",

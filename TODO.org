@@ -1,42 +1,7 @@
 * Core Wars Kata
-  I promised to finish, but didn't make it :-(  Oh well.  I'll
-  try again next time.
-  This has been One Pomodoro a Day.  Until tomorrow!
+  Finish a bit early today since there isn't much I can accomplish
+  in 1 minutes.  This has been One Pomodoro a Day.  Until tomorrow!
 ** Burndown
-*** Log events
-**** DONE Log the death of warriors
-     CLOSED: [2016-02-21 Sun 10:54]
-     Going to keep it like that because I don't know what I want
-     to do yet.
-**** DONE Create shared context for setting up monitor
-     CLOSED: [2016-03-07 Mon 14:59]
-**** DONE Create a log object
-     CLOSED: [2016-03-10 Thu 15:22]
-     I think that's good enough for now
-**** DONE Write some more tests for mars
-     CLOSED: [2016-03-13 Sun 11:22]
-     Going to do this first
-     While we have full test coverage (I think), it is spread out
-     in the monitor/step test for instance.  This makes it easy to
-     miss breakages.  It's a pain, but it's a good idea to have a
-     similar test in mars.
-     Good enough for now.
-**** DONE Print only the log for the last step in the step command
-     CLOSED: [2016-03-14 Mon 10:07]
-     At the moment it will print the entire log.
-     Good enough for now.  Still not happy with the tests, but it will
-     do for the moment.
-**** DONE Test S by hand again
-     CLOSED: [2016-03-14 Mon 10:07]
-**** TODO Log the end of a task in a warrior
-***** TODO Store ids on Warrior and Task
-      Now to do this so that the ID of the task is correctly
-      printed.
-      Try to make the ID of the task: "0:1", where the first digit
-      is the warrior id and the second is the task ID.
-***** DONE Log the creation of a new task in a warrior
-      CLOSED: [2016-03-16 Wed 14:01]
-      I think this is done now.
 ** Backlog
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
@@ -252,6 +217,41 @@
 *** Log events
 **** DONE Log the creation of warriors
      CLOSED: [2016-02-09 Tue 14:11]
+**** DONE Log the death of warriors
+     CLOSED: [2016-02-21 Sun 10:54]
+     Going to keep it like that because I don't know what I want
+     to do yet.
+**** DONE Create shared context for setting up monitor
+     CLOSED: [2016-03-07 Mon 14:59]
+**** DONE Create a log object
+     CLOSED: [2016-03-10 Thu 15:22]
+     I think that's good enough for now
+**** DONE Write some more tests for mars
+     CLOSED: [2016-03-13 Sun 11:22]
+     Going to do this first
+     While we have full test coverage (I think), it is spread out
+     in the monitor/step test for instance.  This makes it easy to
+     miss breakages.  It's a pain, but it's a good idea to have a
+     similar test in mars.
+     Good enough for now.
+**** DONE Print only the log for the last step in the step command
+     CLOSED: [2016-03-14 Mon 10:07]
+     At the moment it will print the entire log.
+     Good enough for now.  Still not happy with the tests, but it will
+     do for the moment.
+**** DONE Test S by hand again
+     CLOSED: [2016-03-14 Mon 10:07]
+**** DONE Log the end of a task in a warrior
+     CLOSED: [2016-03-17 Thu 10:57]
+***** DONE Store ids on Warrior and Task
+      CLOSED: [2016-03-17 Thu 10:57]
+      Now to do this so that the ID of the task is correctly
+      printed.
+      Try to make the ID of the task: "0:1", where the first digit
+      is the warrior id and the second is the task ID.
+***** DONE Log the creation of a new task in a warrior
+      CLOSED: [2016-03-16 Wed 14:01]
+      I think this is done now.
 *** Bugs
 **** DONE Bug: All memory locations are initialize with the same instruction
      CLOSED: [2016-01-22 Fri 13:03]

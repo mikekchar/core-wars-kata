@@ -30,9 +30,9 @@ class Mars
   end
 
   def addWarrior(addr)
-    warrior = Warrior.new(self, @warriors.length, addr)
-    # FIXME: This needs to be logged ahead of time.
+    warrior = Warrior.new(self, "#{@warriors.length}")
     addLog(warrior, "added")
+    warrior.new_task(addr)
     @warriors << warrior
   end
 

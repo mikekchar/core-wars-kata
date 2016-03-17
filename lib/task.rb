@@ -3,9 +3,10 @@ require_relative "./register_set"
 class Task
   attr_reader :registers
 
-  def initialize(queue, core, address)
+  def initialize(queue, core, address, id)
     @queue = queue
     @core = core
+    @id = id
     @registers = RegisterSet.new(core, address)
   end
 
@@ -14,7 +15,7 @@ class Task
   end
 
   def id
-    -1
+    @id 
   end
 
   def step
