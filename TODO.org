@@ -1,5 +1,6 @@
 * Core Wars Kata
-  Out of time.  Will definitely finish this logging tomorrow.
+  I promised to finish, but didn't make it :-(  Oh well.  I'll
+  try again next time.
   This has been One Pomodoro a Day.  Until tomorrow!
 ** Burndown
 *** Log events
@@ -29,9 +30,13 @@
      CLOSED: [2016-03-14 Mon 10:07]
 **** TODO Log the end of a task in a warrior
 ***** TODO Store ids on Warrior and Task
-***** TODO Log the creation of a new task in a warrior
-      Going to do these together since I had to refactor all that
-      code anyway...
+      Now to do this so that the ID of the task is correctly
+      printed.
+      Try to make the ID of the task: "0:1", where the first digit
+      is the warrior id and the second is the task ID.
+***** DONE Log the creation of a new task in a warrior
+      CLOSED: [2016-03-16 Wed 14:01]
+      I think this is done now.
 ** Backlog
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun

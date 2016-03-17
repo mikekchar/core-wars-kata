@@ -1,13 +1,17 @@
 require_relative "./task_queue"
 
 class Warrior
-  attr_reader :tasks
+  attr_reader :tasks, :id
 
   def initialize(mars, id, address)
     @id = id
     @address = address
     @tasks = TaskQueue.new(mars)
     @tasks.new_task(address)
+  end
+
+  def name
+    "Warrior"
   end
 
   def step()
