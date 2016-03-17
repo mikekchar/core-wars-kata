@@ -9,6 +9,14 @@ class Task
     @registers = RegisterSet.new(core, address)
   end
 
+  def name
+    "Task"
+  end
+
+  def id
+    -1
+  end
+
   def step
     @registers = RegisterSet.new(@core, pc())
     @registers.execute()

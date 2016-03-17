@@ -8,8 +8,8 @@ class TaskQueue
   end
 
   def new_task(address)
-    @mars.addLog("Task", @queue.length, "added")
     task = Task.new(self, @core, address)
+    @mars.addLog(task, "added")
     @queue << task
     task
   end
@@ -30,7 +30,7 @@ class TaskQueue
 
   def remove(task)
     # FIXME: Put the correct id here
-    @mars.addLog("Task", -1, "removed")
+    @mars.addLog(task, "removed")
     @queue.delete(task)
   end
 

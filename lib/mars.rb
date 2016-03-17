@@ -25,20 +25,21 @@ class Mars
     @core.fetch(addr)
   end
 
-  def addLog(object, id, message)
-    @log.add(Event.new(@step_num, object, id, message))
+  def addLog(object, message)
+    @log.add(Event.new(@step_num, object, message))
   end
 
   def addWarrior(addr)
-    addLog("Warrior", @warriors.length, "added")
     warrior = Warrior.new(self, @warriors.length, addr)
+    # FIXME: This needs to be logged ahead of time.
+    addLog(warrior, "added")
     @warriors << warrior
   end
 
   def removeDeadWarriors
     @warriors.each.with_index do |warrior, i|
       if warrior.killed?
-        addLog("Warrior", i, "killed")
+        addLog(warrior, "killed")
         @warriors.delete_at(i)
       end
     end

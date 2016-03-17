@@ -1,14 +1,16 @@
 class Event
   attr_reader :step_num
 
-  def initialize(step_num, object, num, message)
+  # Note: Object must adhere to the interface:
+  #   name: Name of the object
+  #   id: ID of the object
+  def initialize(step_num, object, message)
     @step_num = step_num
     @object = object
-    @num = num
     @message = message
   end
 
   def to_s
-    "[#{@step_num}] #{@object} #{@num} #{@message}"
+    "[#{@step_num}] #{@object.name} #{@object.id} #{@message}"
   end
 end
