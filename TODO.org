@@ -1,8 +1,20 @@
 * Core Wars Kata
-  Finish a bit early today since there isn't much I can accomplish
-  in 1 minutes.  This has been One Pomodoro a Day.  Until tomorrow!
-** Burndown
+  Out of time and too much beer to program!  Oh well.  I have a nice
+  failing test.  Until tomorrow!
 ** Backlog
+*** Implement MOVE.AB Instruction
+    Replaces the B-target with the A value and queues the
+    next instruction.  We want to implment:
+     MOVE.AB #0, @-2
+    Which means we have another addressing mode
+    I guess that's indirect.  Stupid spec doesn't actually say...
+
+    That seems to be the implementation... I wonder if it works...
+    Look ma!  No tests!
+**** Implement indirect addressing
+    In MOVE.AB #0, @-2 the @ means use the B value of the
+    instruction at PC-2 as an address and move #0 to the B value
+    of that instruction.
 *** Inspect running state of the memory
     Since this is a "retro" project, I thought it would be fun
     to implement the command set from the old Apple II
